@@ -1,0 +1,279 @@
+body {
+    background-color: #101010;
+    color: #dddddd;
+    font-family: 'Play', sans-serif;
+}
+.department {
+    color: #B8B9BC;
+    font-size: 56px;
+    display: none;
+    position: relative;
+    text-align:center;
+    margin:10px;
+}
+.header {
+    font-weight:bold;
+    text-align: center;
+    font-size: medium;
+    margin:auto;
+}
+.headerRed {
+    background-color: #A81E22;
+    color:#B8B9BC;
+}
+.headerGrey {
+    background-color: #B8B9BC;
+    color:#0E0D23;
+}
+
+.mainLogo {
+    top:15px;
+    height: 100%;
+    width: 100%;
+    padding:1%;
+    display: block;
+    position: relative;
+    text-align:center;
+    margin:0px;
+/*    margin:auto;*/
+}
+.clock {
+    top: 15px;
+    color: #B8B9BC;
+    display: none;
+    position: relative;
+    text-align:center;
+    margin:0px auto 10px auto;
+}
+.boxHeading {
+    font-size: 24px;
+}
+.table-striped>tbody>tr:nth-of-type(odd) {
+    background-color: inherit;
+}
+.stationName { 
+    text-align: left;
+    color:#B8B9BC;
+    font-size: small;
+}
+.stationNameOD {
+    background-color: #B8B9BC;
+    color: #101010;
+}
+.shiftName { 
+    text-align: left;
+    color:#B8B9BC;
+    font-size: small;
+}
+.shiftNameOD {
+    background-color: #B8B9BC;
+    color: #101010;
+}
+.Position {
+    text-align: left;
+    color: #A81E22;
+    font-size: small;
+}
+.PositionOD {
+    background-color: #B8B9BC;
+    color: #A81E22;
+}
+.Title {
+    text-align: right;
+    color: #B8B9BC;
+    font-size: small;
+}
+.Name {
+    text-align: left;
+    color: #B8B9BC;
+    font-size: medium;
+}
+.NameOD {
+    background-color: #B8B9BC;
+    color: #101010;
+}
+.Rank {
+    text-align: right;
+    color: #B8B9BC;
+    font-size: small;
+    border-bottom: 0px solid #ddd;
+}
+.RankOD {
+    background-color:#B8B9BC;
+    color: #101010;
+}
+.eventTitle {
+    text-align: left;
+    background-color:#B8B9BC;
+    color: #101010;
+    font-size: small;
+    border-top: 1px solid #ddd;
+    border-bottom: 0px solid #ddd;
+}
+.eventTime {
+    text-align: right;
+    background-color:#B8B9BC;
+    color: #101010;
+    font-size: small;
+    border-top: 1px solid #ddd;
+    border-bottom: 0px solid #ddd;
+}
+.eventLabel {
+    color: #A81E22;
+}
+
+.eventDesc {
+    text-align: left;
+    color: #B8B9BC;
+    font-size: small;
+    border-top: 0px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+
+.announcements {
+    width: 100%;
+    display: block;
+    position: relative;
+    min-height: 50%;
+    padding-right: 2px;
+    padding-left: 2px;
+    box-sizing: border-box;
+    font-size:large;
+    color:#B8B9BC;
+    margin:30px auto 30px auto;
+}
+
+.onDutyBlock {
+    width: 100%;
+    display: block;
+    position: relative;
+    padding-right: 2px;
+    padding-left: 2px;
+    box-sizing: border-box;
+    margin: 15px auto 0px auto;
+}
+
+.container-fluid {
+    height: 650px;
+}
+
+.table-condensed > tbody > tr > td, .table-condensed > tbody > tr > th, .table-condensed > tfoot > tr > td, .table-condensed > tfoot > tr > th, .table-condensed > thead > tr > td, .table-condensed > thead > tr > th {
+    padding: 4px;
+}
+
+.tbody { 
+    height:325px;
+}
+.scheduleRow {
+    line-height: 1.75;
+    vertical-align: middle;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    padding: 4px;
+}
+.table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+    line-height: 1.75;
+    vertical-align: middle;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+.etable > tbody > tr > td, .etable > tbody > tr > th, .etable > tfoot > tr > td, .etable > tfoot > tr > th, .etable > thead > tr > td, .etable > thead > tr > th {
+    line-height: 1.25;
+    vertical-align: middle;
+}
+
+/* Extra small devices (phones, less than 768px) */
+/* No media query since this is the default in Bootstrap */
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+   .clock {
+       display: block;
+   }
+   .header {
+      font-size: large;
+   }
+   .stationName { 
+       font-size: medium;
+    }
+   .shiftName { 
+       font-size: medium;
+    }
+   .Position, .eventTitle {
+       font-size: medium;
+   }
+   .Title {
+       font-size: medium;
+   }
+   .Name {
+       font-size: large;
+   }
+   .Rank, .eventTime {
+       font-size: medium;
+   }
+   .eventDesc {
+       font-size: medium;
+   }   
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+   .clock {
+       display: block;
+   }
+   .header {
+      font-size: large;
+   }
+   .stationName { 
+       font-size: large;
+    }
+   .shiftName { 
+       font-size: large;
+    }
+   .Position, .eventTitle {
+       font-size: large;
+   }
+   .Title {
+       font-size: large;
+   }
+   .Name {
+       font-size: large;
+   }
+   .Rank, .eventTime {
+       font-size: large;
+   }
+   .eventDesc {
+       font-size: medium;
+   }   
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+   .clock {
+       display: block;
+   }
+   .header {
+      font-size: x-large;
+   }
+   .stationName { 
+       font-size: large;
+    }
+   .shiftName { 
+       font-size: large;
+    }
+   .Position, .eventTitle {
+       font-size: large;
+   }
+   .Title {
+       font-size: large;
+   }
+   .Name {
+       font-size: large;
+   }
+   .Rank, .eventTime {
+       font-size: large;
+   }
+   .eventDesc {
+       font-size: medium;
+   }   
+}

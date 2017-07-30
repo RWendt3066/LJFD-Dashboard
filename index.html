@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Lake Johanna Fire Department Dashboard</title>
+
+    <meta name="description" content="Daily Staffing Schedule and Dashboard for LJFD">
+    <meta name="author" content="Jonathan Rasch and Ron Wendt">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/dashboard.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Play:700' rel='stylesheet' type='text/css'>
+	<link rel="icon" type="img" sizes="16x16" href="/favicon-16x16.png">
+
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/isMobile.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.js" type="text/javascript"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.4/moment-timezone-with-data.js" type="text/javascript"></script>
+    <script src="js/dashboard.js"></script>  
+
+  </head>
+  <body>
+
+    <div class="container-fluid">
+	<div class="col-mod-12">
+	
+      <!-- 1st Row -->
+	  <div class="row">
+          
+		  <!-- Logo and Clock -->
+		  <div class="col-md-3">
+
+             <!-- Logo -->
+	         <div class="row">
+			    <p class="mainLogo"><img src="img/ljfdpatch150.png"></p>
+		     </div> 
+             <!-- Logo -->
+			 
+	         <!-- Clock -->
+			 <div class="row">
+			    <div class="clock">
+				   <iframe src="http://free.timeanddate.com/clock/i53j9vww/n159/fn11/fs32/fcb8b9bc/tct/pct/tt0/tw0/tm1/td2/th1/ts1/tb2" frameborder="0" width="280" height="40" allowTransparency="true"></iframe>
+			    </div>
+             </div>
+	         <!-- Clock -->
+
+             <!-- Duty Chief -->
+	         <div class="col-md-12">
+                <div class="onDutyBlock">
+				   <table class="table table-condensed table-striped">
+                      <tbody class="onDutyDC">
+					      <tr><td>Loading.....</td></tr>
+					  </tbody>
+				   </table>
+				</div>
+			 </div>
+			 
+		  </div> 
+		  <!-- Logo and Clock -->
+
+	   <!-- On Duty Staff -->
+	   <div class="col-md-9">
+	      <div class="row">
+		  
+			 <!-- Station 120 On Duty -->
+	         <div class="col-md-6">
+			    <div class="onDutyBlock">
+                   <p class="header headerRed">120 ON-DUTY</p>
+                   <table class="table table-condensed table-striped">
+                      <tbody class="onDuty120">
+					      <tr><td>Loading.....</td></tr>
+				      </tbody>
+				   </table>
+		        </div>
+			</div>
+			 <!-- Station 120 On Duty -->
+
+			 <!-- Station 140 On Duty -->
+	         <div class="col-md-6">
+			    <div class="onDutyBlock">
+                   <p class="header headerRed">140 ON-DUTY</p>
+                   <table class="table table-condensed  table-striped">
+                      <tbody class="onDuty140">
+					      <tr><td>Loading.....</td></tr>
+				      </tbody> 
+				   </table>
+		        </div>
+			 </div>
+			 <!-- Station 140 On Duty -->
+			
+			
+	      </div>
+	   </div>
+	   <!-- On Duty Staff -->
+
+	  </div>
+	  <!-- End 1st Row -->
+
+      <!-- Start 2nd Row -->
+      <div class="row">
+
+	     <!-- Start General Information -->
+	     <div class="col-md-3">
+		   <div class="row">
+		     <div class="col-md-12">
+                <div class="onDutyBlock">
+                   <p class="header headerRed">GENERAL INFORMATION</p>
+				   <table class="col-xs-12 col-sm-12 col-md-12 etable table-condensed table-striped">
+                      <tbody class="events">
+					      <tr><td>Loading.....</td></tr>
+					  </tbody>
+				   </table>
+                </div>
+		      </div>
+	       </div>
+		 </div>
+	     <!-- End General Information -->
+		  
+	   <!-- Upcoming Staff -->
+	   <div class="col-md-9">
+	      <div class="row">
+		  
+			 <!-- Station 120 Upcoming -->
+	         <div class="col-md-6">
+			    <div class="onDutyBlock">
+                   <p class="header headerRed">120 UPCOMING SHIFTS</p>
+                   <table class="table table-condensed table-striped">
+                      <tbody class="upcoming120">
+					      <tr><td>Loading.....</td></tr>
+				      </tbody>
+				   </table>
+		        </div>
+			 </div>
+			 <!-- Station 120 Upcoming -->
+			 
+			 <!-- Station 140 Upcoming -->
+	         <div class="col-md-6">
+			    <div class="onDutyBlock">
+                   <p class="header headerRed">140 UPCOMING SHIFTS</p>
+                   <table class="table table-condensed table-striped">
+                      <tbody class="upcoming140">
+					      <tr><td>Loading.....</td></tr>
+				      </tbody>
+				   </table>
+		        </div>
+	         </div>
+			 <!-- Station 140 Upcoming -->
+			 
+	      </div>
+	   </div>
+	   <!-- Upcoming Staff -->
+	   
+	  </div> 
+      <!-- 2nd Row -->
+	  
+    </div>
+	</div>
+	   
+  </body>
+</html>
