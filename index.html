@@ -13,153 +13,304 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/dashboard.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Play:700' rel='stylesheet' type='text/css'>
-	<link rel="icon" type="img" sizes="16x16" href="/favicon-16x16.png">
+	  <link rel="icon" type="img" sizes="16x16" href="/favicon-16x16.png">
 
 
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/isMobile.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.js" type="text/javascript"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.4/moment-timezone-with-data.js" type="text/javascript"></script>
-    <script src="js/dashboard.js"></script>  
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.js" type="text/javascript"></script>
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.4/moment-timezone-with-data.js" type="text/javascript"></script>
+    <script src="js/dashboard.js"></script>
 
   </head>
   <body>
 
     <div class="container-fluid">
-	<div class="col-mod-12">
-	
-      <!-- 1st Row -->
-	  <div class="row">
-          
-		  <!-- Logo and Clock -->
+
+      <!-- START of Left Column for Logo, Clock, Duty Chief, and Important Info -->
 		  <div class="col-md-3">
 
-             <!-- Logo -->
-	         <div class="row">
-			    <p class="mainLogo"><img src="img/ljfdpatch150.png"></p>
-		     </div> 
-             <!-- Logo -->
-			 
-	         <!-- Clock -->
-			 <div class="row">
-			    <div class="clock">
-				   <iframe src="http://free.timeanddate.com/clock/i53j9vww/n159/fn11/fs32/fcb8b9bc/tct/pct/tt0/tw0/tm1/td2/th1/ts1/tb2" frameborder="0" width="280" height="40" allowTransparency="true"></iframe>
-			    </div>
-             </div>
-	         <!-- Clock -->
-
-             <!-- Duty Chief -->
-	         <div class="col-md-12">
-                <div class="onDutyBlock">
-				   <table class="table table-condensed table-striped">
-                      <tbody class="onDutyDC">
-					      <tr><td>Loading.....</td></tr>
-					  </tbody>
-				   </table>
-				</div>
-			 </div>
-			 
-		  </div> 
-		  <!-- Logo and Clock -->
-
-	   <!-- On Duty Staff -->
-	   <div class="col-md-9">
+        <!-- START Logo -->
 	      <div class="row">
-		  
-			 <!-- Station 120 On Duty -->
-	         <div class="col-md-6">
-			    <div class="onDutyBlock">
-                   <p class="header headerRed">120 ON-DUTY</p>
-                   <table class="table table-condensed table-striped">
-                      <tbody class="onDuty120">
-					      <tr><td>Loading.....</td></tr>
-				      </tbody>
-				   </table>
-		        </div>
-			</div>
-			 <!-- Station 120 On Duty -->
+			    <p class="mainLogo"><img src="img/ljfdpatch150.png"></p>
+		    </div>
+        <!-- END Logo -->
 
-			 <!-- Station 140 On Duty -->
-	         <div class="col-md-6">
-			    <div class="onDutyBlock">
-                   <p class="header headerRed">140 ON-DUTY</p>
-                   <table class="table table-condensed  table-striped">
-                      <tbody class="onDuty140">
-					      <tr><td>Loading.....</td></tr>
-				      </tbody> 
-				   </table>
-		        </div>
-			 </div>
-			 <!-- Station 140 On Duty -->
-			
-			
-	      </div>
-	   </div>
-	   <!-- On Duty Staff -->
+	      <!-- START Clock -->
+			  <div class="row">
+			    <div class="clock">
+				    <iframe src="http://free.timeanddate.com/clock/i53j9vww/n159/fn11/fs32/fcb8b9bc/tct/pct/tt0/tw0/tm1/td2/th1/ts1/tb2" frameborder="0" width="280" height="40" allowTransparency="true"></iframe>
+			    </div>
+        </div>
+	      <!-- END Clock -->
+
+        <!-- START Duty Chief -->
+	      <div class="row">
+          <div class="onDutyBlock">
+				    <table class="table table-condensed table-striped">
+              <tbody class="onDutyDC">
+					      <!-- <tr><td>Loading.....</td></tr> -->
+                <tr>
+                  <td class="scheduleRow Position PositionOD">DUTY CHIEF</td>
+                  <td class="scheduleRow Name NameOD">C103 M. Sather</td>
+                </tr>
+					    </tbody>
+				    </table>
+			    </div>
+        </div>
+        <!-- END Duty Chief -->
+
+        <!-- Start General Information -->
+ 		      <div class="row">
+              <div class="onDutyBlock">
+                <p class="header headerRed">IMPORTANT INFO</p>
+ 				        <table class="col-xs-12 col-sm-12 col-md-12 etable table-condensed table-striped">
+                  <tbody class="events">
+ 					          <tr class="eventDesc">
+                      <td>8/25/2017</td>
+                      <td>East Bound 694 rams @ Victoria St (both the off ramp and the on ramp) are scheduled to close on Thursday, August 31st.</td>
+                    </tr>
+                    <tr class="eventDesc">
+                      <td>8/25/2017</td>
+                      <td>Centerville Rd. North of RxR Tracks to Anderson Rd is under construction, however, it is now fully paved (first layer only) and passable.</td>
+                    </tr>
+                    <tr class="eventDesc">
+                      <td>8/23/2017</td>
+                      <td>St 120 Phone System - Incoming calls will only ring and can only be answered on the new phone that is sitting by the copier in the squad room. All of teh older phones should still be live for outgoing calls. this is a temporary band-aid and a permanent solution is in process but could take until end of year.</td>
+                    </tr>
+ 					        </tbody>
+ 				        </table>
+              </div>
+ 	        </div>
+ 	      <!-- End General Information -->
+
+		  </div>
+      <!-- END of Left Column for Logo, Clock, Duty Chief, and Important Info -->
+
+      <!-- START of Right Column for Station Staffing -->
+      <div class="col-md-9">
+
+        <!-- START Station 120 Staffing -->
+        <div class="row">
+
+          <div class="col-md-2">
+            <div class="onDutyBlock">
+              <p class="header">STATION</p>
+              <p class="header">120</p>
+              <ul>
+                <li>Wash Blankets</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-md-10">
+            <div class="onDutyBlock">
+
+              <!-- START On-Duty Staff -->
+              <div class="col-md-6">
+                <p class="header headerRed">ON-DUTY</p>
+                <table class="table table-condensed table-striped">
+                  <tbody class="onDuty120">
+                  <!--<tr><td>NO STAFF.....</td></tr>-->
+                  <!-- START test table -->
+                    <tr>
+                      <td class="scheduleRow Position PositionOD">Lead FF</td>
+                      <td class="scheduleRow Name NameOD">C. DuBay</td>
+                      <td class="scheduleRow Rank RankOD">EMT</td>
+                    </tr>
+                    <tr>
+                      <td class="scheduleRow Position PositionOD">FF/Operator</td>
+                      <td class="scheduleRow Name NameOD">J. Heck</td>
+                      <td class="scheduleRow Rank RankOD">MEDIC</td>
+                    </tr>
+                  <!--END test Table -->
+				          </tbody>
+				        </table>
+              </div>
+              <!-- END On-Duty Staff -->
+
+              <!-- START Upcoming Staff -->
+              <div class="col-md-6">
+                <p class="header headerRed">UPCOMING</p>
+                <table class="table table-condensed table-striped">
+                  <tbody class="upcoming120">
+                    <!--<tr><td>NO STAFF.....</td></tr>-->
+                    <!-- START test table -->
+                    <tr>
+                      <td class="scheduleRow Position">Lead FF</td>
+                      <td class="scheduleRow Name">J. Rhein</td>
+                      <td class="scheduleRow Rank">17:00-22:00</td>
+                    </tr>
+                    <tr>
+                      <td class="scheduleRow Position">FF</td>
+                      <td class="scheduleRow Name">D. Kiley</td>
+                      <td class="scheduleRow Rank">17:00-22:00</td>
+                    </tr>
+                    <!--END test Table -->
+				          </tbody>
+				        </table>
+              </div>
+              <!-- END Upcoming Staff -->
+
+            </div>
+          </div>
+
+        </div>
+        <!-- END Station 120 Staffing -->
+        <hr />
+        <!-- START Station 140 Staffing -->
+        <div class="row">
+
+          <div class="col-md-2">
+            <div class="onDutyBlock">
+              <p class="header">STATION</p>
+              <p class="header">140</p>
+              <ul>
+                <li>Wash Blankets</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-md-10">
+            <div class="onDutyBlock">
+
+              <!-- START On-Duty Staff -->
+              <div class="col-md-6">
+                <p class="header headerRed">ON-DUTY</p>
+                <table class="table table-condensed table-striped">
+                  <tbody class="onDuty140">
+                  <!--<tr><td>NO STAFF.....</td></tr>-->
+                  <!-- START test table -->
+                    <tr>
+                      <td class="scheduleRow Position PositionOD">Lead FF</td>
+                      <td class="scheduleRow Name NameOD">R. Wendt</td>
+                      <td class="scheduleRow Rank RankOD">EMT</td>
+                    </tr>
+                    <tr>
+                      <td class="scheduleRow Position PositionOD">FF/Operator</td>
+                      <td class="scheduleRow Name NameOD">R. Treft</td>
+                      <td class="scheduleRow Rank RankOD">EMT</td>
+                    </tr>
+                  <!--END test Table -->
+				          </tbody>
+				        </table>
+              </div>
+              <!-- END On-Duty Staff -->
+
+              <!-- START Upcoming Staff -->
+              <div class="col-md-6">
+                <p class="header headerRed">UPCOMING</p>
+                <table class="table table-condensed table-striped">
+                  <tbody class="upcoming140">
+                    <!--<tr><td>NO STAFF.....</td></tr>-->
+                    <!-- START test table -->
+                    <tr>
+                      <td class="scheduleRow Position">Lead FF</td>
+                      <td class="scheduleRow Name">R. Wendt</td>
+                      <td class="scheduleRow Rank">17:00-22:00</td>
+                    </tr>
+                    <tr>
+                      <td class="scheduleRow Position">FF/Operator</td>
+                      <td class="scheduleRow Name">R. Treft</td>
+                      <td class="scheduleRow Rank">17:00-22:00</td>
+                    </tr>
+                    <tr>
+                      <td class="scheduleRow Position">FF</td>
+                      <td class="scheduleRow Name">R. Wyganowski</td>
+                      <td class="scheduleRow Rank">17:00-22:00</td>
+                    </tr>
+                    <!--END test Table -->
+				          </tbody>
+				        </table>
+              </div>
+              <!-- END Upcoming Staff -->
+
+            </div>
+          </div>
+
+        </div>
+        <!-- END Station 140 Staffing -->
+        <hr />
+        <!-- START Open Shifts -->
+        <div class="row">
+
+          <div class="col-md-2">
+            <div class="onDutyBlock">
+              <p class="header">OPEN</p>
+              <p class="header">SHIFTS</p>
+            </div>
+          </div>
+
+          <div class="col-md-10">
+            <div class="onDutyBlock">
+
+              <!-- START On-Duty Staff -->
+              <div class="col-md-6">
+                <p class="header headerBlue">STATION 120</p>
+                <table class="table table-condensed table-striped">
+                  <tbody class="onDuty140">
+                  <!--<tr><td>NO STAFF.....</td></tr>-->
+                  <!-- START test table -->
+                    <tr>
+                      <td class="scheduleRow Position">OFFICER</td>
+                      <td class="scheduleRow Name">9/7/2017</td>
+                      <td class="scheduleRow Rank">22:00-06:30</td>
+                    </tr>
+                    <tr>
+                      <td class="scheduleRow Position">FF/OPER</td>
+                      <td class="scheduleRow Name">9/7/2017</td>
+                      <td class="scheduleRow Rank">22:00-06:30</td>
+                    </tr>
+                    <tr>
+                      <td class="scheduleRow Position">FF</td>
+                      <td class="scheduleRow Name">9/7/2017</td>
+                      <td class="scheduleRow Rank">22:00-06:30</td>
+                    </tr>
+                  <!--END test Table -->
+				          </tbody>
+				        </table>
+              </div>
+              <!-- END On-Duty Staff -->
+
+              <!-- START Upcoming Staff -->
+              <div class="col-md-6">
+                <p class="header headerBlue">STATION 140</p>
+                <table class="table table-condensed table-striped">
+                  <tbody class="upcoming140">
+                    <!--<tr><td>NO STAFF.....</td></tr>-->
+                    <!-- START test table -->
+                    <tr>
+                      <td class="scheduleRow Position">OFFICER</td>
+                      <td class="scheduleRow Name">9/7/2017</td>
+                      <td class="scheduleRow Rank">22:00-06:30</td>
+                    </tr>
+                    <tr>
+                      <td class="scheduleRow Position">FF/OPER</td>
+                      <td class="scheduleRow Name">9/7/2017</td>
+                      <td class="scheduleRow Rank">22:00-06:30</td>
+                    </tr>
+                    <tr>
+                      <td class="scheduleRow Position">FF</td>
+                      <td class="scheduleRow Name">9/7/2017</td>
+                      <td class="scheduleRow Rank">22:00-06:30</td>
+                    </tr>
+                    <!--END test Table -->
+				          </tbody>
+				        </table>
+              </div>
+              <!-- END Upcoming Staff -->
+
+            </div>
+          </div>
+
+        </div>
+        <!-- END Open Shifts -->
+
+      </div>
+
+      <!-- END of Right Column for Station Staffing -->
 
 	  </div>
-	  <!-- End 1st Row -->
-
-      <!-- Start 2nd Row -->
-      <div class="row">
-
-	     <!-- Start General Information -->
-	     <div class="col-md-3">
-		   <div class="row">
-		     <div class="col-md-12">
-                <div class="onDutyBlock">
-                   <p class="header headerRed">GENERAL INFORMATION</p>
-				   <table class="col-xs-12 col-sm-12 col-md-12 etable table-condensed table-striped">
-                      <tbody class="events">
-					      <tr><td>Loading.....</td></tr>
-					  </tbody>
-				   </table>
-                </div>
-		      </div>
-	       </div>
-		 </div>
-	     <!-- End General Information -->
-		  
-	   <!-- Upcoming Staff -->
-	   <div class="col-md-9">
-	      <div class="row">
-		  
-			 <!-- Station 120 Upcoming -->
-	         <div class="col-md-6">
-			    <div class="onDutyBlock">
-                   <p class="header headerRed">120 UPCOMING SHIFTS</p>
-                   <table class="table table-condensed table-striped">
-                      <tbody class="upcoming120">
-					      <tr><td>Loading.....</td></tr>
-				      </tbody>
-				   </table>
-		        </div>
-			 </div>
-			 <!-- Station 120 Upcoming -->
-			 
-			 <!-- Station 140 Upcoming -->
-	         <div class="col-md-6">
-			    <div class="onDutyBlock">
-                   <p class="header headerRed">140 UPCOMING SHIFTS</p>
-                   <table class="table table-condensed table-striped">
-                      <tbody class="upcoming140">
-					      <tr><td>Loading.....</td></tr>
-				      </tbody>
-				   </table>
-		        </div>
-	         </div>
-			 <!-- Station 140 Upcoming -->
-			 
-	      </div>
-	   </div>
-	   <!-- Upcoming Staff -->
-	   
-	  </div> 
-      <!-- 2nd Row -->
-	  
-    </div>
-	</div>
-	   
   </body>
 </html>

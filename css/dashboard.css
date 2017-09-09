@@ -21,6 +21,10 @@ body {
     background-color: #A81E22;
     color:#B8B9BC;
 }
+.headerBlue {
+    background-color: #0c377c;
+    color:#B8B9BC;
+}
 .headerGrey {
     background-color: #B8B9BC;
     color:#0E0D23;
@@ -51,7 +55,7 @@ body {
 .table-striped>tbody>tr:nth-of-type(odd) {
     background-color: inherit;
 }
-.stationName { 
+.stationName {
     text-align: left;
     color:#B8B9BC;
     font-size: small;
@@ -60,7 +64,7 @@ body {
     background-color: #B8B9BC;
     color: #101010;
 }
-.shiftName { 
+.shiftName {
     text-align: left;
     color:#B8B9BC;
     font-size: small;
@@ -70,6 +74,7 @@ body {
     color: #101010;
 }
 .Position {
+    font-weight:normal;
     text-align: left;
     color: #A81E22;
     font-size: small;
@@ -79,11 +84,13 @@ body {
     color: #A81E22;
 }
 .Title {
+    font-weight:normal;
     text-align: right;
     color: #B8B9BC;
     font-size: small;
 }
 .Name {
+  font-weight:normal;
     text-align: left;
     color: #B8B9BC;
     font-size: medium;
@@ -93,6 +100,7 @@ body {
     color: #101010;
 }
 .Rank {
+  font-weight:normal;
     text-align: right;
     color: #B8B9BC;
     font-size: small;
@@ -123,6 +131,7 @@ body {
 }
 
 .eventDesc {
+  font-weight:normal;
     text-align: left;
     color: #B8B9BC;
     font-size: small;
@@ -147,10 +156,10 @@ body {
     width: 100%;
     display: block;
     position: relative;
-    padding-right: 2px;
-    padding-left: 2px;
+    padding-right: 0px;
+    padding-left: 0px;
     box-sizing: border-box;
-    margin: 15px auto 0px auto;
+    margin: 15px 0px 0px 0px;
 }
 
 .container-fluid {
@@ -161,7 +170,7 @@ body {
     padding: 4px;
 }
 
-.tbody { 
+.tbody {
     height:325px;
 }
 .scheduleRow {
@@ -172,7 +181,7 @@ body {
     padding: 4px;
 }
 .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
-    line-height: 1.75;
+    line-height: 1.5;
     vertical-align: middle;
     border-top: 1px solid #ddd;
     border-bottom: 1px solid #ddd;
@@ -193,10 +202,10 @@ body {
    .header {
       font-size: large;
    }
-   .stationName { 
+   .stationName {
        font-size: medium;
     }
-   .shiftName { 
+   .shiftName {
        font-size: medium;
     }
    .Position, .eventTitle {
@@ -213,7 +222,7 @@ body {
    }
    .eventDesc {
        font-size: medium;
-   }   
+   }
 }
 
 /* Medium devices (desktops, 992px and up) */
@@ -224,10 +233,10 @@ body {
    .header {
       font-size: large;
    }
-   .stationName { 
+   .stationName {
        font-size: large;
     }
-   .shiftName { 
+   .shiftName {
        font-size: large;
     }
    .Position, .eventTitle {
@@ -244,7 +253,7 @@ body {
    }
    .eventDesc {
        font-size: medium;
-   }   
+   }
 }
 
 /* Large devices (large desktops, 1200px and up) */
@@ -255,10 +264,10 @@ body {
    .header {
       font-size: x-large;
    }
-   .stationName { 
+   .stationName {
        font-size: large;
     }
-   .shiftName { 
+   .shiftName {
        font-size: large;
     }
    .Position, .eventTitle {
@@ -275,5 +284,5 @@ body {
    }
    .eventDesc {
        font-size: medium;
-   }   
+   }
 }
