@@ -12,7 +12,7 @@ body {
     margin:10px;
 }
 .header {
-    font-weight:bold;
+    font-weight: bold;
     text-align: center;
     font-size: medium;
     margin:auto;
@@ -29,7 +29,12 @@ body {
     background-color: #B8B9BC;
     color:#0E0D23;
 }
-
+.wStation {
+    display: block;
+}
+.woStation {
+    display: none;
+}
 .mainLogo {
     top:15px;
     height: 100%;
@@ -48,6 +53,9 @@ body {
     position: relative;
     text-align:center;
     margin:0px auto 10px auto;
+}
+.stationHeader {
+    display: none;
 }
 .boxHeading {
     font-size: 24px;
@@ -181,13 +189,13 @@ body {
     padding: 4px;
 }
 .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
-    line-height: 1.5;
+    line-height: 1.75;
     vertical-align: middle;
     border-top: 1px solid #ddd;
     border-bottom: 1px solid #ddd;
 }
 .etable > tbody > tr > td, .etable > tbody > tr > th, .etable > tfoot > tr > td, .etable > tfoot > tr > th, .etable > thead > tr > td, .etable > thead > tr > th {
-    line-height: 1.25;
+    line-height: 1.5;
     vertical-align: middle;
 }
 
@@ -228,6 +236,15 @@ body {
 /* Medium devices (desktops, 992px and up) */
 @media (min-width: 992px) {
    .clock {
+       display: block;
+   }
+   .stationHeader {
+       display: block;
+   }
+   .wStation {
+       display: none;
+   }
+   .woStation {
        display: block;
    }
    .header {

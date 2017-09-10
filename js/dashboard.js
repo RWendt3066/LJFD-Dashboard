@@ -224,7 +224,7 @@ function loadUpcoming(station)
 			      {
 			         shiftTitle = 'EVENING SHIFT' ;
 			      }
-			      if ( startHour < '17' )
+			      if ( startHour < '12' )
 			      {
 			         shiftTitle = 'DAY SHIFT' ;
 			      }
@@ -243,8 +243,8 @@ function loadUpcoming(station)
 							if ( shiftCounter == 1 )
 							{
 				      	shiftTitlePrev = shiftTitle ;
-					    	$(".upcoming"+station).append('<td colspan="4" class="scheduleRow shiftName">' + shiftTitle + '</td>');
-			    	  	$(".upcoming"+station).append('</tr><tr>');
+					    	// $(".upcoming"+station).append('<td colspan="4" class="scheduleRow shiftName">' + shiftTitle + '</td>');
+			    	  	// $(".upcoming"+station).append('</tr><tr>');
 							}
 				    }
 

@@ -22,7 +22,7 @@ else
 	{
 	   $shift = 'NIGHT';
 	}
-} 
+}
 
 date_default_timezone_set('America/Chicago') ;
 //$currentBT = date("Y-m-d") ;
@@ -97,13 +97,13 @@ foreach ( $xmlEvents->events->event as $event )
       if ( $eventBegin->format('H:i') >= $currentTime )
       {
       $nextEvent = '<event>' ;
-   
+
       // Set Order
       $nextEvent = $nextEvent . '<order>3</order>' ;
 
       // Report Start Times
       $nextEvent = $nextEvent . '<eventTime>' . $eventBegin->format('H:i') ;
- 
+
       // Report End Times
       $strEnd = substr(strval($event->end),0,10) . ' ' . substr(strval($event->end),11,5) ;
       $eventEnd = new DateTime($strEnd,$scheduleTZ) ;
@@ -112,10 +112,10 @@ foreach ( $xmlEvents->events->event as $event )
 
       // Report Event Location
       $nextEvent = $nextEvent . '<eventLocation>' . strval($event->location) . '</eventLocation>' ;
-   
+
       // Report Event Description
       $nextEvent = $nextEvent . '<eventDescription>' . strval($event->description) . '</eventDescription>' ;
-	  
+
 	  // Report Coverage
 	  $nextEvent = $nextEvent . '<eventCoverage>' ;
 	  foreach ($event->schedules->schedule as $schedule)
@@ -144,6 +144,9 @@ foreach ( $xmlEvents->events->event as $event )
 				  break ;
 			}
 		 }
+     else {
+       $nextEvent = $nextEvent . 'Staffed' ;
+     }
 	  }
 	  $nextEvent = $nextEvent . '</eventCoverage>' ;
 
@@ -152,27 +155,27 @@ foreach ( $xmlEvents->events->event as $event )
       $i = $i + 1 ;
       }
 	  break ;
-   
+
    // Check for Road Construction
    case 'RC' :
 
       $nextEvent = '<event>' ;
-   
+
       // Set Order
       $nextEvent = $nextEvent . '<order>2</order>' ;
 
       // Report Event Description
       $nextEvent = $nextEvent . '<eventDescription>' . strval($event->description) . '</eventDescription>' ;
-	  
+
       $nextEvent = $nextEvent . '</event>' ;
       $events[$i] = $nextEvent ;
       $i = $i + 1 ;
-      
+
 	  break ;
 
    // Check for Station Tasks
    case 'ST' :
-   
+
       foreach ($event->schedules->schedule as $schedule)
 	  {
 	     switch ($shift)
@@ -186,7 +189,7 @@ foreach ( $xmlEvents->events->event as $event )
                   $nextEvent = $nextEvent . '</event>' ;
                   $events[$i] = $nextEvent ;
                   $i = $i + 1 ;
-			   } 
+			   }
 		       if (strval($schedule['id']) == '1')
 			   {
 	              $nextEvent = '<event>' ;
@@ -243,17 +246,34 @@ foreach ( $xmlEvents->events->event as $event )
   }
 }
 
-if ($i > 0) {
-// Sort Event by Order, Title, Description
 $xmlEventList = "<?xml version='1.0' encoding='UTF-8'?>" . "<dailyEvents>" ;
-sort($events) ;
-for ($i=0;$i<=count($events);$i++)
-{
-   $xmlEventList = $xmlEventList . $events[$i] ;
+
+if ($i > 0) {
+  // Sort Event by Order, Title, Description
+  sort($events) ;
+  for ($i=0;$i<=count($events);$i++)
+  {
+    $xmlEventList = $xmlEventList . $events[$i] ;
+  }
+}
+else {
+  $xmlEventList = $xmlEventList . '<event><order>99</order><eventDescription>Nothing to Report</eventDescription></event>'
 }
 $xmlEventList = $xmlEventList . '</dailyEvents>' ;
-$xmlObj=simplexml_load_string($xmlEventList) or die("Error: Cannot create object");
+// $xmlObj=simplexml_load_string($xmlEventList) or die("Error: Cannot create object");
 
+
+
+$xmlEvents = new SimpleXMLElement ( $xmlEventList ) ;
+
+/* Return LJFD On Duty List for Requested Station */
+echo json_encode($xmlEvents);
+// echo $xmlEvents ;
+
+
+
+
+/*
 // Output Events Table
 $shift120Tasks = 'N' ;
 $shift140Tasks = 'N' ;
@@ -314,7 +334,7 @@ foreach ( $xmlObj->event as $event )
 		     echo '<tr><td class="eventDesc">' ;
 			 echo '<ul>' ;
 		  }
-		  
+
 		  echo '<li>' . strval($event->eventDescription) . '</li>' ;
 	}
 }
@@ -351,5 +371,5 @@ foreach ( $xmlObj->event as $event )
  echo '<tr><td colspan="2" class="eventDesc">';
  echo '<span>No Assigned Tasks</span><br />' ;
  echo '<br /></td></tr>' ;
-}
+} */
 ?>
