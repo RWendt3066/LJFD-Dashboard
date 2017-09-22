@@ -6,20 +6,20 @@ var LJFDSchedules = {} ;
 
 $(document).ready(function()
 {
-    /* LOAD LJFD MEMBERS */
+	/* LOAD LJFD MEMBERS */
 	$.getJSON('php/membersLJFD.php5', function(data)
 	{
 		LJFDMembers = data;
 
-        /* LOAD LJFD SCHEDULES */
+    /* LOAD LJFD SCHEDULES */
 		$.getJSON('php/schedulesLJFD.php5', function(data)
 		{
 			LJFDSchedules = data;
 
 			/* LOAD LJFD DASHBOARD */
-        	loadDashboard();
-        });
+      loadDashboard();
     });
+  });
 });
 
 /* -------------------------------------------------------------------------- */
@@ -30,29 +30,29 @@ $(document).ready(function()
 
 function loadDashboard()
 {
-    if ( !isMobile.any )
+  if ( !isMobile.any )
 	{
-	    var d = new Date(),
-            h = new Date(d.getFullYear(), d.getMonth(), d.getDate(), d.getHours(), (d.getMinutes() - (d.getMinutes() % 30)) + 30, 0, 0),
-            e = h - d;
-        window.setTimeout(loadDashboard, e);
-	    loadDutyChief('DC');
-    	loadOnDuty('120');
-	    loadOnDuty('140');
-	    loadEvents();
-	    loadUpcoming('120');
-	    loadUpcoming('140');
+		var d = new Date(),
+				h = new Date(d.getFullYear(), d.getMonth(), d.getDate(), d.getHours(), (d.getMinutes() - (d.getMinutes() % 30)) + 30, 0, 0),
+        e = h - d;
+    window.setTimeout(loadDashboard, e);
+	  loadDutyChief('DC');
+  	loadOnDuty('120');
+    loadOnDuty('140');
+    loadEvents();
+    loadUpcoming('120');
+    loadUpcoming('140');
 	}
 	else
 	{
-	    loadDutyChief('DC');
-	    loadOnDuty('120');
-	    loadOnDuty('140');
-	    loadEvents();
-	    loadUpcoming('120');
-	    loadUpcoming('140');
+    loadDutyChief('DC');
+    loadOnDuty('120');
+    loadOnDuty('140');
+    loadEvents();
+    loadUpcoming('120');
+    loadUpcoming('140');
 	}
- }
+}
 
 
 /* -------------------------------------------------------------------------- */
@@ -438,13 +438,174 @@ function loadOnDuty(station)
 
 function loadEvents ()
 {
-    $(".events").load("php/eventsToday.php5",
-	    function(responseTxt, statusTxt, xhr){
-            if(statusTxt == "success")
+	$.getJSON("php/eventsToday.php5", function(results)
+	{
+		notificationCnt=0;
+		pr120Cnt=0;
+		pr140Cnt=0;
+		if (results.event.length > 1 )
+		{
+			$.each(results.event, function(key, event)
 			{
-//			    alert("Successful Return");
+				switch (event.order)
+				{
+					case "0": // Station Task
+					case "1": // Station Task
+						if (notificationCnt == 0)
+						{
+							notificationCnt = notificationCnt + 1;
+							$(".notification").html('<tr>');
+						}
+						else
+						{
+							notificationCnt = notificationCnt + 1;
+							$(".notification").append('<tr>');
+						}
+						$(".notification").append('<td class="scheduleRow Name">Station Task</td>');
+						$(".notification").append('<td class="scheduleRow Name">' + event.eventDescription + '</td>');
+						$(".notification").append('</tr>');
+						break;
+					case "3": // PR Event
+						if (event.prCoverage120)
+						{
+							if (pr120Cnt == 0)
+							{
+								pr120Cnt = pr120Cnt + 1;
+								$(".prEvents120").html('<tr>');
+							}
+							else
+							{
+								pr120Cnt = pr120Cnt + 1;
+								$(".prEvents120").append('<tr>');
+							}
+							$(".prEvents120").append('<td class="scheduleRowTop eventTitle">' + event.eventLocation + '</td>');
+							$(".prEvents120").append('<td class="scheduleRowTop eventTime">' + event.eventTime + '</td>');
+							$(".prEvents120").append('</tr>');
+							$(".prEvents120").append('<tr>');
+							$(".prEvents120").append('<td colspan="2" class="scheduleRowBottom eventTitle">' + event.eventDescription + '</td>');
+							$(".prEvents120").append('</tr>');
+						}
+						if (event.prCoverage140)
+						{
+							if (pr140Cnt == 0)
+							{
+								pr140Cnt = pr140Cnt + 1;
+								$(".prEvents140").html('<tr>');
+							}
+							else
+							{
+								pr140Cnt = pr140Cnt + 1;
+								$(".prEvents140").append('<tr>');
+							}
+							$(".prEvents140").append('<td class="scheduleRowTop eventTitle">' + event.eventLocation + '</td>');
+							$(".prEvents140").append('<td class="scheduleRowTop eventTime">' + event.eventTime + '</td>');
+							$(".prEvents140").append('</tr>');
+							$(".prEvents140").append('<tr>');
+							$(".prEvents140").append('<td colspan="2" class="scheduleRowBottom eventTitle">' + event.eventDescription + '</td>');
+							$(".prEvents140").append('</tr>');
+						}
+						if (event.prCoverageStaff)
+						{
+							if (notificationCnt == 0)
+							{
+								notificationCnt = notificationCnt + 1;
+								$(".notification").html('<tr>');
+							}
+							else
+							{
+								notificationCnt = notificationCnt + 1;
+								$(".notification").append('<tr>');
+							}
+							$(".notification").append('<td class="scheduleRow Name">PR Event<br />' + event.eventTime + '</td>');
+							$(".notification").append('<td class="scheduleRow Name">' + event.eventLocation + '<br />' + event.eventDescription + '</td>');
+							$(".notification").append('</tr>');
+						}
+						/* switch (event.eventCoverage)
+						{
+							case "120-Day":
+							case "120-Evening":
+							case "120-Night":
+								if (pr120Cnt == 0)
+								{
+									pr120Cnt = pr120Cnt + 1;
+									$(".prEvents120").html('<tr>');
+								}
+								else
+								{
+									pr120Cnt = pr120Cnt + 1;
+									$(".prEvents120").append('<tr>');
+								}
+								$(".prEvents120").append('<td class="scheduleRow eventTitle">' + event.eventCoverage + '</td>');
+								$(".prEvents120").append('<td class="scheduleRow eventTime">' + event.eventTime + '</td>');
+								$(".prEvents120").append('</tr>');
+								$(".prEvents120").append('<tr>');
+								$(".prEvents120").append('<td colspan="2" class="scheduleRow eventTitle">' + event.eventLocation + '<br />' + event.eventDescription + '</td>');
+								$(".prEvents120").append('</tr>');
+								break;
+							case "140-Day":
+							case "140-Evening":
+							case "140-Night":
+								if (pr140Cnt == 0)
+								{
+									pr140Cnt = pr140Cnt + 1;
+									$(".prEvents140").html('<tr>');
+								}
+								else
+								{
+									pr140Cnt = pr140Cnt + 1;
+									$(".prEvents140").append('<tr>');
+								}
+								$(".prEvents140").append('<td class="scheduleRow eventTitle">' + event.eventCoverage + '</td>');
+								$(".prEvents140").append('<td class="scheduleRow eventTime">' + event.eventTime + '</td>');
+								$(".prEvents140").append('</tr>');
+								$(".prEvents140").append('<tr>');
+								$(".prEvents140").append('<td colspan="2" class="scheduleRow eventTitle">' + event.eventLocation + '<br />' + event.eventDescription + '</td>');
+								$(".prEvents140").append('</tr>');
+								break;
+							default:
+								if (notificationCnt == 0)
+								{
+									notificationCnt = notificationCnt + 1;
+									$(".notification").html('<tr>');
+								}
+								else
+								{
+									notificationCnt = notificationCnt + 1;
+									$(".notification").append('<tr>');
+								}
+								$(".notification").append('<td class="scheduleRow Name">PR Event<br />' + event.eventTime + '</td>');
+								$(".notification").append('<td class="scheduleRow Name">' + event.eventLocation + '<br />' + event.eventDescription + '</td>');
+								$(".notification").append('</tr>');
+						} */
+				}
+			});
+			if (notificationCnt > 0)
+			{
+				$(".notification").append('</tr>');
+				notificationCnt=0;
 			}
-            if(statusTxt == "error")
-                alert("Error: " + xhr.status + ": " + xhr.statusText);
-        });
+			else
+			{
+				$(".notification").html('<tr><td class="scheduleRow Name">No Notifications</td></tr>')
+			}
+			if (pr120Cnt > 0)
+			{
+				$(".prEvents120").append('</tr>');
+				pr120Cnt=0;
+			}
+			else
+			{
+				$(".prEvents120").html('<tr><td class="scheduleRow Name">No PR Events</td></tr>')
+			}
+			if (pr140Cnt > 0)
+			{
+				$(".prEvents140").append('</tr>');
+				pr140Cnt=0;
+			}
+			else
+			{
+				$(".prEvents140").html('<tr><td class="scheduleRow Name">No PR Events</td></tr>')
+			}
+		};
+  });
 }
