@@ -435,6 +435,84 @@ function loadOnDuty(station)
 /*                            LOAD EVENTS TABLE                               */
 /* -------------------------------------------------------------------------- */
 /* -------------------------------------------------------------------------- */
+function displayEvent (selectedEvent)
+{
+	console.log(selectedEvent.order);
+	switch (selectedEvent.order)
+	{
+		case "0": // Station Task
+		case "1": // Station Task
+			if (notificationCnt == 0)
+			{
+				notificationCnt = notificationCnt + 1;
+				$(".notification").html('<tr>');
+			}
+			else
+			{
+				notificationCnt = notificationCnt + 1;
+				$(".notification").append('<tr>');
+			}
+			$(".notification").append('<td class="scheduleRow Name">Station Task</td>');
+			$(".notification").append('<td class="scheduleRow Name">' + selectedEvent.eventDescription + '</td>');
+			$(".notification").append('</tr>');
+			break;
+		case "3": // PR Event
+			if (selectedEvent.prCoverage120)
+			{
+				if (pr120Cnt == 0)
+				{
+					pr120Cnt = pr120Cnt + 1;
+					$(".prEvents120").html('<tr>');
+				}
+				else
+				{
+					pr120Cnt = pr120Cnt + 1;
+					$(".prEvents120").append('<tr>');
+				}
+				$(".prEvents120").append('<td class="scheduleRowTop eventTitle">' + selectedEvent.eventLocation + '</td>');
+				$(".prEvents120").append('<td class="scheduleRowTop eventTime">' + selectedEvent.eventTime + '</td>');
+				$(".prEvents120").append('</tr>');
+				$(".prEvents120").append('<tr>');
+				$(".prEvents120").append('<td colspan="2" class="scheduleRowBottom eventTitle">' + selectedEvent.eventDescription + '</td>');
+				$(".prEvents120").append('</tr>');
+			}
+			if (selectedEvent.prCoverage140)
+			{
+				if (pr140Cnt == 0)
+				{
+					pr140Cnt = pr140Cnt + 1;
+					$(".prEvents140").html('<tr>');
+				}
+				else
+				{
+					pr140Cnt = pr140Cnt + 1;
+					$(".prEvents140").append('<tr>');
+				}
+				$(".prEvents140").append('<td class="scheduleRowTop eventTitle">' + selectedEvent.eventLocation + '</td>');
+				$(".prEvents140").append('<td class="scheduleRowTop eventTime">' + selectedEvent.eventTime + '</td>');
+				$(".prEvents140").append('</tr>');
+				$(".prEvents140").append('<tr>');
+				$(".prEvents140").append('<td colspan="2" class="scheduleRowBottom eventTitle">' + selectedEvent.eventDescription + '</td>');
+				$(".prEvents140").append('</tr>');
+			}
+			if (selectedEvent.prCoverageStaff)
+			{
+				if (notificationCnt == 0)
+				{
+					notificationCnt = notificationCnt + 1;
+					$(".notification").html('<tr>');
+				}
+				else
+				{
+					notificationCnt = notificationCnt + 1;
+					$(".notification").append('<tr>');
+				}
+				$(".notification").append('<td class="scheduleRow Name">PR Event<br />' + selectedEvent.eventTime + '</td>');
+				$(".notification").append('<td class="scheduleRow Name">' + selectedEvent.eventLocation + '<br />' + selectedEvent.eventDescription + '</td>');
+				$(".notification").append('</tr>');
+			}
+	}
+}
 
 function loadEvents ()
 {
@@ -443,169 +521,46 @@ function loadEvents ()
 		notificationCnt=0;
 		pr120Cnt=0;
 		pr140Cnt=0;
-		if (results.event.length > 1 )
+		if (results.event.length)
 		{
 			$.each(results.event, function(key, event)
 			{
-				switch (event.order)
-				{
-					case "0": // Station Task
-					case "1": // Station Task
-						if (notificationCnt == 0)
-						{
-							notificationCnt = notificationCnt + 1;
-							$(".notification").html('<tr>');
-						}
-						else
-						{
-							notificationCnt = notificationCnt + 1;
-							$(".notification").append('<tr>');
-						}
-						$(".notification").append('<td class="scheduleRow Name">Station Task</td>');
-						$(".notification").append('<td class="scheduleRow Name">' + event.eventDescription + '</td>');
-						$(".notification").append('</tr>');
-						break;
-					case "3": // PR Event
-						if (event.prCoverage120)
-						{
-							if (pr120Cnt == 0)
-							{
-								pr120Cnt = pr120Cnt + 1;
-								$(".prEvents120").html('<tr>');
-							}
-							else
-							{
-								pr120Cnt = pr120Cnt + 1;
-								$(".prEvents120").append('<tr>');
-							}
-							$(".prEvents120").append('<td class="scheduleRowTop eventTitle">' + event.eventLocation + '</td>');
-							$(".prEvents120").append('<td class="scheduleRowTop eventTime">' + event.eventTime + '</td>');
-							$(".prEvents120").append('</tr>');
-							$(".prEvents120").append('<tr>');
-							$(".prEvents120").append('<td colspan="2" class="scheduleRowBottom eventTitle">' + event.eventDescription + '</td>');
-							$(".prEvents120").append('</tr>');
-						}
-						if (event.prCoverage140)
-						{
-							if (pr140Cnt == 0)
-							{
-								pr140Cnt = pr140Cnt + 1;
-								$(".prEvents140").html('<tr>');
-							}
-							else
-							{
-								pr140Cnt = pr140Cnt + 1;
-								$(".prEvents140").append('<tr>');
-							}
-							$(".prEvents140").append('<td class="scheduleRowTop eventTitle">' + event.eventLocation + '</td>');
-							$(".prEvents140").append('<td class="scheduleRowTop eventTime">' + event.eventTime + '</td>');
-							$(".prEvents140").append('</tr>');
-							$(".prEvents140").append('<tr>');
-							$(".prEvents140").append('<td colspan="2" class="scheduleRowBottom eventTitle">' + event.eventDescription + '</td>');
-							$(".prEvents140").append('</tr>');
-						}
-						if (event.prCoverageStaff)
-						{
-							if (notificationCnt == 0)
-							{
-								notificationCnt = notificationCnt + 1;
-								$(".notification").html('<tr>');
-							}
-							else
-							{
-								notificationCnt = notificationCnt + 1;
-								$(".notification").append('<tr>');
-							}
-							$(".notification").append('<td class="scheduleRow Name">PR Event<br />' + event.eventTime + '</td>');
-							$(".notification").append('<td class="scheduleRow Name">' + event.eventLocation + '<br />' + event.eventDescription + '</td>');
-							$(".notification").append('</tr>');
-						}
-						/* switch (event.eventCoverage)
-						{
-							case "120-Day":
-							case "120-Evening":
-							case "120-Night":
-								if (pr120Cnt == 0)
-								{
-									pr120Cnt = pr120Cnt + 1;
-									$(".prEvents120").html('<tr>');
-								}
-								else
-								{
-									pr120Cnt = pr120Cnt + 1;
-									$(".prEvents120").append('<tr>');
-								}
-								$(".prEvents120").append('<td class="scheduleRow eventTitle">' + event.eventCoverage + '</td>');
-								$(".prEvents120").append('<td class="scheduleRow eventTime">' + event.eventTime + '</td>');
-								$(".prEvents120").append('</tr>');
-								$(".prEvents120").append('<tr>');
-								$(".prEvents120").append('<td colspan="2" class="scheduleRow eventTitle">' + event.eventLocation + '<br />' + event.eventDescription + '</td>');
-								$(".prEvents120").append('</tr>');
-								break;
-							case "140-Day":
-							case "140-Evening":
-							case "140-Night":
-								if (pr140Cnt == 0)
-								{
-									pr140Cnt = pr140Cnt + 1;
-									$(".prEvents140").html('<tr>');
-								}
-								else
-								{
-									pr140Cnt = pr140Cnt + 1;
-									$(".prEvents140").append('<tr>');
-								}
-								$(".prEvents140").append('<td class="scheduleRow eventTitle">' + event.eventCoverage + '</td>');
-								$(".prEvents140").append('<td class="scheduleRow eventTime">' + event.eventTime + '</td>');
-								$(".prEvents140").append('</tr>');
-								$(".prEvents140").append('<tr>');
-								$(".prEvents140").append('<td colspan="2" class="scheduleRow eventTitle">' + event.eventLocation + '<br />' + event.eventDescription + '</td>');
-								$(".prEvents140").append('</tr>');
-								break;
-							default:
-								if (notificationCnt == 0)
-								{
-									notificationCnt = notificationCnt + 1;
-									$(".notification").html('<tr>');
-								}
-								else
-								{
-									notificationCnt = notificationCnt + 1;
-									$(".notification").append('<tr>');
-								}
-								$(".notification").append('<td class="scheduleRow Name">PR Event<br />' + event.eventTime + '</td>');
-								$(".notification").append('<td class="scheduleRow Name">' + event.eventLocation + '<br />' + event.eventDescription + '</td>');
-								$(".notification").append('</tr>');
-						} */
-				}
+				displayEvent(event);
 			});
-			if (notificationCnt > 0)
+		}
+		else
+		{
+			if (results.event.order)
 			{
-				$(".notification").append('</tr>');
-				notificationCnt=0;
+				displayEvent(results.event);
 			}
-			else
-			{
-				$(".notification").html('<tr><td class="scheduleRow Name">No Notifications</td></tr>')
-			}
-			if (pr120Cnt > 0)
-			{
-				$(".prEvents120").append('</tr>');
-				pr120Cnt=0;
-			}
-			else
-			{
-				$(".prEvents120").html('<tr><td class="scheduleRow Name">No PR Events</td></tr>')
-			}
-			if (pr140Cnt > 0)
-			{
-				$(".prEvents140").append('</tr>');
-				pr140Cnt=0;
-			}
-			else
-			{
-				$(".prEvents140").html('<tr><td class="scheduleRow Name">No PR Events</td></tr>')
-			}
-		};
+		}
+		if (notificationCnt > 0)
+		{
+			$(".notification").append('</tr>');
+			notificationCnt=0;
+		}
+		else
+		{
+			$(".notification").html('<tr><td class="scheduleRow Name">No Notifications</td></tr>')
+		}
+		if (pr120Cnt > 0)
+		{
+			$(".prEvents120").append('</tr>');
+			pr120Cnt=0;
+		}
+		else
+		{
+			$(".prEvents120").html('<tr><td class="scheduleRow Name">No PR Events</td></tr>')
+		}
+		if (pr140Cnt > 0)
+		{
+			$(".prEvents140").append('</tr>');
+			pr140Cnt=0;
+		}
+		else
+		{
+			$(".prEvents140").html('<tr><td class="scheduleRow Name">No PR Events</td></tr>')
+		}
   });
 }
