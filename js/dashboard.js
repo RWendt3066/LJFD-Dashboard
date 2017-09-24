@@ -37,16 +37,18 @@ function loadDashboard()
         e = h - d;
     window.setTimeout(loadDashboard, e);
 		loadOnDuty();
+		loadUpcoming();
     loadEvents();
-    loadUpcoming('120');
-    loadUpcoming('140');
+//    loadUpcoming('120');
+//    loadUpcoming('140');
 	}
 	else
 	{
 		loadOnDuty();
+		loadUpcoming();
     loadEvents();
-    loadUpcoming('120');
-    loadUpcoming('140');
+//    loadUpcoming('120');
+//    loadUpcoming('140');
 	}
 }
 
@@ -56,19 +58,24 @@ function loadDashboard()
 /* -------------------------------------------------------------------------- */
 /* -------------------------------------------------------------------------- */
 
-function loadUpcoming(station)
+function loadUpcoming()
 {
-    $.getJSON("php/upcomingLJFD.php5?station="+station, function(results)
+  $.getJSON("php/upcomingLJFD.php5", function(results)
 	{
 		var i = 0 ;
 		var resource = new Array () ;
-    	var upComing ;
+    var upComing ;
 		moment.tz.setDefault("UTC") ;
 		var now = moment() ;
 		var now24 = moment().add(24,'h') ;
 		var currentBT = moment(now).format("YYYY-MM-DD") + 'T' + moment(now).format("HH:mm") + ':00Z' ;
 		var currentET = moment(now24).format("YYYY-MM-DD") + 'T' + moment(now24).format("HH:mm") + ':10Z' ;
 		moment.tz.setDefault("America/Chicago") ;
+
+
+		/////////////////////////////////////////////////////////////
+		///  Cleanup JSON Structure and Assign Values  //////////////
+		/////////////////////////////////////////////////////////////
 
 		/* TRAVERSE THROUGH UPCOMING SCHEDULES */
 		$.each(results.ranges.range,  function(key,range)
@@ -79,24 +86,23 @@ function loadUpcoming(station)
 			/* IDENTIFY STATION BEING STAFFED */
 			switch ( range.schedule["@attributes"].id )
 			{
-			    case '13' :
+			  case '13' :
 				case '15' :
 				case '2' :
-				    stationSchedule = 'Station 120' ;
+				    stationSchedule = '120' ;
 					break ;
 				case '1' :
 				case '16' :
 				case '3' :
-				    stationSchedule = 'Station 140' ;
+				    stationSchedule = '140' ;
 					break ;
 				case '14' :
-				    stationSchedule = 'Duty Chief' ;
+				    stationSchedule = 'DC' ;
 					break ;
 				default :
-				    stationSchedule = 'Station UNK' ;
+				    stationSchedule = 'UNK' ;
 			}
-			upComing = upComing + '"station" : "' + stationSchedule + '",' ;
-
+			upComing = upComing + '"upComingStation" : "' + stationSchedule + '",' ;
 
 			/* GET START TIME */
 			tempBegin = range.begin ;
@@ -151,7 +157,7 @@ function loadUpcoming(station)
 				}
 			});
 
-			/* IDENTIFY MEMBER ON DUTY */
+			/* IDENTIFY MEMBER AND EMS LEVEL */
 			$.each(LJFDMembers.members.member, function(key, member)
     		{
         	    if ( range.member["@attributes"].id == member["@attributes"].id )
@@ -168,7 +174,10 @@ function loadUpcoming(station)
 
 		});
 
-		/* SORT TABLE AND PREP FOR DISPLAY */
+		/////////////////////////////////////////////////////////////
+		///  Organize Data for Display  /////////////////////////////
+		/////////////////////////////////////////////////////////////
+
 		resource.sort() ;
 		var upComingJSON = '{ "upComingStaff" : [' ;
 		for ( i=0; i<resource.length; i++ )
@@ -183,22 +192,28 @@ function loadUpcoming(station)
 		upComingJSON = upComingJSON + ']}' ;
 		var upComingObj = JSON.parse(upComingJSON) ;
 
-		/* DISPLAY UPCOMING STAFF */
-		var stationList ;
+		/////////////////////////////////////////////////////////////
+		///  Display On Duty Staff on Dashboard  ////////////////////
+		/////////////////////////////////////////////////////////////
+
+		var stationList='NONE' ;
 		var shiftTitle ;
 		var shiftTitlePrev='FIRST SHIFT' ;
 		var shiftCounter=0;
 
 		$.each(upComingObj.upComingStaff, function(key,upComingStaff)
 		{
-			if ( key == 0 )
+			if ( (upComingStaff.upComingStation != stationList) && ((upComingStaff.upComingStation == '120') || (upComingStaff.upComingStation == '140')) )
 			{
-			   $(".upcoming"+station).html('<tr>');
-			   currentTime = upComingStaff.shiftTime.substring(0,5) ;
+				stationList = upComingStaff.upComingStation;
+				shiftCounter = 0;
+				shiftTitlePrev = 'FIRST SHIFT' ;
+				currentTime = upComingStaff.shiftTime.substring(0,5) ;
+				$(".upcoming"+stationList).html('<tr>');
 			}
 			else
 			{
-			   $(".upcoming"+station).append('<tr>');
+			  $(".upcoming"+stationList).append('<tr>');
 			}
 
 			/* DISPLAY SHIFT TITLE */
@@ -223,10 +238,6 @@ function loadUpcoming(station)
 			      {
 			         shiftTitle = 'DAY SHIFT' ;
 			      }
-			      if ( startHour < '06' )
-			      {
-			         shiftTitle = 'NIGHT SHIFT' ;
-			      }
 			   }
 			}
 
@@ -238,18 +249,16 @@ function loadUpcoming(station)
 							if ( shiftCounter == 1 )
 							{
 				      	shiftTitlePrev = shiftTitle ;
-					    	// $(".upcoming"+station).append('<td colspan="4" class="scheduleRow shiftName">' + shiftTitle + '</td>');
-			    	  	// $(".upcoming"+station).append('</tr><tr>');
 							}
 				    }
 
 				    /* DISPLAY STAFF */
 						if ( shiftCounter == 1 )
 						{
-				    	$(".upcoming"+station).append('<td class="scheduleRow Position">' + upComingStaff.position + '</td>');
-				    	$(".upcoming"+station).append('<td class="scheduleRow Name">' + upComingStaff.name + '</td>');
-				    	$(".upcoming"+station).append('<td class="scheduleRow Rank">' + upComingStaff.shiftTime + '</td>');
-			      	$(".upcoming"+station).append('</tr>');
+				    	$(".upcoming"+stationList).append('<td class="scheduleRow Position">' + upComingStaff.position + '</td>');
+				    	$(".upcoming"+stationList).append('<td class="scheduleRow Name">' + upComingStaff.name + '</td>');
+				    	$(".upcoming"+stationList).append('<td class="scheduleRow Rank">' + upComingStaff.shiftTime + '</td>');
+			      	$(".upcoming"+stationList).append('</tr>');
 						}
 			}
 		});
@@ -360,7 +369,7 @@ function loadOnDuty()
 		});
 
 		/////////////////////////////////////////////////////////////
-		///  Organize Data in Display Order  ////////////////////////
+		///  Organize Data for Display  /////////////////////////////
 		/////////////////////////////////////////////////////////////
 
 		resource.sort() ;
@@ -381,6 +390,7 @@ function loadOnDuty()
 		/////////////////////////////////////////////////////////////
 		///  Display On Duty Staff on Dashboard  ////////////////////
 		/////////////////////////////////////////////////////////////
+
 		$.each(onDutyObj.onDutyNow, function(key,onDutyNow)
 		{
 			switch (onDutyNow.onDutyStation)
