@@ -36,24 +36,19 @@ function loadDashboard()
 				h = new Date(d.getFullYear(), d.getMonth(), d.getDate(), d.getHours(), (d.getMinutes() - (d.getMinutes() % 30)) + 30, 0, 0),
         e = h - d;
     window.setTimeout(loadDashboard, e);
-	  loadDutyChief('DC');
-  	loadOnDuty('120');
-    loadOnDuty('140');
+		loadOnDuty();
     loadEvents();
     loadUpcoming('120');
     loadUpcoming('140');
 	}
 	else
 	{
-    loadDutyChief('DC');
-    loadOnDuty('120');
-    loadOnDuty('140');
+		loadOnDuty();
     loadEvents();
     loadUpcoming('120');
     loadUpcoming('140');
 	}
 }
-
 
 /* -------------------------------------------------------------------------- */
 /* -------------------------------------------------------------------------- */
@@ -264,81 +259,79 @@ function loadUpcoming(station)
 
 /* -------------------------------------------------------------------------- */
 /* -------------------------------------------------------------------------- */
-/*                           LOAD DUTY CHIEF                               */
-/* -------------------------------------------------------------------------- */
-/* -------------------------------------------------------------------------- */
-
-function loadDutyChief(station)
-{
-	$.getJSON("php/onDutyLJFD.php5?station="+station, function(results)
-	{
-
-		$(".onDuty"+station).html('<tr>');
-		$(".onDuty"+station).append('<td class="scheduleRow Position PositionOD">DUTY CHIEF</td>');
-
-		/* IDENTIFY MEMBER ON DUTY */
-		$.each(LJFDMembers.members.member, function(key, member)
-    	{
-        	 if ( results.ranges.range.member["@attributes"].id == member["@attributes"].id )
-	    	 {
-		         $(".onDuty"+station).append('<td class="scheduleRow Name NameOD">' + member.name + '</td>');
-				 return false;
-	    	 }
-    	});
-
-		$(".onDuty"+station).append('</tr>');
-
-	});
-}
-
-/* -------------------------------------------------------------------------- */
-/* -------------------------------------------------------------------------- */
 /*                           LOAD ON DUTY STAFF                               */
 /* -------------------------------------------------------------------------- */
 /* -------------------------------------------------------------------------- */
 
-function loadOnDuty(station)
+function loadOnDuty()
 {
-	$.getJSON("php/onDutyLJFD.php5?station="+station, function(results)
+	$.getJSON("php/onDutyLJFD.php5", function(results)
 	{
 		var i = 0 ;
 		var resource = new Array () ;
-    	var onDuty ;
+    var onDuty ;
+		var header120OnDuty = 0 ;
+		var header140OnDuty = 0 ;
+		var headerDCOnDuty = 0 ;
 
-		if (results.ranges.range.length > 1 )
-		{
+		/////////////////////////////////////////////////////////////
+		///  Cleanup JSON Structure and Assign Values  //////////////
+		/////////////////////////////////////////////////////////////
+
 		/* TRAVERSE THROUGH ON DUTY SCHEDULES */
 		$.each(results.ranges.range,  function(key,range)
 		{
 			onDuty = '{' ;
 
-			/* IDENTIFY POSITION ON DUTY */
+			/* IDENTIFY SCHEDULED STATION AND POSITION ON DUTY */
 			$.each(LJFDSchedules.schedules.schedule, function(key,schedule)
 			{
-			    if ( schedule["@attributes"].id == range.schedule["@attributes"].id )
+			  if ( schedule["@attributes"].id == range.schedule["@attributes"].id )
 				{
-				    $.each(schedule.positions.position, function(key,position)
+					/* IDENTIFY STATION BEING STAFFED */
+					switch ( range.schedule["@attributes"].id )
 					{
-					    if ( position["@attributes"].id == range.position["@attributes"].id )
+					  case '13' :
+						case '15' :
+						case '2' :
+								stationSchedule = '120' ;
+							break ;
+						case '1' :
+						case '16' :
+						case '3' :
+						    stationSchedule = '140' ;
+							break ;
+						case '14' :
+						    stationSchedule = 'DC' ;
+							break ;
+						default :
+						    stationSchedule = 'UNK' ;
+					}
+					onDuty = onDuty + '"onDutyStation" : "' + stationSchedule + '",' ;
+
+				  $.each(schedule.positions.position, function(key,position)
+					{
+					  if ( position["@attributes"].id == range.position["@attributes"].id )
 						{
-						    switch ( position.name )
+							/* IDENTIFY POSITION BEING STAFFED */
+						  switch ( position.name )
 							{
-							    case 'Officer' :
+							  case 'Officer' :
 								    onDuty = onDuty + '"order" : "0",' ;
 									break ;
-							    case 'Lead FF' :
+							  case 'Lead FF' :
 								    onDuty = onDuty + '"order" : "1",' ;
 									break ;
-							    case 'FF/Operator' :
+							  case 'FF/Operator' :
 								    onDuty = onDuty + '"order" : "2",' ;
 									break ;
-							    case 'FF' :
+							  case 'FF' :
 								    onDuty = onDuty + '"order" : "3",' ;
 									break ;
-							    case 'Probationary FF' :
+							  case 'Probationary FF' :
 								    onDuty = onDuty + '"order" : "4",' ;
 									break ;
-							    default :
+							  default :
 								    onDuty = onDuty + '"order" : "5",' ;
 									break ;
 							}
@@ -350,23 +343,28 @@ function loadOnDuty(station)
 				}
 			});
 
-			/* IDENTIFY MEMBER ON DUTY */
+			/* IDENTIFY MEMBER NAME AND EMS LEVEL */
 			$.each(LJFDMembers.members.member, function(key, member)
     		{
-        	    if ( range.member["@attributes"].id == member["@attributes"].id )
+        	if ( range.member["@attributes"].id == member["@attributes"].id )
 	    		{
-	        	    onDuty = onDuty + '"name" : "' + member.name + '",'  ;
+	        	onDuty = onDuty + '"name" : "' + member.name + '",'  ;
 		    		onDuty = onDuty + '"ems" : "' + member.attributes.attribute[3].value + '"' ;
-					return false;
+						return false;
 	    		}
     		});
 
-		    onDuty = onDuty + '}' ;
+		  onDuty = onDuty + '}' ;
 			resource[i] = onDuty ;
 			i = i + 1 ;
 		});
 
+		/////////////////////////////////////////////////////////////
+		///  Organize Data in Display Order  ////////////////////////
+		/////////////////////////////////////////////////////////////
+
 		resource.sort() ;
+
 		var onDutyJSON = '{ "onDutyNow" : [' ;
 		for ( i=0; i<resource.length; i++ )
 		{
@@ -380,53 +378,90 @@ function loadOnDuty(station)
 
 		var onDutyObj = JSON.parse(onDutyJSON) ;
 
+		/////////////////////////////////////////////////////////////
+		///  Display On Duty Staff on Dashboard  ////////////////////
+		/////////////////////////////////////////////////////////////
 		$.each(onDutyObj.onDutyNow, function(key,onDutyNow)
 		{
-		    if ( key == 0 )
-			{ $(".onDuty"+station).html('<tr>'); }
-			else
-			{ $(".onDuty"+station).append('<tr>'); }
-			$(".onDuty"+station).append('<td class="scheduleRow Position PositionOD">' + onDutyNow.position + '</td>');
-			$(".onDuty"+station).append('<td class="scheduleRow Name NameOD">' + onDutyNow.name + '</td>');
-			$(".onDuty"+station).append('<td class="scheduleRow Rank RankOD">' + onDutyNow.ems + '</td>');
-		    $(".onDuty"+station).append('</tr>');
+			switch (onDutyNow.onDutyStation)
+			{
+				case "120":  // DISPLAY STATION 120 STAFF
+					if ( header120OnDuty == 0 )
+					{
+						header120OnDuty = header120OnDuty + 1 ;
+						$(".onDuty120").html('<tr>');
+					}
+					else
+					{
+						$(".onDuty120").append('<tr>');
+					}
+					$(".onDuty120").append('<td class="scheduleRow Position PositionOD">' + onDutyNow.position + '</td>');
+					$(".onDuty120").append('<td class="scheduleRow Name NameOD">' + onDutyNow.name + '</td>');
+					$(".onDuty120").append('<td class="scheduleRow Rank RankOD">' + onDutyNow.ems + '</td>');
+				  $(".onDuty120").append('</tr>');
+					break;
+				case "140":  // DISPLAY STATION 140 STAFF
+					if ( header140OnDuty == 0 )
+					{
+						header140OnDuty = header140OnDuty + 1 ;
+						$(".onDuty140").html('<tr>');
+					}
+					else
+					{
+						$(".onDuty140").append('<tr>');
+					}
+					$(".onDuty140").append('<td class="scheduleRow Position PositionOD">' + onDutyNow.position + '</td>');
+					$(".onDuty140").append('<td class="scheduleRow Name NameOD">' + onDutyNow.name + '</td>');
+					$(".onDuty140").append('<td class="scheduleRow Rank RankOD">' + onDutyNow.ems + '</td>');
+				  $(".onDuty140").append('</tr>');
+					break;
+				case "DC":  // DISPLAY DUTY CHIEF
+					if ( headerDCOnDuty == 0 )
+					{
+						headerDCOnDuty = headerDCOnDuty + 1 ;
+						$(".onDutyDC").html('<tr>');
+					}
+					else
+					{
+						$(".onDutyDC").append('<tr>');
+					}
+					$(".onDutyDC").append('<td class="scheduleRow Position PositionOD">DUTY CHIEF</td>');
+					$(".onDutyDC").append('<td class="scheduleRow Name NameOD">' + onDutyNow.name + '</td>');
+				  $(".onDutyDC").append('</tr>');
+					break;
+				default:
+			}
 		});
+
+		/////////////////////////////////////////////////////////////
+		///  Reset and Display No Staff Warnings  ///////////////////
+		/////////////////////////////////////////////////////////////
+
+		if (header120OnDuty > 0)
+		{
+			header120OnDuty=0;
 		}
 		else
 		{
-
-			$(".onDuty"+station).html('<tr>');
-			/* IDENTIFY POSITION ON DUTY */
-			$.each(LJFDSchedules.schedules.schedule, function(key,schedule)
-			{
-			    if ( schedule["@attributes"].id == results.ranges.range.schedule["@attributes"].id )
-				{
-				    $.each(schedule.positions.position, function(key,position)
-					{
-					    if ( position["@attributes"].id == results.ranges.range.position["@attributes"].id )
-						{
-							$(".onDuty"+station).append('<td class="scheduleRow Position PositionOD">' + position.name + '</td>');
-							return false;
-						}
-					});
-					return false;
-				}
-			});
-
-			/* IDENTIFY MEMBER ON DUTY */
-			$.each(LJFDMembers.members.member, function(key, member)
-    		{
-        	    if ( range.member["@attributes"].id == member["@attributes"].id )
-	    		{
-			        $(".onDuty"+station).append('<td class="scheduleRow Name NameOD">' + member.name + '</td>');
-			        $(".onDuty"+station).append('<td class="scheduleRow Rank RankOD">' + member.attributes.attribute[3].value + '</td>');
-	    			return false;
-	    		}
-    		});
-
-		    $(".onDuty"+station).append('</tr>');
-
+			$(".onDuty120").html('<tr><td class="scheduleRow Name NameOD">Not Staffed !!</td></tr>')
 		}
+		if (header140OnDuty > 0)
+		{
+			header140OnDuty=0;
+		}
+		else
+		{
+			$(".onDuty140").html('<tr><td class="scheduleRow Name NameOD">Not Staffed !!</td></tr>')
+		}
+		if (headerDCOnDuty > 0)
+		{
+			headerDCOnDuty=0;
+		}
+		else
+		{
+			$(".onDutyDC").html('<tr><td class="scheduleRow Name NameOD">No Duty Chief</td></tr>')
+		}
+
 	});
 }
 
@@ -437,7 +472,6 @@ function loadOnDuty(station)
 /* -------------------------------------------------------------------------- */
 function displayEvent (selectedEvent)
 {
-	console.log(selectedEvent.order);
 	switch (selectedEvent.order)
 	{
 		case "0": // Station Task
