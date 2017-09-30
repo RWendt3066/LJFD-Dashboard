@@ -142,7 +142,7 @@ foreach ( $xmlEvents->events->event as $event )
       }
 	    break ;
     // Check for Road Construction
-    case 'RC' :
+    case 'IC' :
       $nextEvent = '<event>' ;
       // Set Order
       $nextEvent = $nextEvent . '<order>2</order>' ;
@@ -154,7 +154,6 @@ foreach ( $xmlEvents->events->event as $event )
 	     break ;
     // Check for Station Tasks
     case 'ST' :
-      $taskLogged = 'N';
       foreach ($event->schedules->schedule as $schedule)
 	    {
 	     switch ($shift)
@@ -162,85 +161,61 @@ foreach ( $xmlEvents->events->event as $event )
 	        case 'DAY' :
 		        if (strval($schedule['id']) == '13')
 			      {
-              if ($taskLogged == 'N')
-              {
-                $taskLogged = 'Y';
 	              $nextEvent = '<event>' ;
                 $nextEvent = $nextEvent . '<order>0</order>' ;
                 $nextEvent = $nextEvent . '<eventDescription>' . strval($event->description) . '</eventDescription>' ;
                 $nextEvent = $nextEvent . '</event>' ;
                 $events[$i] = $nextEvent ;
                 $i = $i + 1 ;
-              }
 			      }
 		        if (strval($schedule['id']) == '1')
 			      {
-              if ($taskLogged == 'N')
-              {
-                $taskLogged = 'Y';
 	              $nextEvent = '<event>' ;
                 $nextEvent = $nextEvent . '<order>1</order>' ;
                 $nextEvent = $nextEvent . '<eventDescription>' . strval($event->description) . '</eventDescription>' ;
                 $nextEvent = $nextEvent . '</event>' ;
                 $events[$i] = $nextEvent ;
                 $i = $i + 1 ;
-              }
 			      }
 			      break ;
 		      case 'EVENING' :
 		        if (strval($schedule['id']) == '15')
 			      {
-              if ($taskLogged == 'N')
-              {
-                $taskLogged = 'Y';
 	              $nextEvent = '<event>' ;
                 $nextEvent = $nextEvent . '<order>0</order>' ;
                 $nextEvent = $nextEvent . '<eventDescription>' . strval($event->description) . '</eventDescription>' ;
                 $nextEvent = $nextEvent . '</event>' ;
                 $events[$i] = $nextEvent ;
                 $i = $i + 1 ;
-              }
 			      }
 		        if (strval($schedule['id']) == '16')
 			      {
-              if ($taskLogged == 'N')
-              {
-                $taskLogged = 'Y';
 	              $nextEvent = '<event>' ;
                 $nextEvent = $nextEvent . '<order>1</order>' ;
                 $nextEvent = $nextEvent . '<eventDescription>' . strval($event->description) . '</eventDescription>' ;
                 $nextEvent = $nextEvent . '</event>' ;
                 $events[$i] = $nextEvent ;
                 $i = $i + 1 ;
-              }
 			      }
 			      break ;
 		      case 'NIGHT' :
 		        if (strval($schedule['id']) == '2')
 			      {
-              if ($taskLogged == 'N')
-              {
-                $taskLogged = 'Y';
 	              $nextEvent = '<event>' ;
                 $nextEvent = $nextEvent . '<order>0</order>' ;
                 $nextEvent = $nextEvent . '<eventDescription>' . strval($event->description) . '</eventDescription>' ;
                 $nextEvent = $nextEvent . '</event>' ;
                 $events[$i] = $nextEvent ;
                 $i = $i + 1 ;
-              }
 			      }
 		        if (strval($schedule['id']) == '3')
 			      {
-              if ($taskLogged == 'N')
-              {
-                $taskLogged = 'Y';
 	              $nextEvent = '<event>' ;
                 $nextEvent = $nextEvent . '<order>1</order>' ;
                 $nextEvent = $nextEvent . '<eventDescription>' . strval($event->description) . '</eventDescription>' ;
                 $nextEvent = $nextEvent . '</event>' ;
                 $events[$i] = $nextEvent ;
                 $i = $i + 1 ;
-              }
     			  }
     			  break ;
 	      }

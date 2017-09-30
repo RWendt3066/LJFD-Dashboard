@@ -29,21 +29,20 @@ body {
     background-color: #B8B9BC;
     color:#0E0D23;
 }
-.wStation {
+.mobileIC {
     display: block;
 }
-.woStation {
+.desktopIC {
     display: none;
 }
 .mainLogo {
-    top:15px;
-    height: 100%;
-    width: 100%;
+    height: 50%;
+    width: 50%;
     padding:1%;
     display: block;
     position: relative;
     text-align:center;
-    margin:0px;
+    margin: 10% 0% 5% 0%;
 /*    margin:auto;*/
 }
 .clock {
@@ -52,7 +51,7 @@ body {
     display: none;
     position: relative;
     text-align:center;
-    margin:0px auto 10px auto;
+    margin:10px auto 15px auto;
 }
 .stationHeader {
     display: none;
@@ -91,6 +90,14 @@ body {
     background-color: #B8B9BC;
     color: #A81E22;
 }
+.TitleDC {
+    font-weight: bold;
+    text-align: center;
+    color: #A81E22;
+    font-size: medium;
+    margin-top: 25%;
+    margin-left: 25%;
+}
 .Title {
     font-weight:normal;
     text-align: right;
@@ -99,13 +106,20 @@ body {
 }
 .Name {
   font-weight:normal;
-    text-align: left;
-    color: #B8B9BC;
-    font-size: medium;
+  text-align: left;
+  color: #B8B9BC;
+  font-size: medium;
 }
 .NameOD {
     background-color: #B8B9BC;
     color: #101010;
+}
+.NameDC {
+  font-weight:normal;
+  text-align: center;
+  color: #B8B9BC;
+  font-size: medium;
+  margin-left: 25%
 }
 .Rank {
   font-weight:normal;
@@ -213,8 +227,14 @@ body {
 /* No media query since this is the default in Bootstrap */
 
 /* Small devices (tablets, 768px and up) */
-@media (min-width: 768px) {
+@media (min-width: 640px) {
+  .mainLogo {
+      height: 50%;
+      width: 50%;
+      margin-left: 50%;
+    }
    .clock {
+     margin-left: 25%;
        display: block;
    }
    .header {
@@ -234,6 +254,15 @@ body {
    }
    .Name {
        font-size: large;
+   }
+   .NameDC {
+       font-size: medium;
+       margin-left: 25%;
+   }
+   .TitleDC {
+       font-size: x-large;
+       margin-top: 5%;
+       margin-left: 25%;
    }
    .Rank, .eventTime {
        font-size: medium;
@@ -245,16 +274,21 @@ body {
 
 /* Medium devices (desktops, 992px and up) */
 @media (min-width: 992px) {
-   .clock {
-       display: block;
-   }
+  .clock {
+      display: none;
+  }
+  .mainLogo {
+    height: 100%;
+    width: 100%;
+    margin: 10% 25% 5% 15%;
+  }
    .stationHeader {
        display: block;
    }
-   .wStation {
+   .mobileIC {
        display: none;
    }
-   .woStation {
+   .desktopIC {
        display: block;
    }
    .header {
@@ -274,6 +308,15 @@ body {
    }
    .Name {
        font-size: large;
+   }
+   .NameDC {
+       font-size: medium;
+       margin-left: 25%;
+   }
+   .TitleDC {
+       font-size: large;
+       margin-top: 25%;
+       margin-left: 25%;
    }
    .Rank, .eventTime {
        font-size: large;
@@ -286,7 +329,13 @@ body {
 /* Large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
    .clock {
-       display: block;
+     margin-left: 0%;
+     display: block;
+   }
+   .mainLogo {
+     height: 100%;
+     width: 100%;
+     margin: 10% 25% 5% 25%;
    }
    .header {
       font-size: x-large;
@@ -305,6 +354,15 @@ body {
    }
    .Name {
        font-size: large;
+   }
+   .NameDC {
+       font-size: x-large;
+       margin-left: 0%;
+   }
+   .TitleDC {
+       font-size: x-large;
+       margin-top: 5%;
+       margin-left: 0%;
    }
    .Rank, .eventTime {
        font-size: large;

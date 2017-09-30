@@ -429,15 +429,9 @@ function loadOnDuty()
 					if ( headerDCOnDuty == 0 )
 					{
 						headerDCOnDuty = headerDCOnDuty + 1 ;
-						$(".onDutyDC").html('<tr>');
 					}
-					else
-					{
-						$(".onDutyDC").append('<tr>');
-					}
-					$(".onDutyDC").append('<td class="scheduleRow Position PositionOD">DUTY CHIEF</td>');
-					$(".onDutyDC").append('<td class="scheduleRow Name NameOD">' + onDutyNow.name + '</td>');
-				  $(".onDutyDC").append('</tr>');
+					$(".onDutyDC").html('<p class="TitleDC">DUTY CHIEF</p>');
+					$(".onDutyDC").append('<p class="NameDC">' + onDutyNow.name + '</p>');
 					break;
 				default:
 			}
@@ -469,7 +463,7 @@ function loadOnDuty()
 		}
 		else
 		{
-			$(".onDutyDC").html('<tr><td class="scheduleRow Name NameOD">No Duty Chief</td></tr>')
+			$(".onDutyDC").html('<p class="TitleDC">DUTY CHIEF</p><p class="NameDC">No Duty Chief</p>');
 		}
 
 	});
@@ -484,8 +478,37 @@ function displayEvent (selectedEvent)
 {
 	switch (selectedEvent.order)
 	{
-		case "0": // Station Task
-		case "1": // Station Task
+		case "0": // STATION 120 TASKS
+			if (pr120Cnt == 0)
+			{
+				pr120Cnt = pr120Cnt + 1;
+				$(".prEvents120").html('<tr>');
+			}
+			else
+			{
+				pr120Cnt = pr120Cnt + 1;
+				$(".prEvents120").append('<tr>');
+			}
+			$(".prEvents120").append('<td class="scheduleRow Position PositionOD">STATION TASK</td>');
+			$(".prEvents120").append('<td class="scheduleRow eventTitle">' + selectedEvent.eventDescription + '</td>');
+			$(".prEvents120").append('</tr>');
+			break;
+		case "1": // STATION 140 TASKS
+			if (pr140Cnt == 0)
+			{
+				pr140Cnt = pr140Cnt + 1;
+				$(".prEvents140").html('<tr>');
+			}
+			else
+			{
+				pr140Cnt = pr140Cnt + 1;
+				$(".prEvents140").append('<tr>');
+			}
+			$(".prEvents140").append('<td class="scheduleRow Position PositionOD">STATION TASK</td>');
+			$(".prEvents140").append('<td class="scheduleRow eventTitle">' + selectedEvent.eventDescription + '</td>');
+			$(".prEvents140").append('</tr>');
+			break;
+		case "2": // INFORMATION CENTER
 			if (notificationCnt == 0)
 			{
 				notificationCnt = notificationCnt + 1;
@@ -496,7 +519,6 @@ function displayEvent (selectedEvent)
 				notificationCnt = notificationCnt + 1;
 				$(".notification").append('<tr>');
 			}
-			$(".notification").append('<td class="scheduleRow Name">Station Task</td>');
 			$(".notification").append('<td class="scheduleRow Name">' + selectedEvent.eventDescription + '</td>');
 			$(".notification").append('</tr>');
 			break;
@@ -513,11 +535,11 @@ function displayEvent (selectedEvent)
 					pr120Cnt = pr120Cnt + 1;
 					$(".prEvents120").append('<tr>');
 				}
-				$(".prEvents120").append('<td class="scheduleRowTop eventTitle">' + selectedEvent.eventLocation + '</td>');
+				$(".prEvents120").append('<td class="scheduleRowTop Position PositionOD">PR EVENT</td>');
 				$(".prEvents120").append('<td class="scheduleRowTop eventTime">' + selectedEvent.eventTime + '</td>');
 				$(".prEvents120").append('</tr>');
 				$(".prEvents120").append('<tr>');
-				$(".prEvents120").append('<td colspan="2" class="scheduleRowBottom eventTitle">' + selectedEvent.eventDescription + '</td>');
+				$(".prEvents120").append('<td colspan="2" class="scheduleRowBottom eventTitle">' +  selectedEvent.eventLocation + '<br />' + selectedEvent.eventDescription + '</td>');
 				$(".prEvents120").append('</tr>');
 			}
 			if (selectedEvent.prCoverage140)
@@ -532,11 +554,11 @@ function displayEvent (selectedEvent)
 					pr140Cnt = pr140Cnt + 1;
 					$(".prEvents140").append('<tr>');
 				}
-				$(".prEvents140").append('<td class="scheduleRowTop eventTitle">' + selectedEvent.eventLocation + '</td>');
+				$(".prEvents140").append('<td class="scheduleRowTop Position PositionOD">PR EVENT</td>');
 				$(".prEvents140").append('<td class="scheduleRowTop eventTime">' + selectedEvent.eventTime + '</td>');
 				$(".prEvents140").append('</tr>');
 				$(".prEvents140").append('<tr>');
-				$(".prEvents140").append('<td colspan="2" class="scheduleRowBottom eventTitle">' + selectedEvent.eventDescription + '</td>');
+				$(".prEvents140").append('<td colspan="2" class="scheduleRowBottom eventTitle">' +  selectedEvent.eventLocation + '<br />' + selectedEvent.eventDescription + '</td>');
 				$(".prEvents140").append('</tr>');
 			}
 			if (selectedEvent.prCoverageStaff)

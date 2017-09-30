@@ -30,44 +30,42 @@
 
       <!-- START of Left Column for Logo, Clock, Duty Chief, and Important Info -->
 		  <div class="col-md-4">
+        <div class="row">
 
-        <!-- START Logo -->
-	      <div class="row">
-			    <p class="mainLogo"><img src="img/ljfdpatch150.png"></p>
-		    </div>
-        <!-- END Logo -->
-
-	      <!-- START Clock -->
-			  <div class="row">
-			    <div class="clock">
-				    <iframe src="http://free.timeanddate.com/clock/i53j9vww/n159/fn11/fs32/fcb8b9bc/tct/pct/tt0/tw0/tm1/td2/th1/ts1/tb2" frameborder="0" width="280" height="40" allowTransparency="true"></iframe>
-			    </div>
-        </div>
-	      <!-- END Clock -->
-
-        <!-- START Duty Chief -->
-	      <div class="row">
-          <div class="onDutyBlock">
-            <div class="col-md-12">
-  				    <table class="table table-condensed table-striped">
-                <tbody class="onDutyDC">
-  					      <!-- <tr><td>Loading.....</td></tr> -->
-                  <tr>
-                    <td class="scheduleRow Position PositionOD">DUTY CHIEF</td>
-                    <td class="scheduleRow Name NameOD">C103 M. Sather</td>
-                  </tr>
-  					    </tbody>
-  				    </table>
-            </div>
+          <!-- START Logo -->
+  	      <div class="col-xs-4 col-sm-4 col-md-4">
+  			    <p class="mainLogo"><img src="img/ljfdpatch150.png"></p>
           </div>
+          <!-- END Logo -->
+
+          <div class="col-xs-8 col-sm-8 col-md-8">
+
+    	      <!-- START Clock -->
+    			  <div class="row">
+    			    <div class="clock">
+    				    <iframe src="http://free.timeanddate.com/clock/i53j9vww/n159/fn11/fs32/fcb8b9bc/tct/pct/tt0/tw0/tm1/td2/th1/ts1/tb2" frameborder="0" width="280" height="40" allowTransparency="true"></iframe>
+    			    </div>
+            </div>
+    	      <!-- END Clock -->
+
+            <!-- START Duty Chief -->
+    	      <div class="row">
+                <span class="onDutyDC">
+                  <p class="TitleDC">DUTY CHIEF</p>
+                  <p class="NameDC">No Chief Assigned</p>
+                </span>
+            </div>
+            <!-- END Duty Chief -->
+
+          </div>
+
         </div>
-        <!-- END Duty Chief -->
 
         <!-- Start Notification Area -->
-	      <div class="row">
+	      <div class="desktopIC row">
           <div class="onDutyBlock">
             <div class="col-md-12">
-              <p class="header headerRed">NOTIFICATIONS</p>
+              <p class="header headerRed">INFORMATION CENTER</p>
 			        <table class="col-xs-12 col-sm-12 col-md-12 etable table-condensed table-striped">
                 <tbody class="notification">
 				          <tr><td class="scheduleRow Name">No Notifications</td></tr>
@@ -88,16 +86,10 @@
 
             <!-- START 120 On-Duty Staff -->
             <div class="col-md-6">
-              <span class="stationHeader">
-                <p class="header headerBlue">STATION 120</p>
-                <hr />
-              </span>
-
-              <p class="wStation header headerRed">120-ON-DUTY</p>
-              <p class="woStation header headerRed">ON-DUTY</p>
+              <p class="header headerRed">120 - ON-DUTY</p>
               <table class="table table-condensed table-striped">
                 <tbody class="onDuty120">
-                  <tr><td>NO STAFF.....</td></tr>
+                  <tr><td class="Name NameOD">NO STAFF.....</td></tr>
                   <!-- START test table
                   <tr>
                     <td class="scheduleRow Position PositionOD">Lead FF</td>
@@ -122,16 +114,10 @@
 
             <!-- START 140 On-Duty Staff -->
             <div class="col-md-6">
-              <span class="stationHeader">
-                <p class="header headerBlue">STATION 140</p>
-                <hr />
-              </span>
-
-              <p class="wStation header headerRed">140-ON-DUTY</p>
-              <p class="woStation header headerRed">ON-DUTY</p>
+              <p class="header headerRed">140 - ON-DUTY</p>
               <table class="table table-condensed table-striped">
                 <tbody class="onDuty140">
-                  <tr><td>NO STAFF.....</td></tr>
+                  <tr><td class="Name NameOD">NO STAFF.....</td></tr>
                   <!-- START test table
                   <tr>
                     <td class="scheduleRow Position PositionOD">Lead FF</td>
@@ -148,16 +134,59 @@
               </table>
             </div>
             <!-- END 140 On-Duty Staff -->
-
+<!--
           </div>
         </div>
       </div>
-      <!-- END OF ON DUTY BLOCK -->
+      - END OF ON DUTY BLOCK -
 
-      <!-- START OF UPCOMING AND PR EVENTS BLOCK -->
+      - START OF UPCOMING AND PR EVENTS BLOCK -
       <div class="col-md-8">
         <div class="row">
           <div class="onDutyBlock">
+-->
+            <!-- START OF TASKS AND PR EVENTS BLOCK -->
+            <div class="row">
+              <div class="col-md-12">
+
+                <!-- START 120 PR EVENTS -->
+                <div class="col-md-6">
+                  <p class="header headerRed">120 - NOTIFICATIONS</p>
+                  <table class="table table-condensed table-striped">
+                    <tbody class="prEvents120">
+                      <tr><td class="scheduleRow Name NameOD">NO SCHEDULED TASKS</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <!-- START 140 PR EVENTS -->
+                <div class="col-md-6">
+                  <p class="header headerRed">140 - NOTIFICATIONS</p>
+                  <table class="table table-condensed table-striped">
+                    <tbody class="prEvents140">
+                      <tr><td class="scheduleRow Name NameOD">NO SCHEDULED TASKS</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+
+              </div>
+            </div>
+            <!-- END OF PR EVENTS BLOCK-->
+
+            <!-- Start Mobile Information Center -->
+    	      <div class="mobileIC row">
+                <div class="col-md-12">
+                  <div class="col-md-6">
+                    <p class="header headerRed">INFORMATION CENTER</p>
+      			        <table class="table table-condensed table-striped">
+                      <tbody class="notification">
+      				          <tr><td class="scheduleRow Name">No Notifications</td></tr>
+      				        </tbody>
+      			        </table>
+                  </div>
+                </div>
+            </div>
+     	      <!-- End Notification Area -->
 
             <!-- START OF UPCOMING BLOCK -->
             <div class="row">
@@ -165,11 +194,10 @@
 
                 <!-- START 120 Upcoming Staff -->
                 <div class="col-md-6">
-                  <p class="wStation header headerRed">120-UPCOMING</p>
-                  <p class="woStation header headerRed">UPCOMING</p>
+                  <p class="header headerBlue">120 - UPCOMING</p>
                   <table class="table table-condensed table-striped">
                     <tbody class="upcoming120">
-                      <tr><td>NO STAFF.....</td></tr>
+                      <tr class="Name"><td>NO STAFF.....</td></tr>
                       <!-- START test table
                       <tr>
                         <td class="scheduleRow Position">Lead FF</td>
@@ -194,11 +222,10 @@
 
                 <!-- START 140 Upcoming Staff -->
                 <div class="col-md-6">
-                  <p class="wStation header headerRed">120-UPCOMING</p>
-                  <p class="woStation header headerRed">UPCOMING</p>
+                  <p class="header headerBlue">140 - UPCOMING</p>
                   <table class="table table-condensed table-striped">
                     <tbody class="upcoming140">
-                      <tr><td>NO STAFF.....</td></tr>
+                      <tr class="Name"><td>NO STAFF.....</td></tr>
                       <!-- START test table
                       <tr>
                         <td class="scheduleRow Position">Lead FF</td>
@@ -224,36 +251,6 @@
               </div>
             </div>
             <!-- END OF UPCOMING BLOCK -->
-
-            <!-- START OF PR EVENTS BLOCK -->
-            <div class="row">
-              <div class="col-md-12">
-
-                <!-- START 120 PR EVENTS -->
-                <div class="col-md-6">
-                  <p class="wStation header headerRed">120-PR EVENTS</p>
-                  <p class="woStation header headerRed">PR EVENTS</p>
-                  <table class="table table-condensed table-striped">
-                    <tbody class="prEvents120">
-                      <tr><td class="scheduleRow Name">No PR Events</td></tr>
-                    </tbody>
-                  </table>
-                </div>
-
-                <!-- START 140 PR EVENTS -->
-                <div class="col-md-6">
-                  <p class="wStation header headerRed">140-PR EVENTS</p>
-                  <p class="woStation header headerRed">PR EVENTS</p>
-                  <table class="table table-condensed table-striped">
-                    <tbody class="prEvents140">
-                      <tr><td class="scheduleRow Name">No PR Events</td></tr>
-                    </tbody>
-                  </table>
-                </div>
-
-              </div>
-            </div>
-            <!-- END OF PR EVENTS BLOCK-->
 
           </div>
         </div>
