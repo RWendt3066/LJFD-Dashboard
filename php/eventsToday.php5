@@ -87,7 +87,6 @@ foreach ( $xmlEvents->events->event as $event )
         // Report Event Description
         $nextEvent = $nextEvent . '<eventDescription>' . strval($event->description) . '</eventDescription>' ;
   	    // Report Coverage
-//  	    $nextEvent = $nextEvent . '<eventCoverage>' ;
 	      foreach ($event->schedules->schedule as $schedule)
 	      {
 	        if (strval($schedule['id']) != '4')
@@ -112,26 +111,6 @@ foreach ( $xmlEvents->events->event as $event )
                 $nextEvent = $nextEvent . '<prCoverageStaff>' ;
                 $nextEvent = $nextEvent . 'Y' ;
                 $nextEvent = $nextEvent . '</prCoverageStaff>' ;
-/*  		        case '13' :
-  		          $nextEvent = $nextEvent . '120-Day' ;
-  			        break ;
-  		        case '1' :
-  		          $nextEvent = $nextEvent . '140-Day' ;
-  			        break ;
-  		        case '15' :
-  		          $nextEvent = $nextEvent . '120-Evening' ;
-  			        break ;
-  		        case '16' :
-  		          $nextEvent = $nextEvent . '140-Evening' ;
-  			        break ;
-  		        case '2' :
-  		          $nextEvent = $nextEvent . '120-Night' ;
-  			        break ;
-  		        case '3' :
-  		          $nextEvent = $nextEvent . '140-Night' ;
-  			        break ;
-              default :
-                $nextEvent = $nextEvent . 'Staffed' ; */
   		      }
           }
 	      }

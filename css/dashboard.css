@@ -118,7 +118,7 @@ body {
   font-weight:normal;
   text-align: center;
   color: #B8B9BC;
-  font-size: medium;
+  font-size: small;
   margin-left: 25%
 }
 .Rank {
@@ -212,11 +212,12 @@ body {
     border-bottom: 1px solid #ddd;
     padding: 4px;
 }
+.blueBreak {
+    border-top: 8px solid #0c377c;
+}
 .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
     line-height: 1.75;
     vertical-align: middle;
-    border-top: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
 }
 .etable > tbody > tr > td, .etable > tbody > tr > th, .etable > tfoot > tr > td, .etable > tfoot > tr > th, .etable > thead > tr > td, .etable > thead > tr > th {
     line-height: 1.75;
