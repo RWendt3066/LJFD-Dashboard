@@ -204,35 +204,48 @@ function loadUpcoming()
 
 		$.each(upComingObj.upComingStaff, function(key,upComingStaff)
 		{
+			if (key == 0)
+			{
+				currentTime = upComingStaff.shiftTime.substring(0,5) ;
+			}
 			startTime = upComingStaff.shiftTime.substring(0,5) ;
 			endTime = upComingStaff.shiftTime.substring(6) ;
 			startHour = upComingStaff.shiftTime.substring(0,2) ;
 
-			if ( (upComingStaff.upComingStation != stationList) && ((upComingStaff.upComingStation == '120') || (upComingStaff.upComingStation == '140')) )
+			/* IDENTIFY SHIFT TITLE */
+			if ( startTime != currentTime )
 			{
-				stationList = upComingStaff.upComingStation;
-				shiftCounter = 0;
-				shiftTitlePrev = 'FIRST SHIFT' ;
-				shiftStartPrev = startTime ;
-				currentTime = upComingStaff.shiftTime.substring(0,5) ;
-				$(".upcoming"+stationList).html('<tr class="scheduleRow">');
-			}
-			else
-			{
-				if (shiftStartPrev != startTime)
+				if (( endTime.substring(3) == '00' ) || ( endTime.substring(3) == '30' ))
 				{
-					$(".upcoming"+stationList).append('<tr class="cheduleRow blueBreak">');
-					shiftStartPrev = startTime ;
-				}
-				else
-				{
-					$(".upcoming"+stationList).append('<tr class="scheduleRow">');
-					shiftStartPrev = startTime ;
+					upcomingRow = '<div class="col-xs-4 Position">' + upComingStaff.position + '</div>' ;
+					upcomingRow = upcomingRow + '<div class="col-xs-5 Name">' + upComingStaff.name + '</div>' ;
+					upcomingRow = upcomingRow + '<div class="col-xs-3 Rank">' + upComingStaff.shiftTime + '</div>' ;
+					upcomingRow = upcomingRow + '</div>' ;
+					if ( (upComingStaff.upComingStation != stationList) && ((upComingStaff.upComingStation == '120') || (upComingStaff.upComingStation == '140')) )
+					{
+						stationList = upComingStaff.upComingStation;
+						shiftCounter = 0;
+						shiftTitlePrev = 'FIRST SHIFT' ;
+						shiftStartPrev = startTime ;
+						$(".upcoming"+stationList).html('<div class="row scheduleRow">' + upcomingRow);
+					}
+					else
+					{
+						if (shiftStartPrev != startTime)
+						{
+							$(".upcoming"+stationList).append('<div class="row scheduleRow blueBreak">' + upcomingRow);
+							shiftStartPrev = startTime ;
+						}
+						else
+						{
+							$(".upcoming"+stationList).append('<div class="row scheduleRow">' + upcomingRow);
+							shiftStartPrev = startTime ;
+						}
+					}
 				}
 			}
 
-			/* DISPLAY SHIFT TITLE */
-
+/*
 			if (( startTime == currentTime ) || (( endTime.substring(3) != '00' ) && ( endTime.substring(3) != '30' )))
 			{
 			   shiftTitle = 'UNKNOWN' ;
@@ -252,27 +265,28 @@ function loadUpcoming()
 			      }
 			   }
 			}
-
 			if ( shiftTitle != 'UNKNOWN' )
 			{
-						if ( shiftTitle != shiftTitlePrev )
-				    {
-							shiftCounter = shiftCounter + 1 ;
-							if ( shiftCounter == 1 )
-							{
-				      	shiftTitlePrev = shiftTitle ;
-							}
-				    }
+				/*if ( shiftTitle != shiftTitlePrev )
+		    {
+					shiftCounter = shiftCounter + 1 ;
+					if ( shiftCounter == 1 )
+					{
+		      	shiftTitlePrev = shiftTitle ;
+					}
+		    }
 
-				    /* DISPLAY STAFF */
-						if ( shiftCounter == 1 )
-						{
-				    	$(".upcoming"+stationList).append('<td class="Position">' + upComingStaff.position + '</td>');
-				    	$(".upcoming"+stationList).append('<td class="Name">' + upComingStaff.name + '</td>');
-				    	$(".upcoming"+stationList).append('<td class="Rank">' + upComingStaff.shiftTime + '</td>');
-			      	$(".upcoming"+stationList).append('</tr>');
-						}
+		     DISPLAY STAFF
+				if ( shiftCounter == 1 )
+				{
+		    	$(".upcoming"+stationList).append('<div class="col-xs-4 Position">' + upComingStaff.position + '</div>');
+		    	$(".upcoming"+stationList).append('<div class="col-xs-5 Name">' + upComingStaff.name + '</div>');
+		    	$(".upcoming"+stationList).append('<div class="col-xs-3 Rank">' + upComingStaff.shiftTime + '</div>');
+	      	$(".upcoming"+stationList).append('</div>');
+				}
 			}
+*/
+
 		});
 
 	});
@@ -405,37 +419,34 @@ function loadOnDuty()
 
 		$.each(onDutyObj.onDutyNow, function(key,onDutyNow)
 		{
+			onDutyRow = '<div class="row scheduleRowOD">' ;
+			onDutyRow = onDutyRow + '<div class="col-xs-4 Position PositionOD">' + onDutyNow.position + '</div>' ;
+			onDutyRow = onDutyRow + '<div class="col-xs-5 Name NameOD">' + onDutyNow.name + '</div>' ;
+			onDutyRow = onDutyRow + '<div class="col-xs-3 Rank RankOD">' + onDutyNow.ems + '</div>' ;
+			onDutyRow = onDutyRow + '</div>' ;
 			switch (onDutyNow.onDutyStation)
 			{
 				case "120":  // DISPLAY STATION 120 STAFF
 					if ( header120OnDuty == 0 )
 					{
 						header120OnDuty = header120OnDuty + 1 ;
-						$(".onDuty120").html('<tr class="scheduleRow">');
+						$(".onDuty120").html(onDutyRow);
 					}
 					else
 					{
-						$(".onDuty120").append('<tr class="scheduleRow">');
+						$(".onDuty120").append(onDutyRow);
 					}
-					$(".onDuty120").append('<td class="Position PositionOD">' + onDutyNow.position + '</td>');
-					$(".onDuty120").append('<td class="Name NameOD">' + onDutyNow.name + '</td>');
-					$(".onDuty120").append('<td class="Rank RankOD">' + onDutyNow.ems + '</td>');
-				  $(".onDuty120").append('</tr>');
 					break;
 				case "140":  // DISPLAY STATION 140 STAFF
 					if ( header140OnDuty == 0 )
 					{
 						header140OnDuty = header140OnDuty + 1 ;
-						$(".onDuty140").html('<tr class="scheduleRow">');
+						$(".onDuty140").html(onDutyRow);
 					}
 					else
 					{
-						$(".onDuty140").append('<tr class="scheduleRow">');
+						$(".onDuty140").append(onDutyRow);
 					}
-					$(".onDuty140").append('<td class="Position PositionOD">' + onDutyNow.position + '</td>');
-					$(".onDuty140").append('<td class="Name NameOD">' + onDutyNow.name + '</td>');
-					$(".onDuty140").append('<td class="Rank RankOD">' + onDutyNow.ems + '</td>');
-				  $(".onDuty140").append('</tr>');
 					break;
 				case "DC":  // DISPLAY DUTY CHIEF
 					if ( headerDCOnDuty == 0 )
@@ -459,7 +470,7 @@ function loadOnDuty()
 		}
 		else
 		{
-			$(".onDuty120").html('<tr class="scheduleRow"><td class="Name NameOD">Not Staffed!!</td></tr>')
+			$(".onDuty120").html('<div class="row scheduleRowOD"><div class="col-xs-6 Name NameOD">Not Staffed!!</div></div>')
 		}
 		if (header140OnDuty > 0)
 		{
@@ -467,7 +478,7 @@ function loadOnDuty()
 		}
 		else
 		{
-			$(".onDuty140").html('<tr class="scheduleRow"><td class="Name NameOD">Not Staffed!!</td></tr>')
+			$(".onDuty140").html('<div class="row scheduleRowOD"><div class="col-xs-6 Name NameOD">Not Staffed!!</div></div>')
 		}
 		if (headerDCOnDuty > 0)
 		{
@@ -491,102 +502,114 @@ function displayEvent (selectedEvent)
 	switch (selectedEvent.order)
 	{
 		case "0": // STATION 120 TASKS
+			st120Task = '<div class="col-xs-2 Position PositionOD">TASK</div>' ;
+			st120Task = st120Task + '<div class="col-xs-10 eventDesc eventDescOD">' + selectedEvent.eventDescription + '</div></div>' ;
 			if (pr120Cnt == 0)
 			{
 				pr120Cnt = pr120Cnt + 1;
-				$(".activities120").html('<tr class="scheduleRow">');
+				st120Task = '<div class="row scheduleRowOD redBreak">' + st120Task;
+				$(".activities120").html(st120Task);
 			}
 			else
 			{
 				pr120Cnt = pr120Cnt + 1;
-				$(".activities120").append('<tr class="scheduleRow">');
+				st120Task = '<div class="row scheduleRowOD">' + st120Task;
+				$(".activities120").append(st120Task);
 			}
-			$(".activities120").append('<td class="Position PositionOD">STATION TASK</td>');
-			$(".activities120").append('<td class="eventTitle">' + selectedEvent.eventDescription + '</td>');
-			$(".activities120").append('</tr>');
 			break;
 		case "1": // STATION 140 TASKS
+			st140Task = '<div class="col-xs-2 Position PositionOD">TASK</div>' ;
+			st140Task = st140Task + '<div class="col-xs-10 eventDesc eventDescOD">' + selectedEvent.eventDescription + '</div></div>' ;
 			if (pr140Cnt == 0)
 			{
 				pr140Cnt = pr140Cnt + 1;
-				$(".activities140").html('<tr class="scheduleRow">');
+				st140Task = '<div class="row scheduleRowOD redBreak">' + st140Task;
+				$(".activities140").html(st140Task);
 			}
 			else
 			{
 				pr140Cnt = pr140Cnt + 1;
-				$(".activities140").append('<tr class="scheduleRow">');
+				st140Task = '<div class="row scheduleRowOD">' + st140Task;
+				$(".activities140").append(st140Task);
 			}
-			$(".activities140").append('<td class="Position PositionOD">STATION TASK</td>');
-			$(".activities140").append('<td class="eventTitle">' + selectedEvent.eventDescription + '</td>');
-			$(".activities140").append('</tr>');
 			break;
 		case "2": // INFORMATION CENTER
+		  icNotice = '<div class="row scheduleRow">';
+			icNotice = icNotice + '<div class="col-xs-3 Position">' + selectedEvent.eventTime + '</div>';
+			icNotice = icNotice + '<div class="col-xs-9 Position">' + selectedEvent.eventDescription + '</div>';
+			icNotice = icNotice + '</div>';
 			if (notificationCnt == 0)
 			{
 				notificationCnt = notificationCnt + 1;
-				$(".notification").html('<tr class="scheduleRow">');
+				$(".notification").html(icNotice);
 			}
 			else
 			{
 				notificationCnt = notificationCnt + 1;
-				$(".notification").append('<tr class="scheduleRow">');
+				$(".notification").append(icNotice);
 			}
-			$(".notification").append('<td class="Name">' + selectedEvent.eventDescription + '</td>');
-			$(".notification").append('</tr>');
 			break;
 		case "3": // PR Event
-			if (selectedEvent.prCoverage120)
+			switch (selectedEvent.prCoverage)
 			{
-				if (pr120Cnt == 0)
-				{
-					pr120Cnt = pr120Cnt + 1;
-					$(".activities120").html('<tr class="scheduleRowTop">');
-				}
-				else
-				{
-					pr120Cnt = pr120Cnt + 1;
-					$(".activities120").append('<tr class="scheduleRowTop">');
-				}
-				$(".activities120").append('<td class="Position PositionOD">PR EVENT</td>');
-				$(".activities120").append('<td class="eventTime">' + selectedEvent.eventTime + '</td>');
-				$(".activities120").append('</tr>');
-				$(".activities120").append('<tr class="scheduleRowBottom">');
-				$(".activities120").append('<td colspan="2" class="eventTitle">' +  selectedEvent.eventLocation + '<br />' + selectedEvent.eventDescription + '</td>');
-				$(".activities120").append('</tr>');
-			}
-			if (selectedEvent.prCoverage140)
-			{
-				if (pr140Cnt == 0)
-				{
-					pr140Cnt = pr140Cnt + 1;
-					$(".activities140").html('<tr class="scheduleRowTop">');
-				}
-				else
-				{
-					pr140Cnt = pr140Cnt + 1;
-					$(".activities140").append('<tr class="scheduleRowTop">');
-				}
-				$(".activities140").append('<td class="Position PositionOD">Staffed PR Event: ' + selectedEvent.eventTime + '</td>');
-				$(".activities140").append('</tr>');
-				$(".activities140").append('<tr class="scheduleRowBottom">');
-				$(".activities140").append('<td colspan="2" class="eventTitle">' +  selectedEvent.eventLocation + '<br />' + selectedEvent.eventDescription + '</td>');
-				$(".activities140").append('</tr>');
-			}
-			if (selectedEvent.prCoverageStaff)
-			{
-				if (notificationCnt == 0)
-				{
-					notificationCnt = notificationCnt + 1;
-					$(".notification").html('<tr class="scheduleRow">');
-				}
-				else
-				{
-					notificationCnt = notificationCnt + 1;
-					$(".notification").append('<tr class="scheduleRow">');
-				}
-				$(".notification").append('<td class="Name">PR EVENT<br />' + selectedEvent.eventTime + '</td>');
-				$(".notification").append('<td class="Name">' + selectedEvent.eventLocation + '<br />' + selectedEvent.eventDescription + '</td>');
-				$(".notification").append('</tr>');
+				case '120':
+						st120PR = '<div class="col-xs-8 Position PositionOD">' +  selectedEvent.eventLocation + '</div>';
+						st120PR = st120PR + '<div class="col-xs-4 eventTime eventTimeOD">' + selectedEvent.eventTime + '</div>';
+						st120PR = st120PR + '</div>';
+						st120PR = st120PR + '<div class="row scheduleRowBottomOD">';
+						st120PR = st120PR + '<div class="col-xs-12 eventDesc eventDescOD">' + selectedEvent.eventDescription + '</div>';
+						st120PR = st120PR + '</div>';
+						if (pr120Cnt == 0)
+						{
+							pr120Cnt = pr120Cnt + 1;
+							st120PR = '<div class="row scheduleRowTopOD redBreak">' + st120PR
+							$(".activities120").html(st120PR);
+						}
+						else
+						{
+							pr120Cnt = pr120Cnt + 1;
+							st120PR = '<div class="row scheduleRowTopOD">' + st120PR
+							$(".activities120").append(st120PR);
+						}
+					break;
+				case '140':
+						st140PR = '<div class="col-xs-8 Position PositionOD">' +  selectedEvent.eventLocation + '</div>';
+						st140PR = st140PR + '<div class="col-xs-4 eventTime eventTimeOD">' + selectedEvent.eventTime + '</div>';
+						st140PR = st140PR + '</div>';
+						st140PR = st140PR + '<div class="row scheduleRowBottomOD">';
+						st140PR = st140PR + '<div class="col-xs-12 eventDesc eventDescOD">' + selectedEvent.eventDescription + '</div>';
+						st140PR = st140PR + '</div>';
+						if (pr140Cnt == 0)
+						{
+							pr140Cnt = pr140Cnt + 1;
+							st140PR = '<div class="row scheduleRowTopOD redBreak">' + st140PR
+							$(".activities140").html(st140PR);
+						}
+						else
+						{
+							pr140Cnt = pr140Cnt + 1;
+							st140PR = '<div class="row scheduleRowTopOD">' + st140PR
+							$(".activities140").append(st140PR);
+						}
+					break;
+				default:
+						icNotice = '<div class="row scheduleRowTop">';
+						icNotice = icNotice + '<div class="col-xs-8 eventDesc">' +  selectedEvent.eventLocation + '</div>';
+						icNotice = icNotice + '<div class="col-xs-4 Rank">' + selectedEvent.eventTime + '</div>';
+						icNotice = icNotice + '</div>';
+						icNotice = icNotice + '<div class="row scheduleRowBottom">';
+						icNotice = icNotice + '<div class="col-xs-12 Position">' + selectedEvent.eventDescription + '</div>';
+						icNotice = icNotice + '</div>';
+						if (notificationCnt == 0)
+						{
+							notificationCnt = notificationCnt + 1;
+							$(".notification").html(icNotice);
+						}
+						else
+						{
+							notificationCnt = notificationCnt + 1;
+							$(".notification").append(icNotice);
+						}
 			}
 	}
 }
@@ -614,30 +637,27 @@ function loadEvents ()
 		}
 		if (notificationCnt > 0)
 		{
-			$(".notification").append('</tr>');
 			notificationCnt=0;
 		}
 		else
 		{
-			$(".notification").html('<tr class="scheduleRow"><td class="Name">No Information to Report</td></tr>')
+			$(".notification").html('<div class="row scheduleRow"><div class="col-xs-12 Name">No Information to Report</div></div>');
 		}
 		if (pr120Cnt > 0)
 		{
-			$(".activities120").append('</tr>');
 			pr120Cnt=0;
 		}
 		else
 		{
-			$(".activities120").html('<tr class="scheduleRow"><td class="Name">No Scheduled Activities</td></tr>')
+			$(".activities120").html('<div class="row scheduleRowOD redBreak"><div class="col-xs-12 Name NameOD">No Scheduled Activities</div></div>');
 		}
 		if (pr140Cnt > 0)
 		{
-			$(".activities140").append('</tr>');
 			pr140Cnt=0;
 		}
 		else
 		{
-			$(".activities140").html('<tr class="scheduleRow"><td class=" Name">No Scheduled Activities</td></tr>')
+			$(".activities140").html('<div class="row scheduleRowOD redBreak"><div class="col-xs-12 Name NameOD">No Scheduled Activities</div></div>');
 		}
   });
 }

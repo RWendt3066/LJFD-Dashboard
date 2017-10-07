@@ -28,7 +28,9 @@
 
     <div class="container-fluid">
 
+      <!-------------------------------------------------------------------------->
       <!-- START of Left Column for Logo, Clock, Duty Chief, and Important Info -->
+      <!-------------------------------------------------------------------------->
 		  <div class="col-md-4">
         <div class="row">
 
@@ -61,191 +63,195 @@
 
         </div>
 
-        <!-- Start Notification Area -->
-	      <div class="desktopIC row">
+        <!-- Start Desktop Information Center Area -->
+        <div class="desktopIC row">
           <div class="onDutyBlock">
-            <div class="col-md-12">
-              <p class="header headerRed">INFORMATION CENTER</p>
-			        <table class="col-xs-12 col-sm-12 col-md-12 etable table-condensed table-striped">
-                <tbody class="notification">
-				          <tr><td class="scheduleRow Name">No Information to Report</td></tr>
-				        </tbody>
-			        </table>
+            <div class="col-xs-12">
+              <div class="row">
+                <p class="header headerRed">INFORMATION CENTER</p>
+              </div>
+              <span class="notification">
+                <!--<div class="row scheduleRow">
+                  <div class="col-xs-12 Name">No Information to Report</div>
+                </div>-->
+              </span>
             </div>
           </div>
         </div>
- 	      <!-- End Notification Area -->
+        <!-- End Desktop Information Center Area -->
 
 		  </div>
-      <!-- END of Left Column for Logo, Clock, Duty Chief, and Important Info -->
+      <!-------------------------------------------------------------------------->
+      <!-- END of Left Column for Logo, Clock, Duty Chief, and Important Info ---->
+      <!-------------------------------------------------------------------------->
 
-      <!-- START OF ON DUTY BLOCK -->
+      <!-------------------------------------------------------------------------->
+      <!-- START Right Columns for Duty Schedules -------------------------------->
+      <!-------------------------------------------------------------------------->
       <div class="col-md-8">
+
         <div class="row">
           <div class="onDutyBlock">
-
-            <!-- START 120 On-Duty Staff -->
-            <div class="col-md-6">
-              <p class="header headerRed">120 - ON-DUTY</p>
-              <table class="table table-condensed table-striped">
-                <tbody class="onDuty120">
-                  <tr><td class="scheduleRow Name NameOD">Not Staffed!!</td></tr>
-                  <!-- START test table
-                  <tr>
-                    <td class="scheduleRow Position PositionOD">Lead FF</td>
-                    <td class="scheduleRow Name NameOD">D. Binder</td>
-                    <td class="scheduleRow Rank RankOD">EMT</td>
-                  </tr>
-                  <tr>
-                    <td class="scheduleRow Position PositionOD">FF/Operator</td>
-                    <td class="scheduleRow Name NameOD">M. Brown</td>
-                    <td class="scheduleRow Rank RankOD">EMT</td>
-                  </tr>
-                  <tr>
-                    <td class="scheduleRow Position PositionOD">FF</td>
-                    <td class="scheduleRow Name NameOD">J. Schaller</td>
-                    <td class="scheduleRow Rank RankOD">EMT</td>
-                  </tr>
-                  END test Table -->
-                </tbody>
-              </table>
-            </div>
-            <!-- END 120 On-Duty Staff -->
-
-            <!-- START 140 On-Duty Staff -->
-            <div class="col-md-6">
-              <p class="header headerRed">140 - ON-DUTY</p>
-              <table class="table table-condensed table-striped">
-                <tbody class="onDuty140">
-                  <tr><td class="scheduleRow Name NameOD">Not Staffed!!</td></tr>
-                  <!-- START test table
-                  <tr>
-                    <td class="scheduleRow Position PositionOD">Lead FF</td>
-                    <td class="scheduleRow Name NameOD">R. Wendt</td>
-                    <td class="scheduleRow Rank RankOD">EMT</td>
-                  </tr>
-                  <tr>
-                    <td class="scheduleRow Position PositionOD">FF/Operator</td>
-                    <td class="scheduleRow Name NameOD">J. Schardin</td>
-                    <td class="scheduleRow Rank RankOD">EMT</td>
-                  </tr>
-                  END test Table -->
-                </tbody>
-              </table>
-            </div>
-            <!-- END 140 On-Duty Staff -->
-
-            <!-- START OF TASKS AND PR EVENTS BLOCK -->
-            <div class="row">
-              <div class="col-md-12">
-
-                <!-- START 120 PR EVENTS -->
-                <div class="col-md-6">
-                  <p class="header headerRed">120 - ACTIVITIES</p>
-                  <table class="table table-condensed table-striped">
-                    <tbody class="activities120">
-                      <tr><td class="scheduleRow Name NameOD">No Scheduled Activities</td></tr>
-                    </tbody>
-                  </table>
+            <!-- Start 120 On Duty Area -->
+            <div class="col-md-6 col-sm-6">
+              <div class="col-xs-12">
+                <div class="row">
+                  <p class="header headerRed">120 - ON-DUTY</p>
                 </div>
-
-                <!-- START 140 PR EVENTS -->
-                <div class="col-md-6">
-                  <p class="header headerRed">140 - ACTIVITIES</p>
-                  <table class="table table-condensed table-striped">
-                    <tbody class="activities140">
-                      <tr><td class="scheduleRow Name NameOD">No Scheduled Activities</td></tr>
-                    </tbody>
-                  </table>
-                </div>
-
-              </div>
-            </div>
-            <!-- END OF PR EVENTS BLOCK-->
-
-            <!-- Start Mobile Information Center -->
-    	      <div class="mobileIC row">
-                <div class="col-md-12">
-                  <div class="col-md-6">
-                    <p class="header headerRed">INFORMATION CENTER</p>
-      			        <table class="etable table-condensed table-striped">
-                      <tbody class="notification">
-      				          <tr><td class="scheduleRow Name">No Information to Report</td></tr>
-      				        </tbody>
-      			        </table>
+                <span class="onDuty120">
+                  <div class="row scheduleRowOD">
+                    <div class="col-xs-4 Position PositionOD">Lead FF</div>
+                    <div class="col-xs-5 Name NameOD">D. Binder</div>
+                    <div class="col-xs-3 Rank RankOD">EMT</div>
                   </div>
-                </div>
-            </div>
-     	      <!-- End Notification Area -->
+                  <div class="row scheduleRow scheduleRowGray">
+                    <div class="col-xs-4 Position PositionOD">FF/Operator</div>
+                    <div class="col-xs-5 Name NameOD">M. Brown</div>
+                    <div class="col-xs-3 Rank RankOD">EMT</div>
+                  </div>
+                </span>
+                <!--<div><br /></div>-->
+              </div>
+            <!-- End 120 On Duty Area -->
 
-            <!-- START OF UPCOMING BLOCK -->
-            <div class="row">
-              <div class="col-md-12">
-
-                <!-- START 120 Upcoming Staff -->
-                <div class="col-md-6">
-                  <p class="header headerBlue">120 - UPCOMING</p>
-                  <table class="table table-condensed table-striped">
-                    <tbody class="upcoming120">
-                      <!-- START test table
-                      <tr>
-                        <td class="scheduleRow Position">Lead FF</td>
-                        <td class="scheduleRow Name">C. DuBay</td>
-                        <td class="scheduleRow Rank">20:00-22:00</td>
-                      </tr>
-                      <tr class="blueBreak">
-                        <td class="scheduleRow Position">FF/Operator</td>
-                        <td class="scheduleRow Name">B. Roddy</td>
-                        <td class="scheduleRow Rank">17:00-22:00</td>
-                      </tr>
-                      <tr>
-                        <td class="scheduleRow Position">FF</td>
-                        <td class="scheduleRow Name">M. Brown</td>
-                        <td class="scheduleRow Rank">17:00-22:00</td>
-                      </tr>
-                      END test Table -->
-                      <tr class="Name"><td>Not Staffed!!</td></tr>
-                    </table>
-                  </tbody>
-                </div>
-                <!-- END 120 Upcoming Staff -->
-
-                <!-- START 140 Upcoming Staff -->
-                <div class="col-md-6">
-                  <p class="header headerBlue">140 - UPCOMING</p>
-                  <table class="table table-condensed table-striped">
-                    <tbody class="upcoming140">
-                      <tr class="scheduleRow Name"><td>Not Staffed!!</td></tr>
-                      <!-- START test table
-                      <tr>
-                        <td class="scheduleRow Position">Lead FF</td>
-                        <td class="scheduleRow Name">R. Wendt</td>
-                        <td class="scheduleRow Rank">22:00-06:30</td>
-                      </tr>
-                      <tr>
-                        <td class="scheduleRow Position">FF/Operator</td>
-                        <td class="scheduleRow Name">J. Schardin</td>
-                        <td class="scheduleRow Rank">22:00-06:30</td>
-                      </tr>
-                      <tr>
-                        <td class="scheduleRow Position">FF</td>
-                        <td class="scheduleRow Name">D. Binder</td>
-                        <td class="scheduleRow Rank">22:00-06:30</td>
-                      </tr>
-                      END test Table -->
-                    </tbody>
-                  </table>
-                </div>
-                <!-- END 140 Upcoming Staff -->
-
+            <!-- Start 120 Activities Area -->
+              <div class="col-xs-12">
+<!--                <div class="row">
+                  <p class="header headerRed">120 - ACTIVITIES</p>
+                </div> -->
+                <span class="activities120">
+                  <div class="row scheduleRowOD redBreak">
+                    <div class="col-xs-12 Name NameOD">No Scheduled Activities</div>
+                  </div>
+                </span>
+                <div><br /></div>
               </div>
             </div>
-            <!-- END OF UPCOMING BLOCK -->
+            <!-- End 120 Activities Area -->
 
+            <!-- Start 140 On Duty Area -->
+            <div class="col-md-6 col-sm-6">
+              <div class="col-xs-12">
+                <div class="row">
+                  <p class="header headerRed">140 - ON-DUTY</p>
+                </div>
+                <span class="onDuty140">
+                  <div class="row scheduleRowOD">
+                    <div class="col-xs-4 Position PositionOD">Lead FF</div>
+                    <div class="col-xs-5 Name NameOD">D. Binder</div>
+                    <div class="col-xs-3 Rank RankOD">EMT</div>
+                  </div>
+                  <div class="row scheduleRowOD">
+                    <div class="col-xs-4 Position PositionOD">FF/Operator</div>
+                    <div class="col-xs-5 Name NameOD">M. Brown</div>
+                    <div class="col-xs-3 Rank RankOD">EMT</div>
+                  </div>
+                  <div class="row scheduleRowOD">
+                    <div class="col-xs-4 Position PositionOD">FF</div>
+                    <div class="col-xs-5 Name NameOD">J. Schaller</div>
+                    <div class="col-xs-3 Rank RankOD">EMT</div>
+                  </div>
+                </span>
+                <!--<div><br /></div>-->
+              </div>
+            <!-- End 140 On Duty Area -->
+
+            <!-- Start 140 Activities Area -->
+              <div class="col-xs-12">
+<!--                <div class="row">
+                  <p class="header headerRed">140 - ACTIVITIES</p>
+                </div> -->
+                <span class="activities140">
+                  <div class="row scheduleRowOD redBreak">
+                    <div class="col-xs-12 Name NameOD">No Scheduled Activities</div>
+                  </div>
+                </span>
+                <div><br /></div>
+              </div>
+            </div>
+            <!-- End 140 Activities Area -->
           </div>
         </div>
+
+        <div class="row">
+          <div class="onDutyBlock">
+            <!-- Start Mobile Information Center Area -->
+            <div class="mobileIC col-md-6">
+              <div class="col-xs-12">
+                <div class="row">
+                  <p class="header headerRed">INFORMATION CENTER</p>
+                </div>
+                <span class="notification">
+                  <div class="row scheduleRow">
+                    <div class="col-xs-12 Name">No Scheduled Activities</div>
+                  </div>
+                </span>
+                <div><br /></div>
+              </div>
+            </div>
+            <!-- End Mobile Information Center Area -->
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="onDutyBlock">
+            <!-- Start 120 Upcoming Area -->
+            <div class="col-md-6 col-sm-6">
+              <div class="col-xs-12">
+                <div class="row">
+                  <p class="header headerBlue">120 - UPCOMING</p>
+                </div>
+                <span class="upcoming120">
+                  <div class="row scheduleRow">
+                    <div class="col-xs-4 Position">Lead FF</div>
+                    <div class="col-xs-5 Name">D. Binder</div>
+                    <div class="col-xs-3 Rank">17:00-22:00</div>
+                  </div>
+                  <div class="row scheduleRow">
+                    <div class="col-xs-4 Position">FF/Operator</div>
+                    <div class="col-xs-5 Name">M. Brown</div>
+                    <div class="col-xs-3 Rank">17:00-22:00</div>
+                  </div>
+                </span>
+                <div><br /></div>
+              </div>
+            </div>
+            <!-- End 120 Upcoming Area -->
+
+            <!-- Start 140 Upcoming Area -->
+            <div class="col-md-6 col-sm-6">
+              <div class="col-xs-12">
+                <div class="row">
+                  <p class="header headerBlue">140 - UPCOMING</p>
+                </div>
+                <span class="upcoming140">
+                  <div class="row scheduleRow">
+                    <div class="col-xs-4 Position">Lead FF</div>
+                    <div class="col-xs-5 Name">D. Binder</div>
+                    <div class="col-xs-3 Rank">17:00-22:00</div>
+                  </div>
+                  <div class="row scheduleRow">
+                    <div class="col-xs-4 Position">FF/Operator</div>
+                    <div class="col-xs-5 Name">M. Brown</div>
+                    <div class="col-xs-3 Rank">17:00-22:00</div>
+                  </div>
+                  <div class="row scheduleRow">
+                    <div class="col-xs-4 Position">FF</div>
+                    <div class="col-xs-5 Name">J. Schaller</div>
+                    <div class="col-xs-3 Rank">17:00-22:00</div>
+                  </div>
+                </span>
+                <div><br /></div>
+              </div>
+            </div>
+            <!-- End 140 Upcoming Area -->
+          </div>
+        </div>
+
       </div>
-      <!-- END OF UPCOMING AND PR EVENTS BLOCK -->
+      <!-------------------------------------------------------------------------->
+      <!-- END Right Columns for Duty Schedules ---------------------------------->
+      <!-------------------------------------------------------------------------->
 
 	  </div>
   </body>

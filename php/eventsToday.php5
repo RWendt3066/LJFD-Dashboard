@@ -60,19 +60,19 @@ $i = 0 ;
 $events = array() ;
 foreach ( $xmlEvents->events->event as $event )
 {
+  // Determine Event Start and End Times
+  $strBegin = substr(strval($event->begin),0,10) . ' ' . substr(strval($event->begin),11,5) ;
+  $eventBegin = new DateTime($strBegin,$scheduleTZ) ;
+  $eventBegin->setTimeZone($userTZ) ;
+  $strEnd = substr(strval($event->end),0,10) . ' ' . substr(strval($event->end),11,5) ;
+  $eventEnd = new DateTime($strEnd,$scheduleTZ) ;
+  $eventEnd->setTimeZone($userTZ) ;
   switch (strval($event->title))
   {
     ///////////////////////////////////////////////////////////////////////////
     // CHECK FOR PR EVENTS
     ///////////////////////////////////////////////////////////////////////////
     case 'PR' :
-      // Determine Event Start and End Times
-      $strBegin = substr(strval($event->begin),0,10) . ' ' . substr(strval($event->begin),11,5) ;
-      $eventBegin = new DateTime($strBegin,$scheduleTZ) ;
-      $eventBegin->setTimeZone($userTZ) ;
-      $strEnd = substr(strval($event->end),0,10) . ' ' . substr(strval($event->end),11,5) ;
-      $eventEnd = new DateTime($strEnd,$scheduleTZ) ;
-      $eventEnd->setTimeZone($userTZ) ;
       // Past Start Time?
       if ( $eventEnd->format('H:i') >= $currentTime )
       {
@@ -96,21 +96,21 @@ foreach ( $xmlEvents->events->event as $event )
               case '13': // 120-Day
               case '15': // 120-Evening
               case '2':  // 120-Night
-                $nextEvent = $nextEvent . '<prCoverage120>' ;
-                $nextEvent = $nextEvent . 'Y' ;
-                $nextEvent = $nextEvent . '</prCoverage120>' ;
+                $nextEvent = $nextEvent . '<prCoverage>' ;
+                $nextEvent = $nextEvent . '120' ;
+                $nextEvent = $nextEvent . '</prCoverage>' ;
                 break;
               case '1':  // 140-Day
               case '16': // 140-Evening
               case '13': // 140-Night
-                $nextEvent = $nextEvent . '<prCoverage140>' ;
-                $nextEvent = $nextEvent . 'Y' ;
-                $nextEvent = $nextEvent . '</prCoverage140>' ;
+                $nextEvent = $nextEvent . '<prCoverage>' ;
+                $nextEvent = $nextEvent . '140' ;
+                $nextEvent = $nextEvent . '</prCoverage>' ;
                 break;
               default :
-                $nextEvent = $nextEvent . '<prCoverageStaff>' ;
-                $nextEvent = $nextEvent . 'Y' ;
-                $nextEvent = $nextEvent . '</prCoverageStaff>' ;
+                $nextEvent = $nextEvent . '<prCoverage>' ;
+                $nextEvent = $nextEvent . 'Staff' ;
+                $nextEvent = $nextEvent . '</prCoverage>' ;
   		      }
           }
 	      }
@@ -126,6 +126,7 @@ foreach ( $xmlEvents->events->event as $event )
       // Set Order
       $nextEvent = $nextEvent . '<order>2</order>' ;
       // Report Event Description
+      $nextEvent = $nextEvent . '<eventTime>' . strval($eventBegin->format('m-d')) . '</eventTime>';
       $nextEvent = $nextEvent . '<eventDescription>' . strval($event->description) . '</eventDescription>' ;
       $nextEvent = $nextEvent . '</event>' ;
       $events[$i] = $nextEvent ;
@@ -206,7 +207,7 @@ $xmlEventList = "<?xml version='1.0' encoding='UTF-8'?>" . "<dailyEvents>" ;
 if ($i > 0)
 {
   // Sort Event by Order, Title, Description
-  sort($events) ;
+  rsort($events) ;
   for ($i=0;$i<=count($events);$i++)
   {
     $xmlEventList = $xmlEventList . $events[$i] ;

@@ -83,12 +83,12 @@ body {
 .Position {
     font-weight:normal;
     text-align: left;
-    color: #A81E22;
-    font-size: small;
+    color: #B8B9BC;
+    font-size: x-small;
 }
 .PositionOD {
     background-color: #B8B9BC;
-    color: #A81E22;
+    color: #101010;
 }
 .TitleDC {
     font-weight: bold;
@@ -106,9 +106,9 @@ body {
 }
 .Name {
   font-weight:normal;
-  text-align: left;
+  text-align: center;
   color: #B8B9BC;
-  font-size: medium;
+  font-size: small;
 }
 .NameOD {
     background-color: #B8B9BC;
@@ -125,8 +125,7 @@ body {
   font-weight:normal;
     text-align: right;
     color: #B8B9BC;
-    font-size: small;
-    border-bottom: 0px solid #ddd;
+    font-size: x-small;
 }
 .RankOD {
     background-color:#B8B9BC;
@@ -139,10 +138,13 @@ body {
     font-size: small;
 }
 .eventTime {
+  font-weight:normal;
     text-align: right;
-    background-color:#B8B9BC;
-    color: #101010;
+    color: #B8B9BC;
     font-size: small;
+}
+.eventTimeOD {
+    color: #101010;
 }
 .eventLabel {
     color: #A81E22;
@@ -153,8 +155,9 @@ body {
     text-align: left;
     color: #B8B9BC;
     font-size: small;
-    border-top: 0px solid #ddd;
-    border-bottom: 1px solid #ddd;
+}
+.eventDescOD {
+    color: #101010;
 }
 
 .announcements {
@@ -192,28 +195,63 @@ body {
     height:325px;
 }
 .scheduleRowTop {
-    line-height: 1.75;
+    line-height: 1.5;
     vertical-align: middle;
-    border-top: 1px solid #ddd;
-    border-bottom: 0px solid #ddd;
-    padding: 4px;
+    background-color: #1c1919;
+    border-top: 1px solid #B8B9BC;
+    border-bottom: 0px solid #B8B9BC;
+    padding: 3px;
 }
 .scheduleRowBottom {
-    line-height: 1.75;
+    line-height: 1.5;
     vertical-align: middle;
-    border-top: 0px solid #ddd;
-    border-bottom: 1px solid #ddd;
-    padding: 4px;
+    background-color: #1c1919;
+    border-top: 0px solid #B8B9BC;
+    border-bottom: 1px solid #B8B9BC;
+    padding: 3px;
 }
 .scheduleRow {
     line-height: 1.75;
     vertical-align: middle;
-    border-top: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
-    padding: 4px;
+    background-color: #1c1919;
+    border-top: 1px solid #B8B9BC;
+    border-bottom: 1px solid #B8B9BC;
+    padding: 3px;
+}
+.scheduleRowTopOD {
+    line-height: 1.5;
+    vertical-align: middle;
+    background-color: #B8B9BC;
+    border-top: 1px solid #101010;
+    border-bottom: 0px solid #101010;
+    padding: 3px;
+}
+.scheduleRowBottomOD {
+    line-height: 1.5;
+    vertical-align: middle;
+    background-color: #97999f;
+    border-top: 0px solid #101010;
+    border-bottom: 1px solid #101010;
+    padding: 3px;
+}
+.scheduleRowOD {
+    line-height: 1.75;
+    vertical-align: middle;
+    background-color: #B8B9BC;
+    border-top: 1px solid #101010;
+    border-bottom: 1px solid #101010;
+    padding: 3px;
+}
+.scheduleRowGray {
+  background-color: #B8B9BC;
+  border-top: 1px solid #101010;
+  border-bottom: 1px solid #101010;
 }
 .blueBreak {
     border-top: 8px solid #0c377c;
+}
+.redBreak {
+    border-top: 10px solid #A81E22;
 }
 .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
     line-height: 1.75;
@@ -302,7 +340,7 @@ body {
        font-size: large;
     }
    .Position, .eventTitle {
-       font-size: large;
+       font-size: medium;
    }
    .Title {
        font-size: large;
@@ -320,10 +358,10 @@ body {
        margin-left: 25%;
    }
    .Rank, .eventTime {
-       font-size: large;
+       font-size: medium;
    }
    .eventDesc {
-       font-size: large;
+       font-size: medium;
    }
 }
 
