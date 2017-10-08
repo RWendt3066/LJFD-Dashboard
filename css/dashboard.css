@@ -45,6 +45,55 @@ body {
     margin: 10% 0% 5% 0%;
 /*    margin:auto;*/
 }
+.weatherBanner {
+  display: none;
+  margin-top: 5px;
+}
+.weatherLogo {
+    height: 60px;
+    width: 100px;
+    display: block;
+    position: relative;
+    text-align:center;
+    margin: 5px;
+}
+.weatherCondIcon {
+  height: 45px;
+  width: 45px;
+  position: relative;
+  bottom: 15px;
+}
+.forecastTemp {
+  font-weight:normal;
+  color: #B8B9BC;
+  font-size: medium;
+}
+.forecastCondIcon {
+  height: 15px;
+  width: 15px;
+  position: relative;
+  text-align:center;
+  margin: 0px 5px 0px 5px;
+}
+.weatherTemp {
+    color: #B8B9BC;
+    font-size: 42px;
+    position: relative;
+    text-align:center;
+}
+.wtrTop {
+  font-weight:normal;
+  text-align: center;
+  color: #B8B9BC;
+  font-size: large;
+  margin-top: : 5px;
+}
+.wtrBottom {
+  font-weight:normal;
+  text-align: center;
+  color: #B8B9BC;
+  font-size: x-large;
+}
 .clock {
     top: 15px;
     color: #B8B9BC;
@@ -375,6 +424,10 @@ body {
      height: 100%;
      width: 100%;
      margin: 10% 25% 5% 25%;
+   }
+   .weatherBanner {
+     display: block;
+     margin-top: 5px;
    }
    .header {
       font-size: x-large;

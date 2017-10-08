@@ -36,19 +36,17 @@ function loadDashboard()
 				h = new Date(d.getFullYear(), d.getMonth(), d.getDate(), d.getHours(), (d.getMinutes() - (d.getMinutes() % 30)) + 30, 0, 0),
         e = h - d;
     window.setTimeout(loadDashboard, e);
+		loadBanner ();
 		loadOnDuty();
 		loadUpcoming();
     loadEvents();
-//    loadUpcoming('120');
-//    loadUpcoming('140');
 	}
 	else
 	{
+		loadBanner ();
 		loadOnDuty();
 		loadUpcoming();
     loadEvents();
-//    loadUpcoming('120');
-//    loadUpcoming('140');
 	}
 }
 
@@ -660,4 +658,65 @@ function loadEvents ()
 			$(".activities140").html('<div class="row scheduleRowOD redBreak"><div class="col-xs-12 Name NameOD">No Scheduled Activities</div></div>');
 		}
   });
+}
+
+function loadBanner ()
+{
+	$.getJSON('http://api.wunderground.com/api/a591dbd544b9dcee/conditions/forecast/q/55126.json',
+			function(data)
+			{
+				var dateNow = new Date();
+				var hours = dateNow.getHours();
+			  var minutes = dateNow.getMinutes();
+				var currTemp = data.current_observation.temp_f;
+				var feelsLike = data.current_observation.feelslike_f;
+				var flNoDec = feelsLike.length - 2;
+				var weather = data.current_observation.weather;
+				var highTemp = data.forecast.simpleforecast.forecastday[0].high.fahrenheit;
+				var lowTemp = data.forecast.simpleforecast.forecastday[0].low.fahrenheit;
+				var forecastTxt = data.forecast.txt_forecast.forecastday[0].fctext;
+
+				shift = 'NIGHT SHIFT';
+				if (hours < 22)
+				{
+					shift = 'EVENING SHIFT';
+					if (hours < 17)
+					{
+						shift = 'DAY SHIFT';
+						if (((hours == 6) && (minutes < 30)) || (hours < 6))
+						{
+							shift = 'NIGHT SHIFT';
+						}
+					}
+				}
+				shiftTitle = '<p class="weatherTemp">' + shift + '</p>'
+
+				forecast3day = '<div class="row forecastTemp">' + data.forecast.simpleforecast.forecastday[1].date.weekday;
+				forecast3day = forecast3day + ' <img class="forecastCondIcon" src=' + data.forecast.simpleforecast.forecastday[1].icon_url + '>';
+				forecast3day = forecast3day + ' ' + data.forecast.simpleforecast.forecastday[1].high.fahrenheit;
+				forecast3day = forecast3day + ' | ' + data.forecast.simpleforecast.forecastday[1].low.fahrenheit;
+				forecast3day = forecast3day + '</div>';
+				forecast3day = forecast3day + '<div class="row forecastTemp">' + data.forecast.simpleforecast.forecastday[2].date.weekday;
+				forecast3day = forecast3day + ' <img class="forecastCondIcon" src=' + data.forecast.simpleforecast.forecastday[2].icon_url + '>';
+				forecast3day = forecast3day + ' ' + data.forecast.simpleforecast.forecastday[2].high.fahrenheit;
+				forecast3day = forecast3day + ' | ' + data.forecast.simpleforecast.forecastday[2].low.fahrenheit;
+				forecast3day = forecast3day + '</div>';
+				forecast3day = forecast3day + '<div class="row forecastTemp">' + data.forecast.simpleforecast.forecastday[3].date.weekday;
+				forecast3day = forecast3day + ' <img class="forecastCondIcon" src=' + data.forecast.simpleforecast.forecastday[3].icon_url + '>';
+				forecast3day = forecast3day + ' ' + data.forecast.simpleforecast.forecastday[3].high.fahrenheit;
+				forecast3day = forecast3day + ' | ' + data.forecast.simpleforecast.forecastday[3].low.fahrenheit;
+				forecast3day = forecast3day + '</div>';
+
+				condTemp = '<div class="row"><img class="weatherCondIcon" src=' + data.current_observation.icon_url + '>';
+				condTemp = condTemp + '  <span class="weatherTemp">' + currTemp.toFixed(0) + '&#x2109;</span></div>';
+
+				weatherTempRange = '<div class="row wtrTop">' + weather + '</div>';
+				weatherTempRange = weatherTempRange + '<div class="row wtrBottom">' + highTemp + '&#x2109; | ' + lowTemp + '&#x2109;</div>'
+
+				$('.shiftTitleBlock').html(shiftTitle);
+				$('.conditions').html(condTemp);
+				$('.tempRange').html(weatherTempRange);
+				$('.forecast').html(forecast3day);
+				$('.wuLogo').html('<img class="weatherLogo" src=https://www.wunderground.com/logos/images/wundergroundLogo_4c_rev.jpg>');
+			});
 }
