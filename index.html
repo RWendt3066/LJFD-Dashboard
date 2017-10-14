@@ -36,19 +36,12 @@
 
           <!-- START Logo -->
   	      <div class="col-xs-4 col-sm-4 col-md-4">
-  			    <p class="mainLogo"><img src="img/ljfdpatch150.png"></p>
+  			    <div><img class="mainLogo" src="img/ljfdpatch150.png"></div>
           </div>
           <!-- END Logo -->
 
           <div class="col-xs-8 col-sm-8 col-md-8">
 
-    	      <!-- START Clock -->
-    			  <div class="row">
-    			    <div class="clock">
-    				    <iframe src="http://free.timeanddate.com/clock/i53j9vww/n159/fn11/fs32/fcb8b9bc/tct/pct/tt0/tw0/tm1/td2/th1/ts1/tb2" frameborder="0" width="280" height="40" allowTransparency="true"></iframe>
-    			    </div>
-            </div>
-    	      <!-- END Clock -->
 
             <!-- START Duty Chief -->
     	      <div class="row">
@@ -92,19 +85,32 @@
 
         <div class="row weatherBanner">
           <div class="col-md-12">
+            <!-- START Clock & Shift Label -->
             <div class="col-md-5">
+      			  <div class="row">
+      			    <div class="clock clockDesktop">
+                  <iframe src="http://free.timeanddate.com/clock/i5xfpesw/n159/fn17/fs34/fcb8b9bc/tct/pct/ftb/tt1/tw0" frameborder="0" width="391" height="43" allowTransparency="true"></iframe>
+      			    </div>
+              </div>
+              <div class="row">
+      			    <div class="clock clockTablet">
+                  <iframe src="http://free.timeanddate.com/clock/i5xfpesw/n159/fn17/fs14/fcb8b9bc/tct/pct/ftb/tt1/tw0" frameborder="0" width="150" height="18" allowTransparency="true"></iframe>
+      			    </div>
+              </div>
               <span class="shiftTitleBlock"></span>
             </div>
-            <div class="col-md-2">
+            <!-- END Clock & Shift Label -->
+            <!-- START Current Conditions and Temp -->
+            <div class="col-md-2 wuStats">
               <span class="conditions"></span>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-2 wuStats">
               <span class="tempRange"></span>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-2 wuStats">
               <span class="forecast"></span>
             </div>
-            <div class="col-md-1">
+            <div class="col-md-1 wuStats">
               <span class="wuLogo"></span>
             </div>
           </div>

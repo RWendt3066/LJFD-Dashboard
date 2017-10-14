@@ -36,48 +36,66 @@ body {
     display: none;
 }
 .mainLogo {
-    height: 50%;
-    width: 50%;
+    height: 80px;
+    width: 80px;
     padding:1%;
     display: block;
     position: relative;
     text-align:center;
-    margin: 10% 0% 5% 0%;
+    margin: 10% 50% 0% 50%;
 /*    margin:auto;*/
 }
 .weatherBanner {
   display: none;
   margin-top: 5px;
 }
+.wuStats {
+  display: none;
+  margin-top: 15px;
+}
 .weatherLogo {
-    height: 60px;
-    width: 100px;
+    height: 50px;
+    width: 90px;
     display: block;
     position: relative;
     text-align:center;
-    margin: 5px;
+    margin-top: 5px;
 }
 .weatherCondIcon {
-  height: 45px;
-  width: 45px;
+  height: 60px;
+  width: 60px;
   position: relative;
   bottom: 15px;
+}
+.weatherTemp {
+    color: #B8B9BC;
+    font-size: 52px;
+    position: relative;
+    text-align:center;
 }
 .forecastTemp {
   font-weight:normal;
   color: #B8B9BC;
   font-size: medium;
 }
+.fahrenheitSS {
+  font-size: x-large;
+    vertical-align: top;
+}
+.fahrenheitFCSS {
+  font-size: small;
+    vertical-align: top;
+}
 .forecastCondIcon {
-  height: 15px;
-  width: 15px;
+  height: 20px;
+  width: 20px;
   position: relative;
   text-align:center;
   margin: 0px 5px 0px 5px;
 }
-.weatherTemp {
+.shiftLabel {
     color: #B8B9BC;
-    font-size: 42px;
+    font-size: 34px;
     position: relative;
     text-align:center;
 }
@@ -95,12 +113,15 @@ body {
   font-size: x-large;
 }
 .clock {
-    top: 15px;
     color: #B8B9BC;
-    display: none;
     position: relative;
     text-align:center;
-    margin:10px auto 15px auto;
+}
+.clockDesktop {
+  display: none;
+}
+.clockTablet {
+  display: none;
 }
 .stationHeader {
     display: none;
@@ -142,10 +163,10 @@ body {
 .TitleDC {
     font-weight: bold;
     text-align: center;
-    color: #A81E22;
+    color: #B8B9BC;
     font-size: medium;
-    margin-top: 25%;
-    margin-left: 25%;
+    margin-top: 10%;
+    margin-left: 10%;
 }
 .Title {
     font-weight:normal;
@@ -167,8 +188,8 @@ body {
   font-weight:normal;
   text-align: center;
   color: #B8B9BC;
-  font-size: small;
-  margin-left: 25%
+  font-size: medium;
+  margin-left: 10%
 }
 .Rank {
   font-weight:normal;
@@ -200,10 +221,10 @@ body {
 }
 
 .eventDesc {
-  font-weight:normal;
+    font-weight:normal;
     text-align: left;
     color: #B8B9BC;
-    font-size: small;
+    font-size: x-small;
 }
 .eventDescOD {
     color: #101010;
@@ -234,14 +255,6 @@ body {
 
 .container-fluid {
     height: 650px;
-}
-
-.table-condensed > tbody > tr > td, .table-condensed > tbody > tr > th, .table-condensed > tfoot > tr > td, .table-condensed > tfoot > tr > th, .table-condensed > thead > tr > td, .table-condensed > thead > tr > th {
-    padding: 4px;
-}
-
-.tbody {
-    height:325px;
 }
 .scheduleRowTop {
     line-height: 1.5;
@@ -291,6 +304,14 @@ body {
     border-bottom: 1px solid #101010;
     padding: 3px;
 }
+.scheduleRowIC {
+    line-height: 1.25;
+    vertical-align: middle;
+    background-color: #1c1919;
+    border-top: 1px solid #B8B9BC;
+    border-bottom: 1px solid #B8B9BC;
+    padding: 3px;
+}
 .scheduleRowGray {
   background-color: #B8B9BC;
   border-top: 1px solid #101010;
@@ -302,28 +323,27 @@ body {
 .redBreak {
     border-top: 10px solid #A81E22;
 }
-.table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
-    line-height: 1.75;
-    vertical-align: middle;
-}
-.etable > tbody > tr > td, .etable > tbody > tr > th, .etable > tfoot > tr > td, .etable > tfoot > tr > th, .etable > thead > tr > td, .etable > thead > tr > th {
-    line-height: 1.75;
-    vertical-align: middle;
-}
 
-/* Extra small devices (phones, less than 768px) */
+/*********************************************************/
+/* Extra small devices (phones, less than 768px)         */
 /* No media query since this is the default in Bootstrap */
+/*********************************************************/
 
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 640px) {
   .mainLogo {
-      height: 50%;
-      width: 50%;
+      height: 100px;
+      width: 100px;
       margin-left: 50%;
     }
    .clock {
      margin-left: 25%;
-       display: block;
+   }
+   .clockDesktop {
+     display: none;
+   }
+   .clockTablet {
+     display: none;
    }
    .header {
       font-size: large;
@@ -335,40 +355,98 @@ body {
        font-size: medium;
     }
    .Position, .eventTitle {
-       font-size: medium;
+       font-size: small;
    }
    .Title {
        font-size: medium;
    }
    .Name {
-       font-size: large;
+       font-size: medium;
    }
    .NameDC {
-       font-size: medium;
-       margin-left: 25%;
+       font-size: x-large;
+       margin-left: 10%;
    }
    .TitleDC {
        font-size: x-large;
        margin-top: 5%;
-       margin-left: 25%;
+       margin-left: 10%;
    }
    .Rank, .eventTime {
-       font-size: medium;
+       font-size: small;
    }
    .eventDesc {
-       font-size: medium;
+       font-size: small;
    }
 }
 
-/* Medium devices (desktops, 992px and up) */
+/* Medium devices (desktops and tablet landscape, 992px and up) */
 @media (min-width: 992px) {
+  .weatherBanner {
+    display: block;
+    margin-top: 10px;
+  }
+  .wuStats {
+    display: block;
+    margin-top: 5px;
+  }
+  .weatherLogo {
+      height: 25px;
+      width: 45px;
+      display: block;
+      position: relative;
+      text-align:center;
+      margin-top: 5px;
+  }
+  .weatherCondIcon {
+    height: 37px;
+    width: 35px;
+    bottom: 5px;
+  }
+  .weatherTemp {
+      font-size: x-large;
+  }
+  .forecastTemp {
+    font-size: xx-small;
+  }
+  .fahrenheitSS {
+    font-size: large;
+      vertical-align: top;
+  }
+  .fahrenheitFCSS {
+    font-size: x-small;
+      vertical-align: top;
+  }
+  .forecastCondIcon {
+    height: 12px;
+    width: 12px;
+    margin: 0px 5px 0px 5px;
+  }
+  .shiftLabel {
+      font-size: large;
+      margin-left: 20px;
+  }
+  .wtrTop {
+    font-size: small;
+    margin-top: : 5px;
+  }
+  .wtrBottom {
+    font-size: small;
+  }
   .clock {
       display: none;
   }
+  .clockDesktop {
+    display: none;
+  }
+  .clockTablet {
+    display: block;
+    margin-right: 50px;
+  }
   .mainLogo {
-    height: 100%;
-    width: 100%;
-    margin: 10% 25% 5% 15%;
+    height: 45px;
+    width: 45px;
+    margin: 15% 25% 0% 50%;
   }
    .stationHeader {
        display: block;
@@ -380,7 +458,7 @@ body {
        display: block;
    }
    .header {
-      font-size: large;
+      font-size: medium;
    }
    .stationName {
        font-size: large;
@@ -389,48 +467,110 @@ body {
        font-size: large;
     }
    .Position, .eventTitle {
-       font-size: medium;
+       font-size: small;
    }
    .Title {
        font-size: large;
    }
    .Name {
-       font-size: large;
+       font-size: small;
    }
    .NameDC {
-       font-size: medium;
-       margin-left: 25%;
+       font-size: large;
+       margin-left: 10%;
    }
    .TitleDC {
        font-size: large;
-       margin-top: 25%;
-       margin-left: 25%;
+       margin-top: 5px;
+       margin-left: 10%;
    }
    .Rank, .eventTime {
-       font-size: medium;
+       font-size: small;
    }
    .eventDesc {
-       font-size: medium;
+       font-size: small;
    }
 }
 
 /* Large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {
-   .clock {
-     margin-left: 0%;
-     display: block;
+@media (min-width: 1300px) {
+  .weatherBanner {
+    display: block;
+    margin-top: 12px;
+  }
+  .wuStats {
+    display: block;
+    margin-top: 5px;
+  }
+  .weatherLogo {
+      height: 25px;
+      width: 45px;
+      display: block;
+      position: relative;
+      text-align:center;
+      margin-top: 5px;
+  }
+  .weatherCondIcon {
+    height: 35px;
+    width: 35px;
+    bottom: 5px;
+  }
+  .weatherTemp {
+      font-size: xx-large;
+  }
+  .forecastTemp {
+    font-size: x-small;
+  }
+  .fahrenheitSS {
+    font-size: medium;
+      vertical-align: top;
+  }
+  .fahrenheitFCSS {
+    font-size: x-small;
+      vertical-align: top;
+  }
+  .forecastCondIcon {
+    height: 15px;
+    width: 15px;
+    margin: 0px 5px 0px 5px;
+  }
+  .shiftLabel {
+      font-size: large;
+      margin-left: 20px;
+  }
+  .wtrTop {
+    font-size: medium;
+    margin-top: : 5px;
+  }
+  .wtrBottom {
+    font-size: medium;
+  }
+  .clock {
+      display: none;
+  }
+  .clockDesktop {
+    display: none;
+  }
+  .clockTablet {
+    display: block;
+    margin-right: 50px;
+  }
+  .mainLogo {
+    height: 55px;
+    width: 55px;
+    margin: 10px 25px 0px 50px;
+  }
+   .stationHeader {
+       display: block;
    }
-   .mainLogo {
-     height: 100%;
-     width: 100%;
-     margin: 10% 25% 5% 25%;
+   .mobileIC {
+       display: none;
    }
-   .weatherBanner {
-     display: block;
-     margin-top: 5px;
+   .desktopIC {
+       display: block;
    }
    .header {
-      font-size: x-large;
+      font-size: medium;
    }
    .stationName {
        font-size: large;
@@ -439,27 +579,122 @@ body {
        font-size: large;
     }
    .Position, .eventTitle {
-       font-size: large;
+       font-size: small;
    }
    .Title {
        font-size: large;
    }
    .Name {
-       font-size: large;
+       font-size: small;
    }
    .NameDC {
-       font-size: x-large;
-       margin-left: 0%;
+       font-size: large;
+       margin-left: 10%;
    }
    .TitleDC {
-       font-size: x-large;
-       margin-top: 5%;
-       margin-left: 0%;
+       font-size: large;
+       margin-top: 10px;
+       margin-left: 10%;
    }
    .Rank, .eventTime {
-       font-size: large;
+       font-size: small;
    }
    .eventDesc {
-       font-size: large;
+       font-size: small;
    }
+ }
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1500px) {
+  .weatherBanner {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 10px;
+  }
+  .weatherLogo {
+     height: 50px;
+     width: 85px;
+     display: block;
+     margin-top: 8px;
+  }
+  .weatherCondIcon {
+   height: 60px;
+   width: 60px;
+   bottom: 15px;
+  }
+  .weatherTemp {
+     font-size: 52px;
+  }
+  .forecastTemp {
+   font-size: medium;
+  }
+  .fahrenheitSS {
+   font-size: x-large;
+  }
+  .fahrenheitFCSS {
+   font-size: small;
+  }
+  .forecastCondIcon {
+   height: 20px;
+   width: 20px;
+   margin: 0px 5px 0px 5px;
+  }
+  .wtrTop {
+   font-size: large;
+   margin-top: : 5px;
+  }
+  .wtrBottom {
+   font-size: x-large;
+  }
+  .clock {
+    margin-left: 0%;
+  }
+  .clockDesktop {
+    display: block;
+  }
+  .clockTablet {
+    display: none;
+  }
+  .mainLogo {
+    height: 100px;
+    width: 100px;
+    margin: 12px 50px 0px 50px;
+  }
+  .header {
+     font-size: x-large;
+  }
+  .stationName {
+      font-size: large;
+   }
+   .shiftLabel {
+       font-size: x-large;
+   }
+  .shiftName {
+      font-size: large;
+   }
+  .Position, .eventTitle {
+      font-size: large;
+  }
+  .Title {
+      font-size: large;
+  }
+  .Name {
+      font-size: large;
+  }
+  .NameDC {
+      font-size: x-large;
+      margin-left: 0%;
+      margin-bottom: 0px;
+  }
+  .TitleDC {
+      font-size: x-large;
+      margin-top: 20px;
+      margin-bottom: 0px;
+      margin-left: 0%;
+  }
+  .Rank, .eventTime {
+      font-size: large;
+  }
+  .eventDesc {
+      font-size: large;
+  }
 }

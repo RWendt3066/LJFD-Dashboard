@@ -36,17 +36,35 @@ function loadDashboard()
 				h = new Date(d.getFullYear(), d.getMonth(), d.getDate(), d.getHours(), (d.getMinutes() - (d.getMinutes() % 30)) + 30, 0, 0),
         e = h - d;
     window.setTimeout(loadDashboard, e);
+		notificationCnt=0;
 		loadBanner ();
 		loadOnDuty();
 		loadUpcoming();
     loadEvents();
+		if (notificationCnt == 0)
+		{
+			$(".notification").html('<div class="row scheduleRow"><div class="col-xs-12 Name">No Information to Report</div></div>');
+		}
+		else
+		{
+			notificationCnt = 0;
+		}
 	}
 	else
 	{
+		notificationCnt=0;
 		loadBanner ();
 		loadOnDuty();
 		loadUpcoming();
     loadEvents();
+		if (notificationCnt = 0)
+		{
+			$(".notification").html('<div class="row scheduleRow"><div class="col-xs-12 Name">No Information to Report</div></div>');
+		}
+		else
+		{
+			notificationCnt = 0;
+		}
 	}
 }
 
@@ -243,50 +261,7 @@ function loadUpcoming()
 				}
 			}
 
-/*
-			if (( startTime == currentTime ) || (( endTime.substring(3) != '00' ) && ( endTime.substring(3) != '30' )))
-			{
-			   shiftTitle = 'UNKNOWN' ;
-			}
-			else
-			{
-			   if ( startHour >= '06' )
-			   {
-			      shiftTitle = 'NIGHT SHIFT' ;
-			      if ( startHour < '22' )
-			      {
-			         shiftTitle = 'EVENING SHIFT' ;
-			      }
-			      if ( startHour < '12' )
-			      {
-			         shiftTitle = 'DAY SHIFT' ;
-			      }
-			   }
-			}
-			if ( shiftTitle != 'UNKNOWN' )
-			{
-				/*if ( shiftTitle != shiftTitlePrev )
-		    {
-					shiftCounter = shiftCounter + 1 ;
-					if ( shiftCounter == 1 )
-					{
-		      	shiftTitlePrev = shiftTitle ;
-					}
-		    }
-
-		     DISPLAY STAFF
-				if ( shiftCounter == 1 )
-				{
-		    	$(".upcoming"+stationList).append('<div class="col-xs-4 Position">' + upComingStaff.position + '</div>');
-		    	$(".upcoming"+stationList).append('<div class="col-xs-5 Name">' + upComingStaff.name + '</div>');
-		    	$(".upcoming"+stationList).append('<div class="col-xs-3 Rank">' + upComingStaff.shiftTime + '</div>');
-	      	$(".upcoming"+stationList).append('</div>');
-				}
-			}
-*/
-
 		});
-
 	});
 }
 
@@ -451,8 +426,8 @@ function loadOnDuty()
 					{
 						headerDCOnDuty = headerDCOnDuty + 1 ;
 					}
-					$(".onDutyDC").html('<p class="TitleDC">DUTY CHIEF</p>');
-					$(".onDutyDC").append('<p class="NameDC">' + onDutyNow.name + '</p>');
+					$(".onDutyDC").html('<div class="TitleDC">DUTY CHIEF</div>');
+					$(".onDutyDC").append('<div class="NameDC">' + onDutyNow.name + '</div>');
 					break;
 				default:
 			}
@@ -532,7 +507,7 @@ function displayEvent (selectedEvent)
 			}
 			break;
 		case "2": // INFORMATION CENTER
-		  icNotice = '<div class="row scheduleRow">';
+		  icNotice = '<div class="row scheduleRowIC">';
 			icNotice = icNotice + '<div class="col-xs-3 Position">' + selectedEvent.eventTime + '</div>';
 			icNotice = icNotice + '<div class="col-xs-9 Position">' + selectedEvent.eventDescription + '</div>';
 			icNotice = icNotice + '</div>';
@@ -616,7 +591,6 @@ function loadEvents ()
 {
 	$.getJSON("php/eventsToday.php5", function(results)
 	{
-		notificationCnt=0;
 		pr120Cnt=0;
 		pr140Cnt=0;
 		if (results.event.length)
@@ -632,14 +606,6 @@ function loadEvents ()
 			{
 				displayEvent(results.event);
 			}
-		}
-		if (notificationCnt > 0)
-		{
-			notificationCnt=0;
-		}
-		else
-		{
-			$(".notification").html('<div class="row scheduleRow"><div class="col-xs-12 Name">No Information to Report</div></div>');
 		}
 		if (pr120Cnt > 0)
 		{
@@ -689,7 +655,7 @@ function loadBanner ()
 						}
 					}
 				}
-				shiftTitle = '<p class="weatherTemp">' + shift + '</p>'
+				shiftTitle = '<div class="shiftLabel">' + shift + '</div>'
 
 				forecast3day = '<div class="row forecastTemp">' + data.forecast.simpleforecast.forecastday[1].date.weekday;
 				forecast3day = forecast3day + ' <img class="forecastCondIcon" src=' + data.forecast.simpleforecast.forecastday[1].icon_url + '>';
@@ -707,16 +673,35 @@ function loadBanner ()
 				forecast3day = forecast3day + ' | ' + data.forecast.simpleforecast.forecastday[3].low.fahrenheit;
 				forecast3day = forecast3day + '</div>';
 
-				condTemp = '<div class="row"><img class="weatherCondIcon" src=' + data.current_observation.icon_url + '>';
-				condTemp = condTemp + '  <span class="weatherTemp">' + currTemp.toFixed(0) + '&#x2109;</span></div>';
+				condTemp = '<div class="row">';
+				condTemp = condTemp + '<img class="weatherCondIcon" src=' + data.current_observation.icon_url + '>';
+				condTemp = condTemp + '&nbsp&nbsp<span class="weatherTemp">' + currTemp.toFixed(0) + '<span class="fahrenheitSS">&#x2109;</span></span>';
+/*				condTemp = condTemp + '<span class="forecastTemp">' + highTemp + '<span class="fahrenheitFCSS">&#x2109;</span> | ' + lowTemp + '<span class="fahrenheitFCSS">&#x2109;</span></span>'; */
+				condTemp = condTemp + '</div>';
 
 				weatherTempRange = '<div class="row wtrTop">' + weather + '</div>';
-				weatherTempRange = weatherTempRange + '<div class="row wtrBottom">' + highTemp + '&#x2109; | ' + lowTemp + '&#x2109;</div>'
+				weatherTempRange = weatherTempRange + '<div class="row wtrBottom">' + highTemp + '<span class="fahrenheitFCSS">&#x2109;</span> | ' + lowTemp + '<span class="fahrenheitFCSS">&#x2109;</span></div>'
 
 				$('.shiftTitleBlock').html(shiftTitle);
 				$('.conditions').html(condTemp);
 				$('.tempRange').html(weatherTempRange);
 				$('.forecast').html(forecast3day);
 				$('.wuLogo').html('<img class="weatherLogo" src=https://www.wunderground.com/logos/images/wundergroundLogo_4c_rev.jpg>');
+
+				icNotice = '<div class="row scheduleRowIC">';
+				icNotice = icNotice + '<div class="col-xs-3 Position">Forecast</div>';
+				icNotice = icNotice + '<div class="col-xs-9 Position">' + data.forecast.txt_forecast.forecastday[0].fcttext + '</div>';
+				icNotice = icNotice + '</div>';
+				if (notificationCnt == 0)
+				{
+					notificationCnt = notificationCnt + 1;
+					$(".notification").html(icNotice);
+				}
+				else
+				{
+					notificationCnt = notificationCnt + 1;
+					$(".notification").prepend(icNotice);
+				}
+
 			});
 }
