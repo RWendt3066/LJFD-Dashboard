@@ -1,15 +1,7 @@
 body {
     background-color: #101010;
     color: #dddddd;
-    font-family: 'Play', sans-serif;
-}
-.department {
-    color: #B8B9BC;
-    font-size: 56px;
-    display: none;
-    position: relative;
-    text-align:center;
-    margin:10px;
+    font-family: 'Ariel', sans-serif;
 }
 .header {
     font-weight: bold;
@@ -94,6 +86,7 @@ body {
   margin: 0px 5px 0px 5px;
 }
 .shiftLabel {
+  font-weight:bold;
     color: #B8B9BC;
     font-size: 34px;
     position: relative;
@@ -123,31 +116,12 @@ body {
 .clockTablet {
   display: none;
 }
-.stationHeader {
-    display: none;
-}
-.boxHeading {
-    font-size: 24px;
-}
-.table-striped>tbody>tr:nth-of-type(odd) {
-    background-color: inherit;
-}
-.stationName {
-    text-align: left;
-    color:#B8B9BC;
-    font-size: small;
-}
-.stationNameOD {
-    background-color: #B8B9BC;
-    color: #101010;
-}
 .shiftName {
     text-align: left;
     color:#B8B9BC;
     font-size: small;
 }
 .shiftNameOD {
-    background-color: #B8B9BC;
     color: #101010;
 }
 .Position {
@@ -157,7 +131,6 @@ body {
     font-size: x-small;
 }
 .PositionOD {
-    background-color: #B8B9BC;
     color: #101010;
 }
 .TitleDC {
@@ -168,24 +141,18 @@ body {
     margin-top: 10%;
     margin-left: 10%;
 }
-.Title {
-    font-weight:normal;
-    text-align: right;
-    color: #B8B9BC;
-    font-size: small;
-}
 .Name {
-  font-weight:normal;
+  font-weight:bold;
   text-align: center;
   color: #B8B9BC;
-  font-size: small;
+  font-size: x-small;
 }
 .NameOD {
     background-color: #B8B9BC;
     color: #101010;
 }
 .NameDC {
-  font-weight:normal;
+  font-weight:bold;
   text-align: center;
   color: #B8B9BC;
   font-size: medium;
@@ -198,7 +165,6 @@ body {
     font-size: x-small;
 }
 .RankOD {
-    background-color:#B8B9BC;
     color: #101010;
 }
 .eventTitle {
@@ -211,7 +177,7 @@ body {
   font-weight:normal;
     text-align: right;
     color: #B8B9BC;
-    font-size: small;
+    font-size: x-small;
 }
 .eventTimeOD {
     color: #101010;
@@ -228,19 +194,6 @@ body {
 }
 .eventDescOD {
     color: #101010;
-}
-
-.announcements {
-    width: 100%;
-    display: block;
-    position: relative;
-    min-height: 50%;
-    padding-right: 2px;
-    padding-left: 2px;
-    box-sizing: border-box;
-    font-size:large;
-    color:#B8B9BC;
-    margin:30px auto 30px auto;
 }
 
 .onDutyBlock {
@@ -283,7 +236,7 @@ body {
 .scheduleRowTopOD {
     line-height: 1.5;
     vertical-align: middle;
-    background-color: #B8B9BC;
+    background-color: #97999f;
     border-top: 1px solid #101010;
     border-bottom: 0px solid #101010;
     padding: 3px;
@@ -291,7 +244,7 @@ body {
 .scheduleRowBottomOD {
     line-height: 1.5;
     vertical-align: middle;
-    background-color: #97999f;
+    background-color: #B8B9BC;
     border-top: 0px solid #101010;
     border-bottom: 1px solid #101010;
     padding: 3px;
@@ -305,7 +258,7 @@ body {
     padding: 3px;
 }
 .scheduleRowIC {
-    line-height: 1.25;
+    line-height: 1.5;
     vertical-align: middle;
     background-color: #1c1919;
     border-top: 1px solid #B8B9BC;
@@ -330,6 +283,7 @@ body {
 /*********************************************************/
 
 /* Small devices (tablets, 768px and up) */
+/*****************************************/
 @media (min-width: 640px) {
   .mainLogo {
       height: 100px;
@@ -348,17 +302,11 @@ body {
    .header {
       font-size: large;
    }
-   .stationName {
-       font-size: medium;
-    }
    .shiftName {
        font-size: medium;
     }
    .Position, .eventTitle {
        font-size: small;
-   }
-   .Title {
-       font-size: medium;
    }
    .Name {
        font-size: medium;
@@ -381,6 +329,7 @@ body {
 }
 
 /* Medium devices (desktops and tablet landscape, 992px and up) */
+/****************************************************************/
 @media (min-width: 992px) {
   .weatherBanner {
     display: block;
@@ -448,9 +397,6 @@ body {
     width: 45px;
     margin: 15% 25% 0% 50%;
   }
-   .stationHeader {
-       display: block;
-   }
    .mobileIC {
        display: none;
    }
@@ -460,17 +406,11 @@ body {
    .header {
       font-size: medium;
    }
-   .stationName {
-       font-size: large;
-    }
    .shiftName {
        font-size: large;
     }
    .Position, .eventTitle {
        font-size: small;
-   }
-   .Title {
-       font-size: large;
    }
    .Name {
        font-size: small;
@@ -493,6 +433,7 @@ body {
 }
 
 /* Large devices (large desktops, 1200px and up) */
+/*************************************************/
 @media (min-width: 1300px) {
   .weatherBanner {
     display: block;
@@ -560,9 +501,6 @@ body {
     width: 55px;
     margin: 10px 25px 0px 50px;
   }
-   .stationHeader {
-       display: block;
-   }
    .mobileIC {
        display: none;
    }
@@ -572,17 +510,11 @@ body {
    .header {
       font-size: medium;
    }
-   .stationName {
-       font-size: large;
-    }
    .shiftName {
        font-size: large;
     }
    .Position, .eventTitle {
        font-size: small;
-   }
-   .Title {
-       font-size: large;
    }
    .Name {
        font-size: small;
@@ -604,6 +536,7 @@ body {
    }
  }
 /* Large devices (large desktops, 1200px and up) */
+/*************************************************/
 @media (min-width: 1500px) {
   .weatherBanner {
     display: block;
@@ -662,9 +595,6 @@ body {
   .header {
      font-size: x-large;
   }
-  .stationName {
-      font-size: large;
-   }
    .shiftLabel {
        font-size: x-large;
    }
@@ -672,9 +602,6 @@ body {
       font-size: large;
    }
   .Position, .eventTitle {
-      font-size: large;
-  }
-  .Title {
       font-size: large;
   }
   .Name {

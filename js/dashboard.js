@@ -36,7 +36,7 @@ function loadDashboard()
 				h = new Date(d.getFullYear(), d.getMonth(), d.getDate(), d.getHours(), (d.getMinutes() - (d.getMinutes() % 30)) + 30, 0, 0),
         e = h - d;
     window.setTimeout(loadDashboard, e);
-		notificationCnt=0;
+		notificationCnt = 0;
 		loadBanner ();
 		loadOnDuty();
 		loadUpcoming();
@@ -57,7 +57,7 @@ function loadDashboard()
 		loadOnDuty();
 		loadUpcoming();
     loadEvents();
-		if (notificationCnt = 0)
+		if (notificationCnt == 0)
 		{
 			$(".notification").html('<div class="row scheduleRow"><div class="col-xs-12 Name">No Information to Report</div></div>');
 		}
@@ -81,13 +81,14 @@ function loadUpcoming()
 		var i = 0 ;
 		var resource = new Array () ;
     var upComing ;
-		moment.tz.setDefault("UTC") ;
-		var now = moment() ;
-		var now24 = moment().add(24,'h') ;
-		var currentBT = moment(now).format("YYYY-MM-DD") + 'T' + moment(now).format("HH:mm") + ':00Z' ;
-		var currentET = moment(now24).format("YYYY-MM-DD") + 'T' + moment(now24).format("HH:mm") + ':10Z' ;
 		moment.tz.setDefault("America/Chicago") ;
 
+		/* GET ACCESS TIME */
+		tempAccess = results["@attributes"].accessTime ;
+		strAccess = tempAccess.substr(0,10) + ' ' + tempAccess.substr(11,5) ;
+		shiftAccess = moment.tz(strAccess,'UTC') ;
+		shiftAccess.tz('America/Chicago') ;
+		accessTime = shiftAccess.format('HH:mm') ;
 
 		/////////////////////////////////////////////////////////////
 		///  Cleanup JSON Structure and Assign Values  //////////////
@@ -220,16 +221,12 @@ function loadUpcoming()
 
 		$.each(upComingObj.upComingStaff, function(key,upComingStaff)
 		{
-			if (key == 0)
-			{
-				currentTime = upComingStaff.shiftTime.substring(0,5) ;
-			}
 			startTime = upComingStaff.shiftTime.substring(0,5) ;
 			endTime = upComingStaff.shiftTime.substring(6) ;
 			startHour = upComingStaff.shiftTime.substring(0,2) ;
 
 			/* IDENTIFY SHIFT TITLE */
-			if ( startTime != currentTime )
+			if ( startTime != accessTime )
 			{
 				if (( endTime.substring(3) == '00' ) || ( endTime.substring(3) == '30' ))
 				{
