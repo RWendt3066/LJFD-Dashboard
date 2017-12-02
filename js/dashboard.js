@@ -33,22 +33,13 @@ function loadDashboard()
   if ( !isMobile.any )
 	{
 		var d = new Date(),
-				h = new Date(d.getFullYear(), d.getMonth(), d.getDate(), d.getHours(), (d.getMinutes() - (d.getMinutes() % 30)) + 30, 0, 0),
+				h = new Date(d.getFullYear(), d.getMonth(), d.getDate(), d.getHours(), (d.getMinutes() - (d.getMinutes() % 30)) + 32, 0, 0),
         e = h - d;
     window.setTimeout(loadDashboard, e);
-		notificationCnt = 0;
 		loadBanner ();
 		loadOnDuty();
 		loadUpcoming();
     loadEvents();
-		if (notificationCnt == 0)
-		{
-			$(".notification").html('<div class="row scheduleRow"><div class="col-xs-12 Name">No Information to Report</div></div>');
-		}
-		else
-		{
-			notificationCnt = 0;
-		}
 	}
 	else
 	{
@@ -57,14 +48,6 @@ function loadDashboard()
 		loadOnDuty();
 		loadUpcoming();
     loadEvents();
-		if (notificationCnt == 0)
-		{
-			$(".notification").html('<div class="row scheduleRow"><div class="col-xs-12 Name">No Information to Report</div></div>');
-		}
-		else
-		{
-			notificationCnt = 0;
-		}
 	}
 }
 
@@ -210,7 +193,7 @@ function loadUpcoming()
 		var upComingObj = JSON.parse(upComingJSON) ;
 
 		/////////////////////////////////////////////////////////////
-		///  Display Updoming Staff on Dashboard  ////////////////////
+		///  Display Updoming Staff on Dashboard  ///////////////////
 		/////////////////////////////////////////////////////////////
 
 		var stationList='NONE' ;
@@ -564,11 +547,12 @@ function displayEvent (selectedEvent)
 					break;
 				default:
 						icNotice = '<div class="row scheduleRowTop">';
-						icNotice = icNotice + '<div class="col-xs-8 eventDesc">' +  selectedEvent.eventLocation + '</div>';
-						icNotice = icNotice + '<div class="col-xs-4 Rank">' + selectedEvent.eventTime + '</div>';
+						icNotice = icNotice + '<div class="col-xs-3 Position">PR Event</div>';
+						icNotice = icNotice + '<div class="col-xs-9 Position">' +  selectedEvent.eventLocation + '</div>';
 						icNotice = icNotice + '</div>';
 						icNotice = icNotice + '<div class="row scheduleRowBottom">';
-						icNotice = icNotice + '<div class="col-xs-12 Position">' + selectedEvent.eventDescription + '</div>';
+						icNotice = icNotice + '<div class="col-xs-3 Position">' + selectedEvent.eventTime + '</div>';
+						icNotice = icNotice + '<div class="col-xs-9 Position">' + selectedEvent.eventDescription + '</div>';
 						icNotice = icNotice + '</div>';
 						if (notificationCnt == 0)
 						{
@@ -590,6 +574,7 @@ function loadEvents ()
 	{
 		pr120Cnt=0;
 		pr140Cnt=0;
+		notificationCnt = 0;
 		if (results.event.length)
 		{
 			$.each(results.event, function(key, event)
@@ -619,6 +604,14 @@ function loadEvents ()
 		else
 		{
 			$(".activities140").html('<div class="row scheduleRowOD redBreak"><div class="col-xs-12 Name NameOD">No Scheduled Activities</div></div>');
+		}
+		if (notificationCnt > 0)
+		{
+			notificationCnt = 0;
+		}
+		else
+		{
+			$(".notification").html('<div class="row scheduleRow"><div class="col-xs-12 Name">No Information to Report</div></div>');
 		}
   });
 }
@@ -673,7 +666,6 @@ function loadBanner ()
 				condTemp = '<div class="row">';
 				condTemp = condTemp + '<img class="weatherCondIcon" src=' + data.current_observation.icon_url + '>';
 				condTemp = condTemp + '&nbsp&nbsp<span class="weatherTemp">' + currTemp.toFixed(0) + '<span class="fahrenheitSS">&#x2109;</span></span>';
-/*				condTemp = condTemp + '<span class="forecastTemp">' + highTemp + '<span class="fahrenheitFCSS">&#x2109;</span> | ' + lowTemp + '<span class="fahrenheitFCSS">&#x2109;</span></span>'; */
 				condTemp = condTemp + '</div>';
 
 				weatherTempRange = '<div class="row wtrTop">' + weather + '</div>';
@@ -689,16 +681,7 @@ function loadBanner ()
 				icNotice = icNotice + '<div class="col-xs-3 Position">Forecast</div>';
 				icNotice = icNotice + '<div class="col-xs-9 Position">' + data.forecast.txt_forecast.forecastday[0].fcttext + '</div>';
 				icNotice = icNotice + '</div>';
-				if (notificationCnt == 0)
-				{
-					notificationCnt = notificationCnt + 1;
-					$(".notification").html(icNotice);
-				}
-				else
-				{
-					notificationCnt = notificationCnt + 1;
-					$(".notification").prepend(icNotice);
-				}
+				$(".icForecast").html(icNotice);
 
 			});
 }
