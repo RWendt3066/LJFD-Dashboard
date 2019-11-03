@@ -1,18 +1,10 @@
 body {
     background-color: #101010;
     color: #dddddd;
-    font-family: 'Play', sans-serif;
-}
-.department {
-    color: #B8B9BC;
-    font-size: 56px;
-    display: none;
-    position: relative;
-    text-align:center;
-    margin:10px;
+    font-family: 'Ariel', sans-serif;
 }
 .header {
-    font-weight:bold;
+    font-weight: bold;
     text-align: center;
     font-size: medium;
     margin:auto;
@@ -21,85 +13,158 @@ body {
     background-color: #A81E22;
     color:#B8B9BC;
 }
+.headerBlue {
+    background-color: #0c377c;
+    color:#B8B9BC;
+}
 .headerGrey {
     background-color: #B8B9BC;
     color:#0E0D23;
 }
-
+.mobileIC {
+    display: block;
+}
+.desktopIC {
+    display: none;
+}
 .mainLogo {
-    top:15px;
-    height: 100%;
-    width: 100%;
+    height: 80px;
+    width: 80px;
     padding:1%;
     display: block;
     position: relative;
     text-align:center;
-    margin:0px;
+    margin: 10% 50% 0% 50%;
 /*    margin:auto;*/
 }
-.clock {
-    top: 15px;
-    color: #B8B9BC;
-    display: none;
+.weatherBanner {
+  display: none;
+  margin-top: 5px;
+}
+.wuStats {
+  display: none;
+  margin-top: 15px;
+}
+.weatherLogo {
+    height: 50px;
+    width: 90px;
+    display: block;
     position: relative;
     text-align:center;
-    margin:0px auto 10px auto;
+    margin-top: 5px;
 }
-.boxHeading {
-    font-size: 24px;
+.weatherCondIcon {
+  height: 60px;
+  width: 60px;
+  position: relative;
+  bottom: 15px;
 }
-.table-striped>tbody>tr:nth-of-type(odd) {
-    background-color: inherit;
+.weatherTemp {
+    color: #B8B9BC;
+    font-size: 52px;
+    position: relative;
+    text-align:center;
 }
-.stationName { 
-    text-align: left;
-    color:#B8B9BC;
-    font-size: small;
+.forecastTemp {
+  font-weight:normal;
+  color: #B8B9BC;
+  font-size: medium;
 }
-.stationNameOD {
-    background-color: #B8B9BC;
-    color: #101010;
+.fahrenheitSS {
+  font-size: x-large;
+    vertical-align: top;
 }
-.shiftName { 
+.fahrenheitFCSS {
+  font-size: small;
+    vertical-align: top;
+}
+.forecastCondIcon {
+  height: 20px;
+  width: 20px;
+  position: relative;
+  text-align:center;
+  margin: 0px 5px 0px 5px;
+}
+.shiftLabel {
+  font-weight:bold;
+    color: #B8B9BC;
+    font-size: 34px;
+    position: relative;
+    text-align:center;
+}
+.wtrTop {
+  font-weight:normal;
+  text-align: center;
+  color: #B8B9BC;
+  font-size: large;
+  margin-top: : 5px;
+}
+.wtrBottom {
+  font-weight:normal;
+  text-align: center;
+  color: #B8B9BC;
+  font-size: x-large;
+}
+.clock {
+    color: #B8B9BC;
+    position: relative;
+    text-align:center;
+}
+.clockDesktop {
+  display: none;
+}
+.clockTablet {
+  display: none;
+}
+.shiftName {
     text-align: left;
     color:#B8B9BC;
     font-size: small;
 }
 .shiftNameOD {
-    background-color: #B8B9BC;
     color: #101010;
 }
 .Position {
+    font-weight:normal;
     text-align: left;
-    color: #A81E22;
-    font-size: small;
+    color: #B8B9BC;
+    font-size: x-small;
 }
 .PositionOD {
-    background-color: #B8B9BC;
-    color: #A81E22;
+    color: #101010;
 }
-.Title {
-    text-align: right;
-    color: #B8B9BC;
-    font-size: small;
-}
-.Name {
-    text-align: left;
+.TitleDC {
+    font-weight: bold;
+    text-align: center;
     color: #B8B9BC;
     font-size: medium;
+    margin-top: 10%;
+    margin-left: 10%;
+}
+.Name {
+  font-weight:bold;
+  text-align: center;
+  color: #B8B9BC;
+  font-size: x-small;
 }
 .NameOD {
     background-color: #B8B9BC;
     color: #101010;
 }
+.NameDC {
+  font-weight:bold;
+  text-align: center;
+  color: #B8B9BC;
+  font-size: medium;
+  margin-left: 10%
+}
 .Rank {
+  font-weight:normal;
     text-align: right;
     color: #B8B9BC;
-    font-size: small;
-    border-bottom: 0px solid #ddd;
+    font-size: x-small;
 }
 .RankOD {
-    background-color:#B8B9BC;
     color: #101010;
 }
 .eventTitle {
@@ -107,173 +172,456 @@ body {
     background-color:#B8B9BC;
     color: #101010;
     font-size: small;
-    border-top: 1px solid #ddd;
-    border-bottom: 0px solid #ddd;
 }
 .eventTime {
+  font-weight:normal;
     text-align: right;
-    background-color:#B8B9BC;
+    color: #B8B9BC;
+    font-size: x-small;
+}
+.eventTimeOD {
     color: #101010;
-    font-size: small;
-    border-top: 1px solid #ddd;
-    border-bottom: 0px solid #ddd;
 }
 .eventLabel {
     color: #A81E22;
 }
 
 .eventDesc {
+    font-weight:normal;
     text-align: left;
     color: #B8B9BC;
-    font-size: small;
-    border-top: 0px solid #ddd;
-    border-bottom: 1px solid #ddd;
+    font-size: x-small;
 }
-
-.announcements {
-    width: 100%;
-    display: block;
-    position: relative;
-    min-height: 50%;
-    padding-right: 2px;
-    padding-left: 2px;
-    box-sizing: border-box;
-    font-size:large;
-    color:#B8B9BC;
-    margin:30px auto 30px auto;
+.eventDescOD {
+    color: #101010;
 }
 
 .onDutyBlock {
     width: 100%;
     display: block;
     position: relative;
-    padding-right: 2px;
-    padding-left: 2px;
+    padding-right: 0px;
+    padding-left: 0px;
     box-sizing: border-box;
-    margin: 15px auto 0px auto;
+    margin: 15px 0px 0px 0px;
 }
 
 .container-fluid {
     height: 650px;
 }
-
-.table-condensed > tbody > tr > td, .table-condensed > tbody > tr > th, .table-condensed > tfoot > tr > td, .table-condensed > tfoot > tr > th, .table-condensed > thead > tr > td, .table-condensed > thead > tr > th {
-    padding: 4px;
+.scheduleRowTop {
+    line-height: 1.5;
+    vertical-align: middle;
+    background-color: #1c1919;
+    border-top: 1px solid #B8B9BC;
+    border-bottom: 0px solid #B8B9BC;
+    padding: 3px;
 }
-
-.tbody { 
-    height:325px;
+.scheduleRowBottom {
+    line-height: 1.5;
+    vertical-align: middle;
+    background-color: #1c1919;
+    border-top: 0px solid #B8B9BC;
+    border-bottom: 1px solid #B8B9BC;
+    padding: 3px;
 }
 .scheduleRow {
     line-height: 1.75;
     vertical-align: middle;
-    border-top: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
-    padding: 4px;
+    background-color: #1c1919;
+    border-top: 1px solid #B8B9BC;
+    border-bottom: 1px solid #B8B9BC;
+    padding: 3px;
 }
-.table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+.scheduleRowTopOD {
+    line-height: 1.5;
+    vertical-align: middle;
+    background-color: #97999f;
+    border-top: 1px solid #101010;
+    border-bottom: 0px solid #101010;
+    padding: 3px;
+}
+.scheduleRowBottomOD {
+    line-height: 1.5;
+    vertical-align: middle;
+    background-color: #B8B9BC;
+    border-top: 0px solid #101010;
+    border-bottom: 1px solid #101010;
+    padding: 3px;
+}
+.scheduleRowOD {
     line-height: 1.75;
     vertical-align: middle;
-    border-top: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
+    background-color: #B8B9BC;
+    border-top: 1px solid #101010;
+    border-bottom: 1px solid #101010;
+    padding: 3px;
 }
-.etable > tbody > tr > td, .etable > tbody > tr > th, .etable > tfoot > tr > td, .etable > tfoot > tr > th, .etable > thead > tr > td, .etable > thead > tr > th {
-    line-height: 1.25;
+.scheduleRowIC {
+    line-height: 1.5;
     vertical-align: middle;
+    background-color: #1c1919;
+    border-top: 1px solid #B8B9BC;
+    border-bottom: 1px solid #B8B9BC;
+    padding: 3px;
+}
+.scheduleRowGray {
+  background-color: #B8B9BC;
+  border-top: 1px solid #101010;
+  border-bottom: 1px solid #101010;
+}
+.blueBreak {
+    border-top: 8px solid #0c377c;
+}
+.redBreak {
+    border-top: 10px solid #A81E22;
 }
 
-/* Extra small devices (phones, less than 768px) */
+/*********************************************************/
+/* Extra small devices (phones, less than 768px)         */
 /* No media query since this is the default in Bootstrap */
+/*********************************************************/
 
 /* Small devices (tablets, 768px and up) */
-@media (min-width: 768px) {
+/*****************************************/
+@media (min-width: 640px) {
+  .mainLogo {
+      height: 100px;
+      width: 100px;
+      margin-left: 50%;
+    }
    .clock {
-       display: block;
+     margin-left: 25%;
+   }
+   .clockDesktop {
+     display: none;
+   }
+   .clockTablet {
+     display: none;
    }
    .header {
       font-size: large;
    }
-   .stationName { 
-       font-size: medium;
-    }
-   .shiftName { 
+   .shiftName {
        font-size: medium;
     }
    .Position, .eventTitle {
-       font-size: medium;
-   }
-   .Title {
-       font-size: medium;
+       font-size: small;
    }
    .Name {
-       font-size: large;
+       font-size: medium;
+   }
+   .NameDC {
+       font-size: x-large;
+       margin-left: 10%;
+   }
+   .TitleDC {
+       font-size: x-large;
+       margin-top: 5%;
+       margin-left: 10%;
    }
    .Rank, .eventTime {
-       font-size: medium;
+       font-size: small;
    }
    .eventDesc {
-       font-size: medium;
-   }   
+       font-size: small;
+   }
 }
 
-/* Medium devices (desktops, 992px and up) */
+/* Medium devices (desktops and tablet landscape, 992px and up) */
+/****************************************************************/
 @media (min-width: 992px) {
-   .clock {
+  .weatherBanner {
+    display: block;
+    margin-top: 10px;
+  }
+  .wuStats {
+    display: block;
+    margin-top: 5px;
+  }
+  .weatherLogo {
+      height: 25px;
+      width: 45px;
+      display: block;
+      position: relative;
+      text-align:center;
+      margin-top: 5px;
+  }
+  .weatherCondIcon {
+    height: 37px;
+    width: 35px;
+    bottom: 5px;
+  }
+  .weatherTemp {
+      font-size: x-large;
+  }
+  .forecastTemp {
+    font-size: xx-small;
+  }
+  .fahrenheitSS {
+    font-size: large;
+      vertical-align: top;
+  }
+  .fahrenheitFCSS {
+    font-size: x-small;
+      vertical-align: top;
+  }
+  .forecastCondIcon {
+    height: 12px;
+    width: 12px;
+    margin: 0px 5px 0px 5px;
+  }
+  .shiftLabel {
+      font-size: large;
+      margin-left: 20px;
+  }
+  .wtrTop {
+    font-size: small;
+    margin-top: : 5px;
+  }
+  .wtrBottom {
+    font-size: small;
+  }
+  .clock {
+      display: none;
+  }
+  .clockDesktop {
+    display: none;
+  }
+  .clockTablet {
+    display: block;
+    margin-right: 50px;
+  }
+  .mainLogo {
+    height: 45px;
+    width: 45px;
+    margin: 15% 25% 0% 50%;
+  }
+   .mobileIC {
+       display: none;
+   }
+   .desktopIC {
        display: block;
    }
    .header {
-      font-size: large;
+      font-size: medium;
    }
-   .stationName { 
-       font-size: large;
-    }
-   .shiftName { 
+   .shiftName {
        font-size: large;
     }
    .Position, .eventTitle {
-       font-size: large;
-   }
-   .Title {
-       font-size: large;
+       font-size: small;
    }
    .Name {
+       font-size: small;
+   }
+   .NameDC {
        font-size: large;
+       margin-left: 10%;
+   }
+   .TitleDC {
+       font-size: large;
+       margin-top: 5px;
+       margin-left: 10%;
    }
    .Rank, .eventTime {
-       font-size: large;
+       font-size: small;
    }
    .eventDesc {
-       font-size: medium;
-   }   
+       font-size: small;
+   }
 }
 
 /* Large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {
-   .clock {
+/*************************************************/
+@media (min-width: 1300px) {
+  .weatherBanner {
+    display: block;
+    margin-top: 12px;
+  }
+  .wuStats {
+    display: block;
+    margin-top: 5px;
+  }
+  .weatherLogo {
+      height: 25px;
+      width: 45px;
+      display: block;
+      position: relative;
+      text-align:center;
+      margin-top: 5px;
+  }
+  .weatherCondIcon {
+    height: 35px;
+    width: 35px;
+    bottom: 5px;
+  }
+  .weatherTemp {
+      font-size: xx-large;
+  }
+  .forecastTemp {
+    font-size: x-small;
+  }
+  .fahrenheitSS {
+    font-size: medium;
+      vertical-align: top;
+  }
+  .fahrenheitFCSS {
+    font-size: x-small;
+      vertical-align: top;
+  }
+  .forecastCondIcon {
+    height: 15px;
+    width: 15px;
+    margin: 0px 5px 0px 5px;
+  }
+  .shiftLabel {
+      font-size: large;
+      margin-left: 20px;
+  }
+  .wtrTop {
+    font-size: medium;
+    margin-top: : 5px;
+  }
+  .wtrBottom {
+    font-size: medium;
+  }
+  .clock {
+      display: none;
+  }
+  .clockDesktop {
+    display: none;
+  }
+  .clockTablet {
+    display: block;
+    margin-right: 50px;
+  }
+  .mainLogo {
+    height: 55px;
+    width: 55px;
+    margin: 10px 25px 0px 50px;
+  }
+   .mobileIC {
+       display: none;
+   }
+   .desktopIC {
        display: block;
    }
    .header {
-      font-size: x-large;
+      font-size: medium;
    }
-   .stationName { 
-       font-size: large;
-    }
-   .shiftName { 
+   .shiftName {
        font-size: large;
     }
    .Position, .eventTitle {
-       font-size: large;
-   }
-   .Title {
-       font-size: large;
+       font-size: small;
    }
    .Name {
+       font-size: small;
+   }
+   .NameDC {
        font-size: large;
+       margin-left: 10%;
+   }
+   .TitleDC {
+       font-size: large;
+       margin-top: 10px;
+       margin-left: 10%;
    }
    .Rank, .eventTime {
-       font-size: large;
+       font-size: small;
    }
    .eventDesc {
-       font-size: medium;
-   }   
+       font-size: small;
+   }
+ }
+/* Large devices (large desktops, 1200px and up) */
+/*************************************************/
+@media (min-width: 1500px) {
+  .weatherBanner {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 10px;
+  }
+  .weatherLogo {
+     height: 50px;
+     width: 85px;
+     display: block;
+     margin-top: 8px;
+  }
+  .weatherCondIcon {
+   height: 60px;
+   width: 60px;
+   bottom: 15px;
+  }
+  .weatherTemp {
+     font-size: 52px;
+  }
+  .forecastTemp {
+   font-size: medium;
+  }
+  .fahrenheitSS {
+   font-size: x-large;
+  }
+  .fahrenheitFCSS {
+   font-size: small;
+  }
+  .forecastCondIcon {
+   height: 20px;
+   width: 20px;
+   margin: 0px 5px 0px 5px;
+  }
+  .wtrTop {
+   font-size: large;
+   margin-top: : 5px;
+  }
+  .wtrBottom {
+   font-size: x-large;
+  }
+  .clock {
+    margin-left: 0%;
+  }
+  .clockDesktop {
+    display: block;
+  }
+  .clockTablet {
+    display: none;
+  }
+  .mainLogo {
+    height: 100px;
+    width: 100px;
+    margin: 12px 50px 0px 50px;
+  }
+  .header {
+     font-size: x-large;
+  }
+   .shiftLabel {
+       font-size: x-large;
+   }
+  .shiftName {
+      font-size: large;
+   }
+  .Position, .eventTitle {
+      font-size: large;
+  }
+  .Name {
+      font-size: large;
+  }
+  .NameDC {
+      font-size: x-large;
+      margin-left: 0%;
+      margin-bottom: 0px;
+  }
+  .TitleDC {
+      font-size: x-large;
+      margin-top: 20px;
+      margin-bottom: 0px;
+      margin-left: 0%;
+  }
+  .Rank, .eventTime {
+      font-size: large;
+  }
+  .eventDesc {
+      font-size: large;
+  }
 }

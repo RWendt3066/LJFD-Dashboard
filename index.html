@@ -13,153 +13,231 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/dashboard.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Play:700' rel='stylesheet' type='text/css'>
-	<link rel="icon" type="img" sizes="16x16" href="/favicon-16x16.png">
+	  <link rel="icon" type="img" sizes="16x16" href="/favicon-16x16.png">
 
 
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/isMobile.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.js" type="text/javascript"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.4/moment-timezone-with-data.js" type="text/javascript"></script>
-    <script src="js/dashboard.js"></script>  
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.js" type="text/javascript"></script>
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.4/moment-timezone-with-data.js" type="text/javascript"></script>
+    <script src="js/dashboard.js"></script>
 
   </head>
   <body>
 
     <div class="container-fluid">
-	<div class="col-mod-12">
-	
-      <!-- 1st Row -->
-	  <div class="row">
-          
-		  <!-- Logo and Clock -->
-		  <div class="col-md-3">
 
-             <!-- Logo -->
-	         <div class="row">
-			    <p class="mainLogo"><img src="img/ljfdpatch150.png"></p>
-		     </div> 
-             <!-- Logo -->
-			 
-	         <!-- Clock -->
-			 <div class="row">
-			    <div class="clock">
-				   <iframe src="http://free.timeanddate.com/clock/i53j9vww/n159/fn11/fs32/fcb8b9bc/tct/pct/tt0/tw0/tm1/td2/th1/ts1/tb2" frameborder="0" width="280" height="40" allowTransparency="true"></iframe>
-			    </div>
-             </div>
-	         <!-- Clock -->
+      <!-------------------------------------------------------------------------->
+      <!-- START of Left Column for Logo, Clock, Duty Chief, and Important Info -->
+      <!-------------------------------------------------------------------------->
+		  <div class="col-md-4">
+        <div class="row">
 
-             <!-- Duty Chief -->
-	         <div class="col-md-12">
-                <div class="onDutyBlock">
-				   <table class="table table-condensed table-striped">
-                      <tbody class="onDutyDC">
-					      <tr><td>Loading.....</td></tr>
-					  </tbody>
-				   </table>
-				</div>
-			 </div>
-			 
-		  </div> 
-		  <!-- Logo and Clock -->
+          <!-- START Logo -->
+  	      <div class="col-xs-4 col-sm-4 col-md-4">
+  			    <div><img class="mainLogo" src="img/ljfdpatch150.png"></div>
+          </div>
+          <!-- END Logo -->
 
-	   <!-- On Duty Staff -->
-	   <div class="col-md-9">
-	      <div class="row">
-		  
-			 <!-- Station 120 On Duty -->
-	         <div class="col-md-6">
-			    <div class="onDutyBlock">
-                   <p class="header headerRed">120 ON-DUTY</p>
-                   <table class="table table-condensed table-striped">
-                      <tbody class="onDuty120">
-					      <tr><td>Loading.....</td></tr>
-				      </tbody>
-				   </table>
-		        </div>
-			</div>
-			 <!-- Station 120 On Duty -->
+          <div class="col-xs-8 col-sm-8 col-md-8">
 
-			 <!-- Station 140 On Duty -->
-	         <div class="col-md-6">
-			    <div class="onDutyBlock">
-                   <p class="header headerRed">140 ON-DUTY</p>
-                   <table class="table table-condensed  table-striped">
-                      <tbody class="onDuty140">
-					      <tr><td>Loading.....</td></tr>
-				      </tbody> 
-				   </table>
-		        </div>
-			 </div>
-			 <!-- Station 140 On Duty -->
-			
-			
-	      </div>
-	   </div>
-	   <!-- On Duty Staff -->
+
+            <!-- START Duty Chief -->
+    	      <div class="row">
+                <span class="onDutyDC">
+                  <p class="TitleDC">DUTY CHIEF</p>
+                  <p class="NameDC">Not Staffed!!</p>
+                </span>
+            </div>
+            <!-- END Duty Chief -->
+
+          </div>
+
+        </div>
+
+        <!-- Start Desktop Information Center Area -->
+        <div class="desktopIC row">
+          <div class="onDutyBlock">
+            <div class="col-xs-12">
+              <div class="row">
+                <p class="header headerRed">INFORMATION CENTER</p>
+              </div>
+                <span class="icForecast"></span>
+                <span class="notification"></span>
+            </div>
+          </div>
+        </div>
+        <!-- End Desktop Information Center Area -->
+
+		  </div>
+      <!-------------------------------------------------------------------------->
+      <!-- END of Left Column for Logo, Clock, Duty Chief, and Important Info ---->
+      <!-------------------------------------------------------------------------->
+
+      <!-------------------------------------------------------------------------->
+      <!-- START Right Columns for Duty Schedules -------------------------------->
+      <!-------------------------------------------------------------------------->
+      <div class="col-md-8">
+
+        <div class="row weatherBanner">
+          <div class="col-md-12">
+            <!-- START Clock & Shift Label -->
+            <div class="col-md-5">
+      			  <div class="row">
+      			    <div class="clock clockDesktop">
+                  <iframe src="http://free.timeanddate.com/clock/i5xfpesw/n159/fn17/fs28/fcb8b9bc/tct/pct/ftb/tt1/tw0" frameborder="0" width="391" height="43" allowTransparency="true"></iframe>
+      			    </div>
+              </div>
+              <div class="row">
+      			    <div class="clock clockTablet">
+                  <iframe src="http://free.timeanddate.com/clock/i5xfpesw/n159/fn17/fs14/fcb8b9bc/tct/pct/ftb/tt1/tw0" frameborder="0" width="150" height="18" allowTransparency="true"></iframe>
+      			    </div>
+              </div>
+              <span class="shiftTitleBlock"></span>
+            </div>
+            <!-- END Clock & Shift Label -->
+            <!-- START Current Conditions and Temp -->
+            <div class="col-md-2 wuStats">
+              <span class="conditions"></span>
+            </div>
+            <div class="col-md-2 wuStats">
+              <span class="tempRange"></span>
+            </div>
+            <div class="col-md-2 wuStats">
+              <span class="forecast"></span>
+            </div>
+            <div class="col-md-1 wuStats">
+              <span class="wuLogo"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="onDutyBlock">
+            <!-- Start 120 On Duty Area -->
+            <div class="col-md-6 col-sm-6">
+              <div class="col-xs-12">
+                <div class="row">
+                  <p class="header headerRed">120 - ON-DUTY</p>
+                </div>
+                <span class="onDuty120">
+                  <div class="row scheduleRowOD">
+                    <div class="col-xs-6 Name NameOD">Not Staffed!!</div>
+                  </div>
+                </span>
+                <!--<div><br /></div>-->
+              </div>
+            <!-- End 120 On Duty Area -->
+
+            <!-- Start 120 Activities Area -->
+              <div class="col-xs-12">
+<!--                <div class="row">
+                  <p class="header headerRed">120 - ACTIVITIES</p>
+                </div> -->
+                <span class="activities120">
+                  <div class="row scheduleRowOD redBreak">
+                    <div class="col-xs-12 Name NameOD">No Scheduled Activities</div>
+                  </div>
+                </span>
+                <div><br /></div>
+              </div>
+            </div>
+            <!-- End 120 Activities Area -->
+
+            <!-- Start 140 On Duty Area -->
+            <div class="col-md-6 col-sm-6">
+              <div class="col-xs-12">
+                <div class="row">
+                  <p class="header headerRed">140 - ON-DUTY</p>
+                </div>
+                <span class="onDuty140">
+                  <div class="row scheduleRowOD">
+                    <div class="col-xs-6 Name NameOD">Not Staffed!!</div>
+                  </div>
+                </span>
+                <!--<div><br /></div>-->
+              </div>
+            <!-- End 140 On Duty Area -->
+
+            <!-- Start 140 Activities Area -->
+              <div class="col-xs-12">
+<!--                <div class="row">
+                  <p class="header headerRed">140 - ACTIVITIES</p>
+                </div> -->
+                <span class="activities140">
+                  <div class="row scheduleRowOD redBreak">
+                    <div class="col-xs-12 Name NameOD">No Scheduled Activities</div>
+                  </div>
+                </span>
+                <div><br /></div>
+              </div>
+            </div>
+            <!-- End 140 Activities Area -->
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="onDutyBlock">
+            <!-- Start Mobile Information Center Area -->
+            <div class="mobileIC col-md-6">
+              <div class="col-xs-12">
+                <div class="row">
+                  <p class="header headerRed">INFORMATION CENTER</p>
+                </div>
+                <span class="notification">
+                  <div class="row scheduleRow">
+                    <div class="col-xs-12 Name">No Scheduled Activities</div>
+                  </div>
+                </span>
+                <div><br /></div>
+              </div>
+            </div>
+            <!-- End Mobile Information Center Area -->
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="onDutyBlock">
+            <!-- Start 120 Upcoming Area -->
+            <div class="col-md-6 col-sm-6">
+              <div class="col-xs-12">
+                <div class="row">
+                  <p class="header headerBlue">120 - UPCOMING</p>
+                </div>
+                <span class="upcoming120">
+                  <div class="row scheduleRow">
+                    <div class="col-xs-6 Name">Not Staffed!!</div>
+                  </div>
+                </span>
+                <div><br /></div>
+              </div>
+            </div>
+            <!-- End 120 Upcoming Area -->
+
+            <!-- Start 140 Upcoming Area -->
+            <div class="col-md-6 col-sm-6">
+              <div class="col-xs-12">
+                <div class="row">
+                  <p class="header headerBlue">140 - UPCOMING</p>
+                </div>
+                <span class="upcoming140">
+                  <div class="row scheduleRow">
+                    <div class="col-xs-6 Name">Not Staffed!!</div>
+                  </div>
+                </span>
+                <div><br /></div>
+              </div>
+            </div>
+            <!-- End 140 Upcoming Area -->
+          </div>
+        </div>
+
+      </div>
+      <!-------------------------------------------------------------------------->
+      <!-- END Right Columns for Duty Schedules ---------------------------------->
+      <!-------------------------------------------------------------------------->
 
 	  </div>
-	  <!-- End 1st Row -->
-
-      <!-- Start 2nd Row -->
-      <div class="row">
-
-	     <!-- Start General Information -->
-	     <div class="col-md-3">
-		   <div class="row">
-		     <div class="col-md-12">
-                <div class="onDutyBlock">
-                   <p class="header headerRed">GENERAL INFORMATION</p>
-				   <table class="col-xs-12 col-sm-12 col-md-12 etable table-condensed table-striped">
-                      <tbody class="events">
-					      <tr><td>Loading.....</td></tr>
-					  </tbody>
-				   </table>
-                </div>
-		      </div>
-	       </div>
-		 </div>
-	     <!-- End General Information -->
-		  
-	   <!-- Upcoming Staff -->
-	   <div class="col-md-9">
-	      <div class="row">
-		  
-			 <!-- Station 120 Upcoming -->
-	         <div class="col-md-6">
-			    <div class="onDutyBlock">
-                   <p class="header headerRed">120 UPCOMING SHIFTS</p>
-                   <table class="table table-condensed table-striped">
-                      <tbody class="upcoming120">
-					      <tr><td>Loading.....</td></tr>
-				      </tbody>
-				   </table>
-		        </div>
-			 </div>
-			 <!-- Station 120 Upcoming -->
-			 
-			 <!-- Station 140 Upcoming -->
-	         <div class="col-md-6">
-			    <div class="onDutyBlock">
-                   <p class="header headerRed">140 UPCOMING SHIFTS</p>
-                   <table class="table table-condensed table-striped">
-                      <tbody class="upcoming140">
-					      <tr><td>Loading.....</td></tr>
-				      </tbody>
-				   </table>
-		        </div>
-	         </div>
-			 <!-- Station 140 Upcoming -->
-			 
-	      </div>
-	   </div>
-	   <!-- Upcoming Staff -->
-	   
-	  </div> 
-      <!-- 2nd Row -->
-	  
-    </div>
-	</div>
-	   
   </body>
 </html>

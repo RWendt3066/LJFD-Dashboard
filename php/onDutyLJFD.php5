@@ -5,7 +5,7 @@ header("Content-type: text/javascript");
 
 /* Identify Schedules for Requested Station */
 $ljfdStation = $_GET['station'] ;
-switch ($ljfdStation) 
+switch ($ljfdStation)
 {
     case '120' :
 	   $ljfdSchedules = '13,15,2' ;
@@ -17,7 +17,7 @@ switch ($ljfdStation)
 	   $ljfdSchedules = '14' ;
 	   break ;
 	default :
-	   $ljfdSchedules = '13,15,2,1,16,3' ;
+	   $ljfdSchedules = '13,15,2,1,16,3,14' ;
 }
 
 /* Set Begin and End Times */
@@ -61,7 +61,7 @@ $getScheduledTimeRanges = array(
 		   'et' => $currentET
 		   ) ;
 $xmlScheduledTimeRanges = new SimpleXMLElement ( getAladtecData ($getScheduledTimeRanges) ) ;
-
+echo $xmlScheduledTimeRanges;
 /* Return LJFD On Duty List for Requested Station */
 echo json_encode($xmlScheduledTimeRanges);
 
